@@ -7,9 +7,9 @@ class Splash2Image extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Image.asset(
-        'assets/images/splash2.png',
+        'assets/images/spalsh2.gif',
         height: 300,
-        width: 320,
+        width: 350,
       ),
     );
   }
