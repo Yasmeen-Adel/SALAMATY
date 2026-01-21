@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/small_app_button.dart';
-import 'package:salamaty/features/splash/presentation/views/widgets/splash2_image.dart';
-import 'package:salamaty/features/splash/presentation/views/widgets/splash2_text.dart';
+import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
+import 'package:salamaty/features/splash/presentation/view/widgets/splash2_image.dart';
+import 'package:salamaty/features/splash/presentation/view/widgets/splash2_text.dart';
 
 class SplashScreenBody2 extends StatelessWidget {
   const SplashScreenBody2({super.key});
@@ -24,7 +25,13 @@ class SplashScreenBody2 extends StatelessWidget {
               children: [
                 SmallAppButton(
                   text: 'Next',
-                  onPressed: () {},
+                  onPressed: () {
+                    // Navigate to the next screen or perform an action
+                     Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => const SignInScreen()),
+                    );
+                  },
                 ),
               ],
             ),
