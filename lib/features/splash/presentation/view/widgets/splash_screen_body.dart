@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_images.dart';
-import 'package:salamaty/features/splash/presentation/views/splash_screen2.dart';
-import 'package:salamaty/features/splash/presentation/views/widgets/bottom_left_circle.dart';
-import 'package:salamaty/features/splash/presentation/views/widgets/main_header.dart';
-import 'package:salamaty/features/splash/presentation/views/widgets/secondary_header.dart';
-import 'package:salamaty/features/splash/presentation/views/widgets/top_right_circle.dart';
+import 'package:salamaty/features/splash/presentation/view/splash_screen2.dart';
+import 'package:salamaty/features/splash/presentation/view/widgets/bottom_left_circle.dart';
+import 'package:salamaty/features/splash/presentation/view/widgets/main_header.dart';
+import 'package:salamaty/features/splash/presentation/view/widgets/secondary_header.dart';
+import 'package:salamaty/features/splash/presentation/view/widgets/top_right_circle.dart';
 
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({Key? key}) : super(key: key);
