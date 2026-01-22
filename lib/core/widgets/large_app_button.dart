@@ -24,9 +24,7 @@ class LargeAppButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          onPressed: () {
-            print('Button pressed');
-          },
+          onPressed: onPressed, 
           child: Text(
             text,
             style: const TextStyle(
