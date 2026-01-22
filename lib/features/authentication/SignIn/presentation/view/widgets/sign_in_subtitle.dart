@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
 class SignInSubtitle extends StatelessWidget {
-  const SignInSubtitle({super.key});
+  const SignInSubtitle({super.key, required this.subtitleText});
+
+  final String subtitleText;
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
+    return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Text(
-          'Please sign in to continue',
+          subtitleText,
           style: TextStyle(
               color: Color(0x9E0D2D9E),
               fontSize: 18,

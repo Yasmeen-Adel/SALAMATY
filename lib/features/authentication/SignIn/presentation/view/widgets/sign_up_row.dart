@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
 
 class SignUpRow extends StatelessWidget {
-  const SignUpRow({super.key, this.onSignUpPressed});
+  const SignUpRow(
+      {super.key,
+      this.onSignUpPressed,
+     required this.questionText, required this.textButton});
 
   final VoidCallback? onSignUpPressed;
+  final String questionText;
+  final String textButton;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        const Text(
-          "Don’t have an account? ",
+         Text(
+          questionText,
           style: TextStyle(
             color: Color(0x9E0D2D9E),
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.w500,
           ),
         ),
         TextButton(
           onPressed: onSignUpPressed,
-          child: const Text(
-            "Sign Up",
+          child: Text(
+            textButton,
             style: TextStyle(
               color: Color(0xFF0D2D9E),
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
