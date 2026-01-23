@@ -32,19 +32,19 @@ class SignUpScreenBody extends StatelessWidget {
                 prefixIcon: Icons.person,
                 isPassword: false,
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 4),
               const CustomTextField(
                 hintText: 'Email',
                 prefixIcon: Icons.email,
                 isPassword: false,
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 4),
               const CustomTextField(
                 hintText: 'Password',
                 prefixIcon: Icons.lock,
                 isPassword: true,
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 4),
               const CustomTextField(
                 hintText: 'Confirm Password',
                 prefixIcon: Icons.lock,
@@ -71,7 +71,7 @@ class SignUpScreenBody extends StatelessWidget {
                   );
                 },
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
             ],
           ),
         ),

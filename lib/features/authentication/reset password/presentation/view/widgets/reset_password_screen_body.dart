@@ -21,7 +21,7 @@ class ResetPasswordScreenBody extends StatelessWidget {
           children: [
             SizedBox(height: 16),
             ArrowBack(),
-            SizedBox(height: 16),
+            SizedBox(height: 10),
             CustomScreenTitle(title: 'Reset password'),
             SizedBox(height: 8),
             CustomScreenSubtitle(
@@ -34,16 +34,16 @@ class ResetPasswordScreenBody extends StatelessWidget {
               labelText: 'New password : ',
             ),
             CustomTextField(
-              hintText: 'Enter new password',
+              hintText: ' password',
               prefixIcon: Icons.lock,
               isPassword: true,
             ),
             SizedBox(height: 5),
             CustomTextFieldLabel(
-              labelText: 'Confirm new password : ',
+              labelText: ' Confirm password : ',
             ),
             CustomTextField(
-              hintText: 'Re-enter new password',
+              hintText: 'Confirm new password',
               prefixIcon: Icons.lock,
               isPassword: true,
             ),
@@ -61,7 +61,7 @@ class ResetPasswordScreenBody extends StatelessWidget {
               },
             ),
             SizedBox(
-              height: 24,
+              height: 30,
             )
           ],
         ),
