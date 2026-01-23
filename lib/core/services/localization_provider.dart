@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalizationProvider extends ChangeNotifier {
-  // Locale _locale = const Locale('en');
-  Locale _locale = const Locale('ar');
+  Locale _locale = const Locale('en');
+  // Locale _locale = const Locale('ar');
 
   LocalizationProvider() {
     _loadSavedLanguage();
@@ -13,8 +13,8 @@ class LocalizationProvider extends ChangeNotifier {
 
   Future<void> _loadSavedLanguage() async {
     final prefs = await SharedPreferences.getInstance();
-    // final lang = prefs.getString("app_lang") ?? "en";
-    final lang = prefs.getString("app_lang") ?? "ar";
+    final lang = prefs.getString("app_lang") ?? "en";
+    // final lang = prefs.getString("app_lang") ?? "ar";
     _locale = Locale(lang);
     notifyListeners();
   }

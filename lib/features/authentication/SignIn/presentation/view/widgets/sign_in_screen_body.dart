@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
-import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/custom_text_field.dart';
+import 'package:salamaty/core/widgets/custom_text_field.dart';
+import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/forgot_password_button.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/outlined_button.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_in_header_image.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_in_subtitle.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_in_title.dart';
-import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_up_row.dart';
+import 'package:salamaty/core/widgets/text_button_row.dart';
 import 'package:salamaty/features/authentication/SignUp/presentation/view/sign_up_screen.dart';
 import 'package:salamaty/features/authentication/forgot%20password/presentation/view/forgot_password_screen.dart';
 
@@ -42,10 +43,17 @@ class SignInScreenBody extends StatelessWidget {
           SizedBox(height: 10),
           LargeAppButton(
             text: 'Sign In',
-            onPressed: () {},
+            onPressed: () {
+              // Navigate to main screen
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                MainScreen.routeName,
+                (route) => false,
+              );  
+            },
           ),
           SizedBox(height: 32),
-          SignUpRow(
+          TextButtonRow(
             questionText: 'Don\'t have an account? ',
             textButton: 'Sign Up',
             onSignUpPressed: () {

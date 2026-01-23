@@ -3,8 +3,13 @@ import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_i
 import 'package:salamaty/features/authentication/SignUp/presentation/view/sign_up_screen.dart';
 import 'package:salamaty/features/authentication/forgot%20password/presentation/view/forgot_password_screen.dart';
 import 'package:salamaty/features/authentication/reset%20password/presentation/view/reset_password_screen.dart';
+import 'package:salamaty/core/widgets/main_screen.dart';
+import 'package:salamaty/features/authentication/verification/presentation/view/account_created_screen.dart';
+import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
+import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
 import 'package:salamaty/features/splash/presentation/view/splash_screen2.dart';
 import 'package:salamaty/features/splash/presentation/view/splash_screen.dart';
+import 'package:salamaty/features/home/presentation/view/home_screen.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -23,10 +28,24 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     //Forgot Password Screen :)
     case ForgotPasswordScreen.routeName:
       return MaterialPageRoute(builder: (_) => ForgotPasswordScreen());
-   //Reset Password Screen :)
+    //Reset Password Screen :)
     case ResetPasswordScreen.routeName:
       return MaterialPageRoute(builder: (_) => ResetPasswordScreen());
-
+    //Home Screen :)
+    case HomeScreen.routeName:
+      return MaterialPageRoute(builder: (_) => HomeScreen());
+    //Main Screen :)
+    case MainScreen.routeName:
+      return MaterialPageRoute(builder: (_) => MainScreen());
+    //Profile Screen :)
+    case ProfileScreen.routeName:
+      return MaterialPageRoute(builder: (_) => ProfileScreen());
+    //Verification Screen :)
+    case VerificationScreen.routeName:
+      return MaterialPageRoute(builder: (_) => VerificationScreen());
+    //Account Created Screen :)
+    case AccountCreatedScreen.routeName:
+      return MaterialPageRoute(builder: (_) => AccountCreatedScreen());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

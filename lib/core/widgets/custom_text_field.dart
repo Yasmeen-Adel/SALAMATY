@@ -26,13 +26,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   void initState() {
     super.initState();
-    _obscureText = widget.isPassword; 
+    _obscureText = widget.isPassword;
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: TextFormField(
         obscureText: _obscureText,
         decoration: InputDecoration(
@@ -56,7 +56,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 )
               : null,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(24),
             borderSide: BorderSide.none,
           ),
         ),
