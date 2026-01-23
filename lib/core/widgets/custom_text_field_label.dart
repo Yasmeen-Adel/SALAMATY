@@ -16,7 +16,7 @@ final String labelText;
         child: Text(
           labelText,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 18,
             color: AppColors.primaryColor,
             fontWeight: FontWeight.w500,
           ),
