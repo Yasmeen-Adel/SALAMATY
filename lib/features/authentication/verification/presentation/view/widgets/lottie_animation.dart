@@ -11,8 +11,8 @@ class LottieAnimation extends StatelessWidget {
     return Lottie.asset(
 
       animationUrl,
-      width: 300,
-      height: 300,
+      width: 200,
+      height: 200,
       fit: BoxFit.cover,
       repeat: true,
     );

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
-import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
-import 'package:salamaty/core/widgets/main_screen.dart';
+import 'package:salamaty/features/authentication/verification/presentation/view/widgets/lottie_animation.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
-
+  const CustomDrawer(
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.buttonText,
+      required this.nextScreen});
+  final String title;
+  final String description;
+  final String buttonText;
+  final Widget nextScreen;
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -21,13 +28,10 @@ class CustomDrawer extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: 16),
-          Image.asset(
-            'assets/images/drawer.png',
-            height: 200,
-          ),
+          LottieAnimation(animationUrl: 'assets/animations/success.json'),
           SizedBox(height: 16),
           Text(
-            'Password Changed',
+            title,
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -36,20 +40,21 @@ class CustomDrawer extends StatelessWidget {
           ),
           SizedBox(height: 12),
           Text(
-            'Your password has been changed successfully. You can login again with your new password.',
+            description,
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.grey[700], fontSize: 16),
           ),
           Spacer(),
-          //navigate to sign in screen
           LargeAppButton(
-            text: 'Return to Sign In',
+            text: buttonText,
             onPressed: () {
-              // Navigator.pushNamed(context, MainScreen.routeName);
               Navigator.pop(context);
-              Navigator.pushNamed(
+              Navigator.pushAndRemoveUntil(
                 context,
-                SignInScreen.routeName,
+                MaterialPageRoute(
+                  builder: (_) => nextScreen,
+                ),
+                (route) => false,
               );
             },
           ),

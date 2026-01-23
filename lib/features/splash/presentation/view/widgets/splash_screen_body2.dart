@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/small_app_button.dart';
-import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
+import 'package:salamaty/features/onboarding/presentation/view/widgets/onboarding_main_screen.dart';
 import 'package:salamaty/features/splash/presentation/view/widgets/splash2_image.dart';
 import 'package:salamaty/features/splash/presentation/view/widgets/splash2_text.dart';
 
@@ -29,7 +29,7 @@ class SplashScreenBody2 extends StatelessWidget {
                     // Navigate to the next screen or perform an action
                      Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (_) => const SignInScreen()),
+                      MaterialPageRoute(builder: (_) => const OnboardingMainScreen()),
                     );
                   },
                 ),

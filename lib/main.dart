@@ -21,11 +21,15 @@
 //     );
 //   }
 // }
+
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salamaty/core/services/get_it_services.dart';
 import 'package:salamaty/core/services/localization_provider.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
+import 'package:salamaty/features/onboarding/presentation/view/onboarding_screen1.dart';
+import 'package:salamaty/features/onboarding/presentation/view/widgets/onboarding_main_screen.dart';
 import 'package:salamaty/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:salamaty/core/helper_functions/on_generate_route.dart';
@@ -68,6 +72,7 @@ class SalamatyApp extends StatelessWidget {
         fontFamily: 'Plus Jakarta Sans',
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
+// home: const OnboardingMainScreen(),
       onGenerateRoute: onGenerateRoute,
       initialRoute: SplashScreen.routeName,
     );
