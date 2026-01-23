@@ -4,10 +4,9 @@ import 'package:salamaty/core/utils/app_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salamaty/features/home/presentation/view/home_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
-import 'package:salamaty/features/profile/presentation/view/widgets/profile_screen_body.dart';
 
 class MainScreen extends StatefulWidget {
-  static const String routeName = 'main';
+  static const String routeName = 'main_screen';
 
   const MainScreen({super.key});
 
