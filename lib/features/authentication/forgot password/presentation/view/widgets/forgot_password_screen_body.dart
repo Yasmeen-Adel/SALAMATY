@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
-import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/custom_text_field.dart';
-import 'package:salamaty/features/authentication/forgot%20password/presentation/view/widgets/arrow_back.dart';
-import 'package:salamaty/features/authentication/forgot%20password/presentation/view/widgets/forgot_password_image.dart';
-import 'package:salamaty/features/authentication/forgot%20password/presentation/view/widgets/forgot_password_subtitle.dart';
-import 'package:salamaty/features/authentication/forgot%20password/presentation/view/widgets/forgot_password_title.dart';
-import 'package:salamaty/features/authentication/forgot%20password/presentation/view/widgets/text_field_label.dart';
+import 'package:salamaty/core/widgets/custom_text_field.dart';
+import 'package:salamaty/core/widgets/arrow_back.dart';
+import 'package:salamaty/core/widgets/custom_image.dart';
+import 'package:salamaty/core/widgets/custom_screen_subtitle.dart';
+import 'package:salamaty/core/widgets/custom_screen_title.dart';
+import 'package:salamaty/core/widgets/custom_text_field_label.dart';
 import 'package:salamaty/features/authentication/reset%20password/presentation/view/reset_password_screen.dart';
 
 class ForgotPasswordScreenBody extends StatelessWidget {
@@ -20,17 +20,17 @@ class ForgotPasswordScreenBody extends StatelessWidget {
             SizedBox(height: 24),
             ArrowBack(),
             SizedBox(height: 16),
-            ForgotPasswordTitle(title: 'Forgot password ?'),
+            CustomScreenTitle(title: 'Forgot password ?'),
             SizedBox(height: 8),
-            ForgotPasswordSubtitle(
+            CustomScreenSubtitle(
                 subtitleText:
                     'Please enter your email to receive a link to create a new password via email'),
             SizedBox(height: 24),
-            ForgotPasswordImage(
+            CustomImage(
               imageUrl: 'assets/images/forget_password.png',
             ),
             SizedBox(height: 32),
-            TextFieldLabel(
+            CustomTextFieldLabel(
               labelText: 'Your Email : ',
             ),
             CustomTextField(
@@ -41,6 +41,7 @@ class ForgotPasswordScreenBody extends StatelessWidget {
             LargeAppButton(
               text: 'Reset Password',
               onPressed: () {
+                FocusScope.of(context).unfocus();
                 Navigator.pushNamed(
                   context,
                   ResetPasswordScreen.routeName,

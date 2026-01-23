@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ForgotPasswordSubtitle extends StatelessWidget {
-  const ForgotPasswordSubtitle({super.key, required this.subtitleText});
-
-  final String subtitleText;
-
+class CustomScreenTitle extends StatelessWidget {
+  const CustomScreenTitle({super.key, required this.title});
+final String title;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,10 +10,10 @@ class ForgotPasswordSubtitle extends StatelessWidget {
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
-          subtitleText,
+          title,
           style: TextStyle(
-            color: Color(0xFF989898),
-            fontSize: 16,
+            color: Color(0xFF0D2D9E),
+            fontSize: 28,
             fontWeight: FontWeight.w600,
           ),
         ),

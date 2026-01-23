@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
-import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/custom_text_field.dart';
+import 'package:salamaty/core/widgets/custom_text_field.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_in_header_image.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_in_title.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_in_subtitle.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
-import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_up_row.dart';
+import 'package:salamaty/core/widgets/text_button_row.dart';
+import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
 
 class SignUpScreenBody extends StatelessWidget {
   const SignUpScreenBody({super.key});
@@ -52,10 +53,15 @@ class SignUpScreenBody extends StatelessWidget {
               const SizedBox(height: 16),
               LargeAppButton(
                 text: 'Sign Up',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    VerificationScreen.routeName,
+                  );  
+                },
               ),
               const SizedBox(height: 10),
-              SignUpRow(
+              TextButtonRow(
                 questionText: 'Already have an account? ',
                 textButton: 'Sign In',
                 onSignUpPressed: () {

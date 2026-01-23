@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
+import 'package:salamaty/core/widgets/main_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -10,7 +11,7 @@ class CustomDrawer extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Container(
-      height: screenHeight * 0.60, 
+      height: screenHeight * 0.60,
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -21,7 +22,7 @@ class CustomDrawer extends StatelessWidget {
         children: [
           SizedBox(height: 16),
           Image.asset(
-            'assets/images/drawer.png', 
+            'assets/images/drawer.png',
             height: 200,
           ),
           SizedBox(height: 16),
@@ -44,7 +45,12 @@ class CustomDrawer extends StatelessWidget {
           LargeAppButton(
             text: 'Return to Sign In',
             onPressed: () {
-              Navigator.pushNamed(context, SignInScreen.routeName);
+              // Navigator.pushNamed(context, MainScreen.routeName);
+              Navigator.pop(context);
+              Navigator.pushNamed(
+                context,
+                SignInScreen.routeName,
+              );
             },
           ),
           SizedBox(height: 16),

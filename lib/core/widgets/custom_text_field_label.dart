@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
 
-class TextFieldLabel extends StatelessWidget {
-  const TextFieldLabel({
+class CustomTextFieldLabel extends StatelessWidget {
+  const CustomTextFieldLabel({
     super.key, required this.labelText,
   });
 
