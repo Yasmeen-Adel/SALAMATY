@@ -26,38 +26,35 @@ class SignUpScreenBody extends StatelessWidget {
               const SignInSubtitle(
                 subtitleText: 'Please sign up to continue',
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
               const CustomTextField(
                 hintText: 'Name',
                 prefixIcon: Icons.person,
                 isPassword: false,
               ),
-              const SizedBox(height: 4),
               const CustomTextField(
                 hintText: 'Email',
                 prefixIcon: Icons.email,
                 isPassword: false,
               ),
-              const SizedBox(height: 4),
               const CustomTextField(
                 hintText: 'Password',
                 prefixIcon: Icons.lock,
                 isPassword: true,
               ),
-              const SizedBox(height: 4),
               const CustomTextField(
                 hintText: 'Confirm Password',
                 prefixIcon: Icons.lock,
                 isPassword: true,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
               LargeAppButton(
                 text: 'Sign Up',
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
                     VerificationScreen.routeName,
-                  );  
+                  );
                 },
               ),
               const SizedBox(height: 10),
@@ -71,7 +68,7 @@ class SignUpScreenBody extends StatelessWidget {
                   );
                 },
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
             ],
           ),
         ),

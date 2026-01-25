@@ -3,6 +3,7 @@ import 'package:glaze_nav_bar/glaze_nav_bar.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salamaty/features/home/presentation/view/home_screen.dart';
+import 'package:salamaty/features/insurance/presentation/view/insurance_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -18,9 +19,9 @@ class _MainScreenState extends State<MainScreen> {
   int currentIndex = 0;
 
   final List<Widget> screens = [
-    Center(child:HomeScreen()),
+    Center(child: HomeScreen()),
     Center(child: Text('Drug Store')),
-    Center(child: Text('Insurance  ')),
+    Center(child: InsuranceScreen()),
     Center(child: ProfileScreen()),
   ];
 

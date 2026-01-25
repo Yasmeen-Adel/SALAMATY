@@ -145,7 +145,6 @@ class LanguageSelectorTile extends StatelessWidget {
                     S.of(context).language,
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Color.fromARGB(255, 99, 98, 98),
                     ),
                   ),
                 ],

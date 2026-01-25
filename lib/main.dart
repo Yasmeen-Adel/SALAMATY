@@ -22,12 +22,13 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salamaty/core/services/get_it_services.dart';
 import 'package:salamaty/core/services/localization_provider.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
+import 'package:salamaty/features/insurance%20information/presentation/view/insurance_information_screen.dart';
+import 'package:salamaty/features/insurance%20information/presentation/view/widgets/insurance_information_screen_body.dart';
 import 'package:salamaty/features/onboarding/presentation/view/onboarding_screen1.dart';
 import 'package:salamaty/features/onboarding/presentation/view/widgets/onboarding_main_screen.dart';
 import 'package:salamaty/generated/l10n.dart';
@@ -72,7 +73,7 @@ class SalamatyApp extends StatelessWidget {
         fontFamily: 'Plus Jakarta Sans',
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
-// home: const OnboardingMainScreen(),
+      // home: const InsuranceInformationScreen(),
       onGenerateRoute: onGenerateRoute,
       initialRoute: SplashScreen.routeName,
     );
