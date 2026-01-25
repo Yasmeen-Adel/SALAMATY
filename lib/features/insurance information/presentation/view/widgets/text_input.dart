@@ -29,8 +29,6 @@ class _TextInputState extends State<TextInput> {
         obscureText: widget.isPassword ? _obscureText : false,
         decoration: InputDecoration(
           hintText: widget.hintText ?? '',
-
-          // 👁️ eye icon
           suffixIcon: widget.isPassword
               ? IconButton(
                   icon: Icon(
@@ -44,7 +42,6 @@ class _TextInputState extends State<TextInput> {
                   },
                 )
               : null,
-
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: BorderSide(
