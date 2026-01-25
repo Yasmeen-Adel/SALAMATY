@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/language_selector.dart';
-import 'package:salamaty/core/widgets/custom_text_field.dart';
+import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
+import 'package:salamaty/features/profile/presentation/view/widgets/profile_list_tile.dart';
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({super.key});
@@ -17,22 +18,28 @@ class ProfileMenu extends StatelessWidget {
             color: Color(0xFF0033A0),
           ),
         ),
-        // const SizedBox(height: 4),
-        const Text(
-          'user@gmail.com',
-          style: TextStyle(
-            fontSize: 22,
-            color: Colors.grey,
-          ),
-        ),
+        // const Text(
+        //   'user@gmail.com',
+        //   style: TextStyle(
+        //     fontSize: 22,
+        //     color: Colors.grey,
+        //   ),
+        // ),
         const SizedBox(height: 16),
-        CustomTextField(
-          hintText: 'Address',
-          prefixIcon: Icons.location_on,
+        ProfileListTile(
+          title: 'Address',
+          prefixIcon: Icons.location_on_outlined,
+          onTap: () {
+            // Navigate to Address screen
+          },
         ),
-        CustomTextField(
-          hintText: 'Insurance Profile',
-          prefixIcon: Icons.shield_outlined,
+
+        ProfileListTile(
+          title: 'Insurance Profile',
+          prefixIcon: Icons.health_and_safety_outlined,
+          onTap: () {
+            // Navigate to Insurance Profile screen
+          },
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -41,19 +48,26 @@ class ProfileMenu extends StatelessWidget {
             color: Colors.grey,
           ),
         ),
-        CustomTextField(
-          hintText: 'Email',
+        ProfileListTile(
+          title: 'Email',
           prefixIcon: Icons.email_outlined,
+          onTap: () {
+            // Navigate to Email screen
+          },
         ),
-        CustomTextField(
-          hintText: 'Gender',
+        ProfileListTile(
+          title: 'Gender',
           prefixIcon: Icons.female,
+          onTap: () {
+            // Navigate to Gender screen
+          },
         ),
-        CustomTextField(
-          hintText: 'Edit Profile',
+        ProfileListTile(
+          title: 'Edit Profile',
           prefixIcon: Icons.edit_outlined,
+          onTap: () {
+          },
         ),
-
         LanguageSelectorTile(),
       ],
     );
