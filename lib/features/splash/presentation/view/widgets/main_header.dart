@@ -16,11 +16,12 @@ class MainHeader extends StatelessWidget {
           letterSpacing: 2,
         ),
         child: AnimatedTextKit(
+          key: UniqueKey(),
           isRepeatingAnimation: false,
           animatedTexts: [
             TyperAnimatedText(
               'SALAMATY',
-              speed: const Duration(milliseconds: 300),
+              speed: const Duration(milliseconds: 390),
             ),
           ],
         ),

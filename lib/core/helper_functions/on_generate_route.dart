@@ -10,6 +10,7 @@ import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_
 import 'package:salamaty/features/insurance%20information/presentation/view/insurance_information_screen.dart';
 import 'package:salamaty/features/insurance/presentation/view/insurance_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
+import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
 import 'package:salamaty/features/splash/presentation/view/splash_screen2.dart';
 import 'package:salamaty/features/splash/presentation/view/splash_screen.dart';
 import 'package:salamaty/features/home/presentation/view/home_screen.dart';
@@ -49,15 +50,18 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     //Account Created Screen :)
     case AccountCreatedScreen.routeName:
       return MaterialPageRoute(builder: (_) => AccountCreatedScreen());
-      //Insurance Screen :)
+    //Insurance Screen :)
     case InsuranceScreen.routeName:
       return MaterialPageRoute(builder: (_) => InsuranceScreen());
-       //Edit Profile Screen :)
+    //Edit Profile Screen :)
     case EditProfileScreen.routeName:
       return MaterialPageRoute(builder: (_) => EditProfileScreen());
-      //Insurance Information Screen :)
+    //Insurance Information Screen :)
     case InsuranceInformationScreen.routeName:
       return MaterialPageRoute(builder: (_) => InsuranceInformationScreen());
+    //Scan Screen :)
+    case ScanScreen.routeName:
+      return MaterialPageRoute(builder: (_) => ScanScreen());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
