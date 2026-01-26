@@ -31,6 +31,7 @@ import 'package:salamaty/features/insurance%20information/presentation/view/insu
 import 'package:salamaty/features/insurance%20information/presentation/view/widgets/insurance_information_screen_body.dart';
 import 'package:salamaty/features/onboarding/presentation/view/onboarding_screen1.dart';
 import 'package:salamaty/features/onboarding/presentation/view/widgets/onboarding_main_screen.dart';
+import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
 import 'package:salamaty/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:salamaty/core/helper_functions/on_generate_route.dart';
@@ -73,7 +74,7 @@ class SalamatyApp extends StatelessWidget {
         fontFamily: 'Plus Jakarta Sans',
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
-      // home: const InsuranceInformationScreen(),
+      // home: const ScanScreen(),
       onGenerateRoute: onGenerateRoute,
       initialRoute: SplashScreen.routeName,
     );

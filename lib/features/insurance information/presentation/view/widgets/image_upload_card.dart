@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
 
-
 class ImageUploadCard extends StatefulWidget {
   final String title;
   final String description;
@@ -105,8 +104,8 @@ class _ImageUploadCardState extends State<ImageUploadCard> {
                           widget.title,
                           style: const TextStyle(
                             color: Color(0xFF575353),
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -119,8 +118,8 @@ class _ImageUploadCardState extends State<ImageUploadCard> {
                         ),
                         const Spacer(),
                         const Center(
-                          child: Icon(Icons.upload_file,
-                              size: 40, color: primaryColor),
+                          child: Icon(Icons.upload_file_outlined,
+                              size: 60, color: primaryColor),
                         ),
                       ],
                     )

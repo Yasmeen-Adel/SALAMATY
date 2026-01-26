@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
 import 'service_card.dart';
 
 class ServicesSection extends StatelessWidget {
@@ -30,6 +31,10 @@ class ServicesSection extends StatelessWidget {
               ServiceCard(
                 icon: Icons.qr_code_scanner_outlined,
                 title: 'Upload\nPerception',
+                onTap: () {
+                  Navigator.pushNamed(context, ScanScreen.routeName);
+                  
+                },
               ),
               ServiceCard(
                 icon: Icons.medication_outlined,
