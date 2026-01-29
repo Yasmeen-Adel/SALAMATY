@@ -24,25 +24,21 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:salamaty/core/network/dio_helper.dart';
 import 'package:salamaty/core/services/get_it_services.dart';
 import 'package:salamaty/core/services/localization_provider.dart';
-import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
-import 'package:salamaty/features/insurance%20information/presentation/view/insurance_information_screen.dart';
-import 'package:salamaty/features/insurance%20information/presentation/view/widgets/insurance_information_screen_body.dart';
-import 'package:salamaty/features/onboarding/presentation/view/onboarding_screen1.dart';
-import 'package:salamaty/features/onboarding/presentation/view/widgets/onboarding_main_screen.dart';
-import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
 import 'package:salamaty/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:salamaty/core/helper_functions/on_generate_route.dart';
 import 'package:salamaty/features/splash/presentation/view/splash_screen.dart';
-import 'package:salamaty/core/widgets/main_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Setup GetIt for singletons
   setupGetIt();
+  WidgetsFlutterBinding.ensureInitialized();
+  DioHelper.init();
 
   runApp(
     ChangeNotifierProvider<LocalizationProvider>(
