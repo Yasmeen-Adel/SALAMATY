@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:otp_plus/otp_inputs.dart';
 import 'package:otp_plus/utils/enum/otp_field_shape.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
-
 class OtpWidget extends StatelessWidget {
   final Function(String otp) onOtpCompleted;
-final TextEditingController controller;
+
   const OtpWidget({
     super.key,
     required this.onOtpCompleted,
-    required this.controller
   });
 
   @override
@@ -21,19 +19,7 @@ final TextEditingController controller;
       horizontalSpacing: 11,
       shape: OtpFieldShape.square,
       textDirection: TextDirection.ltr,
-
-      onChanged: (code) {
-        debugPrint('On Changed : $code');
-      },
-
-      onSubmit: (code) {
-        debugPrint('On Submit : $code');
-      },
-
-      onComplete: (code) {
-        debugPrint('OTP entered: $code');
-        onOtpCompleted(code); 
-      },
+      onComplete: onOtpCompleted,
     );
   }
 }

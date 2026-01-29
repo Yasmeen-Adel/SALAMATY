@@ -64,9 +64,8 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
           Navigator.pushNamed(
             context,
             VerificationScreen.routeName,
-            // arguments: state.email, 
             arguments: {
-              'email': state.email, 
+              'email': state.email,
             },
           );
         }
@@ -111,12 +110,6 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
               const SizedBox(height: 18),
               BlocBuilder<SignUpCubit, SignUpState>(
                 builder: (context, state) {
-                  if (state is SignUpLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-
                   return LargeAppButton(
                     text: 'Sign Up',
                     onPressed: signUp,

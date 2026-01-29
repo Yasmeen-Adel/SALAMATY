@@ -9,6 +9,7 @@ import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/core/widgets/text_button_row.dart';
 import 'package:salamaty/features/authentication/verification/presentation/cubit/verification_cubit.dart';
+import 'package:salamaty/features/authentication/verification/presentation/cubit/verification_state.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/widgets/otp_widget.dart';
 
 class VerificationScreenBody extends StatefulWidget {
@@ -24,14 +25,14 @@ class VerificationScreenBody extends StatefulWidget {
 }
 
 class _VerificationScreenBodyState extends State<VerificationScreenBody> {
-  final TextEditingController otpController = TextEditingController();
-
   String otpCode = '';
+  Key otpKey = UniqueKey();
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<VerificationCubit, VerificationState>(
       listener: (context, state) {
+        // Verify success
         if (state is VerificationSuccess) {
           showModalBottomSheet(
             context: context,
@@ -46,12 +47,13 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
           );
         }
 
+        // Verify failed
         if (state is VerificationFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.message),
-              behavior: SnackBarBehavior.floating,
               backgroundColor: Colors.red,
+              behavior: SnackBarBehavior.floating,
               margin: const EdgeInsets.all(16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -59,7 +61,14 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
             ),
           );
         }
+
+        // Resend OTP success → OTP
         if (state is ResendOtpSuccess) {
+          setState(() {
+            otpCode = '';
+            otpKey = UniqueKey();
+          });
+
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.message),
@@ -73,6 +82,7 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
           );
         }
 
+        // Resend OTP failed
         if (state is ResendOtpFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -105,26 +115,17 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
                   imageUrl: 'assets/images/verification.png',
                 ),
 
-                // OTP Widget
+                // OTP
                 OtpWidget(
-                  controller: otpController,
+                  key: otpKey,
                   onOtpCompleted: (value) {
                     otpCode = value;
-                    FocusScope.of(context).unfocus();
                   },
                 ),
 
                 const SizedBox(height: 10),
 
-                // TextButtonRow(
-                //   questionText: 'Didn\'t receive OTP code? ',
-                //   textButton: 'Send Again',
-                //   onpressed: () {
-                //     context.read<VerificationCubit>().resendOtp(
-                //           email: widget.email,
-                //         );
-                //   },
-                // ),
+                /// Send Again
                 TextButtonRow(
                   questionText: 'Didn\'t receive OTP code? ',
                   textButton:
@@ -133,29 +134,28 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
                       ? null
                       : () {
                           FocusScope.of(context).unfocus();
-
-                          otpController.clear();
-                          otpCode = '';
-
-                          context.read<VerificationCubit>().resendOtp(
-                                email: widget.email,
-                              );
+                          context
+                              .read<VerificationCubit>()
+                              .resendOtp(email: widget.email);
                         },
                 ),
 
                 const SizedBox(height: 40),
 
+                // Verify button
                 state is VerificationLoading
                     ? const CircularProgressIndicator()
                     : LargeAppButton(
                         text: 'Verify',
                         onPressed: () {
-                          if (otpCode.isEmpty || otpCode.length < 5) {
+                          FocusScope.of(context).unfocus();
+
+                          if (otpCode.length < 5) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: const Text('Please enter valid OTP'),
-                                behavior: SnackBarBehavior.floating,
                                 backgroundColor: Colors.red,
+                                behavior: SnackBarBehavior.floating,
                                 margin: const EdgeInsets.all(16),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(16),

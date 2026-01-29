@@ -92,17 +92,17 @@ class AuthRepo {
     }
   }
 
-  // Resend OTP ........ :)
+  // Resend OTP ............ :)
   Future<void> resendOtp({
     required String email,
   }) async {
     try {
       await DioHelper.post(
         url: ApiConstants.resendOtp,
-        data: email,
-        // data: {
-        //   "email": email,
-        // },
+        
+        data: {
+          "email": email,
+        },
       );
     } on DioException catch (e) {
       if (e.response?.data != null) {
