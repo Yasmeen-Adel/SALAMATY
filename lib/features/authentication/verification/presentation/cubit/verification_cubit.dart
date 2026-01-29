@@ -1,11 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/features/authentication/data/auth_repo.dart';
-
-part 'verification_state.dart';
-
+import 'package:salamaty/features/authentication/verification/presentation/cubit/verification_state.dart';
 class VerificationCubit extends Cubit<VerificationState> {
-  VerificationCubit(this.authRepo)
-      : super(VerificationInitial());
+  VerificationCubit(this.authRepo) : super(VerificationInitial());
 
   final AuthRepo authRepo;
 
@@ -32,27 +29,26 @@ class VerificationCubit extends Cubit<VerificationState> {
       );
     }
   }
-  // .............
+
   Future<void> resendOtp({required String email}) async {
-  emit(ResendOtpLoading());
+    emit(ResendOtpLoading());
 
-  try {
-    await authRepo.resendOtp(email: email);
+    try {
+      await authRepo.resendOtp(email: email);
 
-    emit(
-      ResendOtpSuccess(
-        message: 'OTP has been sent again',
-      ),
-    );
-  } catch (e) {
-    emit(
-      ResendOtpFailure(
-        message: e is Map && e['message'] != null
-            ? e['message']
-            : 'Failed to resend OTP',
-      ),
-    );
+      emit(
+        ResendOtpSuccess(
+          message: 'OTP has been sent again',
+        ),
+      );
+    } catch (e) {
+      emit(
+        ResendOtpFailure(
+          message: e is Map && e['message'] != null
+              ? e['message']
+              : 'Failed to resend OTP',
+        ),
+      );
+    }
   }
-}
-
 }

@@ -19,9 +19,13 @@ class SignInSuccess extends SignInState {
 class SignInFailure extends SignInState {
   final String message;
   final Map<String, String?> fieldErrors;
+  final bool needVerification;
+  final String? email;
 
   SignInFailure({
     required this.message,
     required this.fieldErrors,
+    this.needVerification = false,
+    this.email,
   });
 }
