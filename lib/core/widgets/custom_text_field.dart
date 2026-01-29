@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
-  const CustomTextField({
+  CustomTextField({
     super.key,
     this.hintText,
     this.prefixIcon,
     this.isPassword = false,
+    this.controller,
+    this.errorText,
   });
 
   final String? hintText;
@@ -13,7 +15,8 @@ class CustomTextField extends StatefulWidget {
   final IconData? prefixIcon;
 
   final bool isPassword;
-
+  final TextEditingController? controller;
+  final String? errorText;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -34,9 +37,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: TextFormField(
+        controller: widget.controller,
         obscureText: _obscureText,
         decoration: InputDecoration(
           hintText: widget.hintText ?? '',
+          errorText: widget.errorText,
           filled: true,
           fillColor: const Color(0x33697DC3),
           prefixIcon: widget.prefixIcon != null

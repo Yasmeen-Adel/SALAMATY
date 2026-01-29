@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class TextButtonRow extends StatelessWidget {
   const TextButtonRow(
       {super.key,
-      this.onSignUpPressed,
+      this.onpressed,
      required this.questionText, required this.textButton});
 
-  final VoidCallback? onSignUpPressed;
+  final VoidCallback? onpressed;
   final String questionText;
   final String textButton;
 
@@ -26,7 +26,7 @@ class TextButtonRow extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: onSignUpPressed,
+            onPressed: onpressed,
             child: Text(
               textButton,
               style: TextStyle(

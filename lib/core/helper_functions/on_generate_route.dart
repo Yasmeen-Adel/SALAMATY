@@ -46,7 +46,19 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => ProfileScreen());
     //Verification Screen :)
     case VerificationScreen.routeName:
-      return MaterialPageRoute(builder: (_) => VerificationScreen());
+      final args = settings.arguments as Map<String, dynamic>?;
+      final email = args?['email'];
+      if (email == null) {
+        return MaterialPageRoute(
+          builder: (_) => SignUpScreen(),
+        );
+      }
+      return MaterialPageRoute(
+        builder: (_) => VerificationScreen(email: email),
+      );
+
+    // case VerificationScreen.routeName:
+    //   return MaterialPageRoute(builder: (_) => VerificationScreen());
     //Account Created Screen :)
     case AccountCreatedScreen.routeName:
       return MaterialPageRoute(builder: (_) => AccountCreatedScreen());
