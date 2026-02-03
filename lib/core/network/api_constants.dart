@@ -1,11 +1,14 @@
 class ApiConstants {
   static const String baseUrl = 'http://salamaty.runasp.net';
-  //Authentication
-  static const String register = '/api/auth/Sign-UP'; //done
+  //Authentication ...............)
+  static const String register = '/api/auth/Sign-UP'; //Done
   static const String login = '/api/auth/login'; //Done
-  static const String verifyOtp = '/api/auth/verify-otp'; //Done 
+  static const String verifyOtp = '/api/auth/verify-otp'; //Done
   static const String resendOtp = '/api/auth/resend-otp'; //Done
-  static const String forgotPassword = '/api/auth/forgot-password';
-  static const String resetPassword = '/api/auth/reset-password';
+  static const String forgotPassword = '/api/auth/forgot-password'; //Done
+  static const String resetPassword = '/api/auth/reset-password'; //Done
   static const String logout = '/api/auth/logout';
+  static const String googleLogin = '/api/auth/google-login'; //Done
+  static const String deleteAccount = '/api/auth/delete-account';//Done
+
 }

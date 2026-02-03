@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/language_selector.dart';
-import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/widgets/profile_list_tile.dart';
 
 class ProfileMenu extends StatelessWidget {
@@ -18,13 +17,6 @@ class ProfileMenu extends StatelessWidget {
             color: Color(0xFF0033A0),
           ),
         ),
-        // const Text(
-        //   'user@gmail.com',
-        //   style: TextStyle(
-        //     fontSize: 22,
-        //     color: Colors.grey,
-        //   ),
-        // ),
         const SizedBox(height: 16),
         ProfileListTile(
           title: 'Address',
@@ -33,10 +25,10 @@ class ProfileMenu extends StatelessWidget {
             // Navigate to Address screen
           },
         ),
-
         ProfileListTile(
           title: 'Insurance Profile',
           prefixIcon: Icons.health_and_safety_outlined,
+          trailingIcon: Icons.arrow_forward_ios,
           onTap: () {
             // Navigate to Insurance Profile screen
           },
@@ -65,8 +57,8 @@ class ProfileMenu extends StatelessWidget {
         ProfileListTile(
           title: 'Edit Profile',
           prefixIcon: Icons.edit_outlined,
-          onTap: () {
-          },
+          trailingIcon: Icons.arrow_forward_ios,
+          onTap: () {},
         ),
         LanguageSelectorTile(),
       ],

@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salamaty/core/widgets/app_snackbar.dart';
 import 'package:salamaty/core/widgets/custom_drawer.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
 import 'package:salamaty/core/widgets/arrow_back.dart';
 import 'package:salamaty/core/widgets/custom_image.dart';
 import 'package:salamaty/core/widgets/custom_screen_subtitle.dart';
 import 'package:salamaty/core/widgets/custom_screen_title.dart';
-import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/core/widgets/text_button_row.dart';
+import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
+import 'package:salamaty/features/authentication/reset%20password/presentation/view/reset_password_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/cubit/verification_cubit.dart';
 import 'package:salamaty/features/authentication/verification/presentation/cubit/verification_state.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/widgets/otp_widget.dart';
 
 class VerificationScreenBody extends StatefulWidget {
   final String email;
+  final bool fromForgotPassword;
 
   const VerificationScreenBody({
     super.key,
     required this.email,
+    required this.fromForgotPassword,
   });
 
   @override
@@ -32,68 +36,62 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
   Widget build(BuildContext context) {
     return BlocConsumer<VerificationCubit, VerificationState>(
       listener: (context, state) {
-        // Verify success
+        // VERIFY SUCCESS
         if (state is VerificationSuccess) {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            builder: (_) => CustomDrawer(
-              title: 'Account Verified',
-              description: 'Your account has been verified successfully.',
-              buttonText: 'Continue',
-              nextScreen: MainScreen(),
-            ),
-          );
-        }
-
-        // Verify failed
-        if (state is VerificationFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.red,
-              behavior: SnackBarBehavior.floating,
-              margin: const EdgeInsets.all(16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+          if (widget.fromForgotPassword) {
+            //  Forgot Password flow → Reset Password
+            Navigator.pushReplacementNamed(
+              context,
+              ResetPasswordScreen.routeName,
+              arguments: {
+                'email': widget.email,
+                'otpCode': otpCode,
+              },
+            );
+          } else {
+            //  Sign up / Login → Main Screen
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (_) => CustomDrawer(
+                title: 'Account Verified',
+                description: 'Your account has been verified successfully.',
+                buttonText: 'Sign In',
+                nextScreen: SignInScreen(),
               ),
-            ),
+            );
+          }
+        }
+
+        // VERIFY FAILED
+        if (state is VerificationFailure) {
+          AppSnackBar.show(
+            context,
+            message: state.message,
+            type: SnackBarType.error,
           );
         }
 
-        // Resend OTP success → OTP
+        // RESEND OTP SUCCESS
         if (state is ResendOtpSuccess) {
           setState(() {
             otpCode = '';
             otpKey = UniqueKey();
           });
-
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.green,
-              behavior: SnackBarBehavior.floating,
-              margin: const EdgeInsets.all(16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
+          AppSnackBar.show(
+            context,
+            message: state.message,
+            type: SnackBarType.success,
           );
         }
 
-        // Resend OTP failed
+        // RESEND OTP FAILED
         if (state is ResendOtpFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.red,
-              behavior: SnackBarBehavior.floating,
-              margin: const EdgeInsets.all(16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
+          AppSnackBar.show(
+            context,
+            message: state.message,
+            type: SnackBarType.error,
           );
         }
       },
@@ -115,7 +113,7 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
                   imageUrl: 'assets/images/verification.png',
                 ),
 
-                // OTP
+                /// OTP
                 OtpWidget(
                   key: otpKey,
                   onOtpCompleted: (value) {
@@ -125,7 +123,7 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
 
                 const SizedBox(height: 10),
 
-                /// Send Again
+                /// Resend OTP
                 TextButtonRow(
                   questionText: 'Didn\'t receive OTP code? ',
                   textButton:

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:salamaty/core/services/auth_local_storage.dart';
 import 'api_constants.dart';
 
 class DioHelper {
@@ -10,6 +11,7 @@ class DioHelper {
         baseUrl: ApiConstants.baseUrl,
         headers: {
           'Content-Type': 'application/json',
+          // 'Accept': '*/*',
         },
       ),
     );
@@ -23,16 +25,41 @@ class DioHelper {
     );
   }
 
+  //  SET TOKEN
+  static void setToken(String token) {
+    dio.options.headers['Authorization'] = 'Bearer $token';
+  }
+
+  //  CLEAR TOKEN
+  static void clearToken() {
+    dio.options.headers.remove('Authorization');
+  }
+
+  // POST
   static Future<Response> post({
     required String url,
-    // required Map<String, dynamic> data,
-      required dynamic data, // Map or str
-
+    dynamic data,
   }) async {
-    try {
-      return await dio.post(url, data: data);
-    } on DioException catch (e) {
-      throw e;
-    }
+    return await dio.post(url, data: data);
   }
+
+
+  // DELETE
+static Future<Response> delete({
+  required String url,
+  dynamic data, 
+}) async {
+  return await dio.delete(
+    url,
+    data: data,
+  );
+}
+
+  static Future<void> loadToken() async {
+  final token = await AuthLocalStorage.getToken();
+  if (token != null) {
+    setToken(token);
+  }
+}
+
 }

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_colors.dart';
 
 class ProfileListTile extends StatelessWidget {
   final String title;
   final IconData prefixIcon;
   final VoidCallback onTap;
-
-  const ProfileListTile({
-    super.key,
-    required this.title,
-    required this.prefixIcon,
-    required this.onTap,
-  });
+  final IconData? trailingIcon;
+  const ProfileListTile(
+      {super.key,
+      required this.title,
+      required this.prefixIcon,
+      required this.onTap,
+      this.trailingIcon});
 
   static const Color primaryColor = Color(0xFF0D2D9E);
 
@@ -21,7 +22,7 @@ class ProfileListTile extends StatelessWidget {
       child: Container(
         height: 56,
         decoration: BoxDecoration(
-          color: const Color(0x33697DC3), 
+          color: const Color(0x33697DC3),
           borderRadius: BorderRadius.circular(24),
         ),
         child: ListTile(
@@ -34,13 +35,12 @@ class ProfileListTile extends StatelessWidget {
               color: Colors.black87,
             ),
           ),
-          trailing: const Icon(
-            Icons.arrow_forward_ios,
+          trailing: Icon(
+            trailingIcon,
             size: 16,
-            color: primaryColor,
+            color: AppColors.primaryColor,
           ),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16), 
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
           dense: true,
         ),
       ),
