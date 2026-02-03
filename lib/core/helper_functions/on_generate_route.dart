@@ -33,8 +33,17 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     case ForgotPasswordScreen.routeName:
       return MaterialPageRoute(builder: (_) => ForgotPasswordScreen());
     //Reset Password Screen :)
+    // case ResetPasswordScreen.routeName:
+    //   return MaterialPageRoute(builder: (_) => ResetPasswordScreen());
     case ResetPasswordScreen.routeName:
-      return MaterialPageRoute(builder: (_) => ResetPasswordScreen());
+  final args = settings.arguments as Map;
+  return MaterialPageRoute(
+    builder: (_) => ResetPasswordScreen(
+      email: args['email'],
+      otpCode: args['otpCode'],
+    ),
+  );
+
     //Home Screen :)
     case HomeScreen.routeName:
       return MaterialPageRoute(builder: (_) => HomeScreen());

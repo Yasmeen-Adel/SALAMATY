@@ -61,12 +61,14 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
 
         // Success → Go to Verification
         if (state is SignUpSuccess) {
-          Navigator.pushNamed(
+          Navigator.push(
             context,
-            VerificationScreen.routeName,
-            arguments: {
-              'email': state.email,
-            },
+            MaterialPageRoute(
+              builder: (_) => VerificationScreen(
+                email: state.email,
+                fromForgotPassword: false,
+              ),
+            ),
           );
         }
       },

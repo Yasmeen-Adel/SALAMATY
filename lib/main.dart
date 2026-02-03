@@ -35,10 +35,11 @@ import 'package:salamaty/features/splash/presentation/view/splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  DioHelper.init();
+  await DioHelper.loadToken();
+
   // Setup GetIt for singletons
   setupGetIt();
-  WidgetsFlutterBinding.ensureInitialized();
-  DioHelper.init();
 
   runApp(
     ChangeNotifierProvider<LocalizationProvider>(

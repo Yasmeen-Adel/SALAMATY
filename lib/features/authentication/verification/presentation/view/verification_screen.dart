@@ -8,10 +8,13 @@ class VerificationScreen extends StatelessWidget {
   const VerificationScreen({
     super.key,
     required this.email,
+    this.fromForgotPassword = false,
   });
 
   static const String routeName = 'verification_screen';
+
   final String email;
+  final bool fromForgotPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,10 @@ class VerificationScreen extends StatelessWidget {
       create: (_) => VerificationCubit(AuthRepo()),
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: VerificationScreenBody(email: email),
+        body: VerificationScreenBody(
+          email: email,
+          fromForgotPassword: fromForgotPassword,
+        ),
       ),
     );
   }

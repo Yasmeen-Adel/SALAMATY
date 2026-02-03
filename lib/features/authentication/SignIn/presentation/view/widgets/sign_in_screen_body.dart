@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salamaty/core/widgets/app_dialog.dart';
+import 'package:salamaty/core/widgets/app_snackbar.dart';
 import 'package:salamaty/core/widgets/custom_text_field.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
 import 'package:salamaty/core/widgets/main_screen.dart';
@@ -14,6 +16,13 @@ import 'package:salamaty/features/authentication/SignIn/presentation/view/widget
 import 'package:salamaty/features/authentication/SignUp/presentation/view/sign_up_screen.dart';
 import 'package:salamaty/features/authentication/forgot%20password/presentation/view/forgot_password_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+final GoogleSignIn googleSignIn = GoogleSignIn(
+  scopes: ['email'],
+  serverClientId:
+      '228110417008-saj9545qu0ib8aqee3njptpp9fp4404b.apps.googleusercontent.com', // WEB CLIENT
+);
 
 class SignInScreenBody extends StatefulWidget {
   const SignInScreenBody({super.key});
@@ -25,7 +34,6 @@ class SignInScreenBody extends StatefulWidget {
 class _SignInScreenBodyState extends State<SignInScreenBody> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
   Map<String, String?> fieldErrors = {};
 
   @override
@@ -41,6 +49,14 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
       listener: (context, state) {
         // Login success
         if (state is SignInSuccess) {
+          AppSnackBar.show(
+            context,
+            message: state.fromGoogle
+                ? 'Signed in with Google successfully'
+                : 'Signed in successfully',
+            type: SnackBarType.success,
+          );
+
           Navigator.pushNamedAndRemoveUntil(
             context,
             MainScreen.routeName,
@@ -56,111 +72,34 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
 
           // Account not verified → go to OTP screen
           if (state.needVerification && state.email != null) {
-            showDialog(
+            AppDialog.show(
               context: context,
-              barrierDismissible: false,
-              builder: (_) => AlertDialog(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                contentPadding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    /// Title
-                    const Text(
-                      'Email not verified',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF0D2D9E),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                      ),
+              title: 'Email not verified',
+              description:
+                  'Your email is not verified yet. You need to verify it using the OTP code.',
+              cancelText: 'Cancel',
+              confirmText: 'Verify Now',
+              onConfirm: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => VerificationScreen(
+                      email: state.email!,
+                      fromForgotPassword: false,
                     ),
-
-                    const SizedBox(height: 12),
-
-                    /// Description
-                    const Text(
-                      'Your email is not verified yet. You need to verify it using the OTP code.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14,
-                        height: 1.5,
-                        color: Colors.black87,
-                      ),
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    // Buttons
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Cancel
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.grey.shade600,
-                            textStyle: const TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          child: const Text('Cancel'),
-                        ),
-
-                        const SizedBox(width: 24),
-
-                        // Verify Now
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pushNamed(
-                              context,
-                              VerificationScreen.routeName,
-                              arguments: {
-                                'email': state.email,
-                              },
-                            );
-                          },
-                          style: TextButton.styleFrom(
-                            foregroundColor: const Color(0xFF0D2D9E),
-                            textStyle: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          child: const Text('Verify Now'),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             );
+
             return;
           }
           // Normal error
           if (state.message.isNotEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  state.message,
-                  style: const TextStyle(color: Colors.white),
-                ),
-                backgroundColor: Colors.red,
-                behavior: SnackBarBehavior.floating,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-                duration: const Duration(seconds: 3),
-              ),
+            AppSnackBar.show(
+              context,
+              message: state.message,
+              type: SnackBarType.error,
             );
           }
         }
@@ -207,7 +146,7 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               const SizedBox(height: 10),
 
               // Sign In button
-              state is SignInLoading
+              state is SignInLoading && !state.fromGoogle
                   ? const CircularProgressIndicator()
                   : LargeAppButton(
                       text: 'Sign In',
@@ -233,7 +172,22 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               ),
 
               const SizedBox(height: 16),
-              const CustomOutlinedButton(),
+              state is SignInLoading && state.fromGoogle
+                  ? const CircularProgressIndicator()
+                  : CustomOutlinedButton(
+                      onTap: () async {
+                        await googleSignIn.signOut();
+                        final googleUser = await googleSignIn.signIn();
+                        if (googleUser == null) return;
+
+                        final googleAuth = await googleUser.authentication;
+                        final idToken = googleAuth.idToken;
+
+                        if (idToken != null) {
+                          context.read<SignInCubit>().googleLogin(idToken);
+                        }
+                      },
+                    ),
             ],
           ),
         );
