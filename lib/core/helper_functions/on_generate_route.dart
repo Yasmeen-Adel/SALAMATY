@@ -6,8 +6,11 @@ import 'package:salamaty/features/authentication/reset%20password/presentation/v
 import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/account_created_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
+import 'package:salamaty/features/drug%20store/presentation/view/drug_store_screen.dart';
 import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
+import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
 import 'package:salamaty/features/insurance%20information/presentation/view/insurance_information_screen.dart';
+import 'package:salamaty/features/insurance%20services/presentation/view/insurance_services_screen.dart';
 import 'package:salamaty/features/insurance/presentation/view/insurance_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
 import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
@@ -36,13 +39,13 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     // case ResetPasswordScreen.routeName:
     //   return MaterialPageRoute(builder: (_) => ResetPasswordScreen());
     case ResetPasswordScreen.routeName:
-  final args = settings.arguments as Map;
-  return MaterialPageRoute(
-    builder: (_) => ResetPasswordScreen(
-      email: args['email'],
-      otpCode: args['otpCode'],
-    ),
-  );
+      final args = settings.arguments as Map;
+      return MaterialPageRoute(
+        builder: (_) => ResetPasswordScreen(
+          email: args['email'],
+          otpCode: args['otpCode'],
+        ),
+      );
 
     //Home Screen :)
     case HomeScreen.routeName:
@@ -83,6 +86,15 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     //Scan Screen :)
     case ScanScreen.routeName:
       return MaterialPageRoute(builder: (_) => ScanScreen());
+    //Facilities Screen :)
+    case FacilitiesScreen.routeName:
+      return MaterialPageRoute(builder: (_) => FacilitiesScreen());
+    //insurance services Screen :)
+    case InsuranceServicesScreen.routeName:
+      return MaterialPageRoute(builder: (_) => InsuranceServicesScreen());
+      //Drug Store Screen :)
+    case DrugStoreScreen.routeName:
+      return MaterialPageRoute(builder: (_) => DrugStoreScreen());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

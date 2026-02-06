@@ -5,6 +5,7 @@ import 'package:salamaty/core/widgets/custom_text_field_label.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
 import 'package:salamaty/features/insurance%20information/presentation/view/widgets/image_upload_card.dart';
 import 'package:salamaty/features/insurance%20information/presentation/view/widgets/text_input.dart';
+import 'package:salamaty/features/insurance%20services/presentation/view/insurance_services_screen.dart';
 
 class InsuranceInformationScreenBody extends StatelessWidget {
   const InsuranceInformationScreenBody({super.key});
@@ -17,7 +18,6 @@ class InsuranceInformationScreenBody extends StatelessWidget {
         children: [
           ArrowBack(),
           CustomScreenTitle(title: 'Insurance Information'),
-
           SizedBox(
             height: 24,
           ),
@@ -30,7 +30,6 @@ class InsuranceInformationScreenBody extends StatelessWidget {
             height: 24,
           ),
           CustomTextFieldLabel(labelText: 'Upload Your Insurance photos'),
-
           const ImageUploadCard(
             title: 'National ID Front',
             description: 'Upload the front side of your National ID',
@@ -45,7 +44,7 @@ class InsuranceInformationScreenBody extends StatelessWidget {
           LargeAppButton(
               text: 'Submit',
               onPressed: () {
-                // Handle submit action
+                Navigator.pushNamed(context, InsuranceServicesScreen.routeName);
               }),
         ],
       ),

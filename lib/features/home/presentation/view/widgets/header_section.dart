@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'search_bar_widget.dart';
+import 'package:salamaty/features/home/presentation/view/widgets/search_bar_widget.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({Key? key}) : super(key: key);

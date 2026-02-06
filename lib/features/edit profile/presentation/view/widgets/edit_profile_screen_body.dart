@@ -4,7 +4,6 @@ import 'package:salamaty/features/insurance%20information/presentation/view/widg
 class EditProfileScreenBody extends StatelessWidget {
   const EditProfileScreenBody({super.key});
 
-  static const String routeName = 'edit_profile';
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
