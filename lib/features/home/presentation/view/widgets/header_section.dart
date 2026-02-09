@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/search_bar_widget.dart';
+import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({Key? key}) : super(key: key);
@@ -70,10 +71,16 @@ class HeaderSection extends StatelessWidget {
                         color: Colors.white.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: const Icon(
-                        Icons.notifications_outlined,
-                        color: Colors.white,
-                        size: 24,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.notifications_outlined,
+                          color: Colors.white,
+                          size: 24,
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, NotificationsScreen.routeName);
+                        },
                       ),
                     ),
                   ],
