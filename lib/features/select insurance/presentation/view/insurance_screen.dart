@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:salamaty/features/insurance/presentation/view/widgets/insurance_screen_body.dart';
+import 'package:salamaty/features/select%20insurance/presentation/view/widgets/insurance_screen_body.dart';
 
 class InsuranceScreen extends StatelessWidget {
   const InsuranceScreen({super.key});
