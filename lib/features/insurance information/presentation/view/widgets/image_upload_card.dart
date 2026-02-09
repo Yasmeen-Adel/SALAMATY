@@ -93,7 +93,7 @@ class _ImageUploadCardState extends State<ImageUploadCard> {
             color: _isPressed ? primaryColor : const Color(0xFFB3B3B3),
             strokeWidth: 2,
             child: Container(
-              height: 157,
+              height: 167,
               width: double.infinity,
               padding: const EdgeInsets.all(12),
               child: imageFile == null
@@ -117,6 +117,8 @@ class _ImageUploadCardState extends State<ImageUploadCard> {
                           ),
                         ),
                         const Spacer(),
+                        // const SizedBox(height: 16),
+
                         const Center(
                           child: Icon(Icons.upload_file_outlined,
                               size: 60, color: primaryColor),

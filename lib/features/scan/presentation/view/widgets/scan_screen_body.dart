@@ -15,7 +15,8 @@ class ScanScreenBody extends StatelessWidget {
   Future<void> _pickImage(BuildContext context, ImageSource source) async {
     final ImagePicker picker = ImagePicker();
     try {
-      final XFile? picked = await picker.pickImage(source: source, imageQuality: 80);
+      final XFile? picked =
+          await picker.pickImage(source: source, imageQuality: 80);
       if (picked != null) {
         Navigator.push(
           context,
@@ -35,16 +36,17 @@ class ScanScreenBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 50),
-          const ArrowBack(),
-          const SizedBox(height: 15),
+          const SizedBox(height: 100),
           const CustomScreenTitle(title: 'Scan Prescription'),
+          SizedBox(
+            height: 10,
+          ),
           const CustomScreenSubtitle(
             subtitleText:
                 'Use your camera to scan your prescription or upload an image from your gallery.',
           ),
           const SizedBox(height: 20),
-          const PrescriptionImageWidget(), 
+          const PrescriptionImageWidget(),
           const SizedBox(height: 30),
           ScanButton(
             text: 'Scan with Camera',

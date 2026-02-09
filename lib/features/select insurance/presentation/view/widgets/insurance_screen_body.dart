@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/custom_text_field_label.dart';
-import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/header_section.dart';
 import 'package:salamaty/features/insurance%20information/presentation/view/insurance_information_screen.dart';
-import 'package:salamaty/features/insurance/presentation/view/widgets/insurance_card.dart';
+import 'package:salamaty/features/select%20insurance/presentation/view/widgets/insurance_card.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
 
 class InsuranceScreenBody extends StatefulWidget {
