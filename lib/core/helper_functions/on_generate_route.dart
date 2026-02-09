@@ -11,6 +11,7 @@ import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_
 import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
 import 'package:salamaty/features/insurance%20information/presentation/view/insurance_information_screen.dart';
 import 'package:salamaty/features/insurance%20services/presentation/view/insurance_services_screen.dart';
+import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
 import 'package:salamaty/features/select%20insurance/presentation/view/insurance_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
 import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
@@ -95,6 +96,9 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       //Drug Store Screen :)
     case DrugStoreScreen.routeName:
       return MaterialPageRoute(builder: (_) => DrugStoreScreen());
+       //Notification Screen :)
+    case NotificationsScreen.routeName:
+      return MaterialPageRoute(builder: (_) => NotificationsScreen());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
