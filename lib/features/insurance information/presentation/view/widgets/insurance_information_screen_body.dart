@@ -31,12 +31,12 @@ class InsuranceInformationScreenBody extends StatelessWidget {
           ),
           CustomTextFieldLabel(labelText: 'Upload Your Insurance photos'),
           const ImageUploadCard(
-            title: 'National ID Front',
-            description: 'Upload the front side of your National ID',
+            title: 'Insurance Card Front',
+            description: 'Upload the front side of your Insurance Card.',
           ),
           const ImageUploadCard(
-            title: 'National ID Back',
-            description: 'Upload the back side of your National ID',
+            title: 'Insurance Card Back',
+            description: 'Upload the back side of your Insurance Card.',
           ),
           SizedBox(
             height: 32,

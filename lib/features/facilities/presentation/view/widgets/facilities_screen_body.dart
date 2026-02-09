@@ -18,7 +18,7 @@ class _FacilitiesScreenBodyState extends State<FacilitiesScreenBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FacilitiesHeader(),
+        FacilitiesHeader(headerText: 'All Facilities',),
         SizedBox(height: 12),
         CustomTextFieldLabel(
           labelText: 'Filter by',

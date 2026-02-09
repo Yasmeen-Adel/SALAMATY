@@ -3,8 +3,8 @@ import 'package:salamaty/core/utils/app_colors.dart';
 import 'facilities_search_bar.dart';
 
 class FacilitiesHeader extends StatelessWidget {
-  const FacilitiesHeader({super.key});
-
+  const FacilitiesHeader({super.key, required this.headerText});
+  final String headerText;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,35 +17,35 @@ class FacilitiesHeader extends StatelessWidget {
       ),
       child: Column(
         children: [
-          /// AppBar Row
           Row(
             children: [
               IconButton(
                 onPressed: () => Navigator.pop(context),
-                icon: const Icon(Icons.arrow_back_rounded,
-                    size: 34, fontWeight: FontWeight.w600, color: Colors.white),
-              ),
-              const Spacer(),
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
+                icon: const Icon(
+                  Icons.arrow_back_rounded,
+                  size: 34,
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Icon(
-                  Icons.tune,
-                  color: Color(0xFF1E40AF),
-                  size: 24,
                 ),
               ),
-              
+
+              Expanded(
+                child: Center(
+                  child: Text(
+                    headerText,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+
+              // Spacer وهمي علشان التوازن
+              const SizedBox(width: 48),
             ],
           ),
-
           const SizedBox(height: 16),
-
-          // Search
           const FacilitiesSearchBar(),
         ],
       ),

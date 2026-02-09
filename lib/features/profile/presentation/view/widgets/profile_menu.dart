@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/language_selector.dart';
+import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/widgets/profile_list_tile.dart';
 
 class ProfileMenu extends StatelessWidget {
@@ -58,7 +59,9 @@ class ProfileMenu extends StatelessWidget {
           title: 'Edit Profile',
           prefixIcon: Icons.edit_outlined,
           trailingIcon: Icons.arrow_forward_ios,
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, EditProfileScreen.routeName);
+          },
         ),
         LanguageSelectorTile(),
       ],

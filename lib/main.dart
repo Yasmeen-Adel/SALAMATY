@@ -74,7 +74,7 @@ class SalamatyApp extends StatelessWidget {
       ),
       // home: const MainScreen(),
       onGenerateRoute: onGenerateRoute,
-      initialRoute: SplashScreen.routeName,
+      initialRoute: MainScreen.routeName,
     );
   }
 }

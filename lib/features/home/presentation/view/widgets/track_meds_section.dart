@@ -68,7 +68,7 @@ class _TrackMedsSectionState extends State<TrackMedsSection> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Track your meds!',
+                        'Health Tips!!',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -77,7 +77,7 @@ class _TrackMedsSectionState extends State<TrackMedsSection> {
                       ),
                       const SizedBox(height: 4),
                       const Text(
-                        'Add up to 5 patients for free',
+                        'Drink enough water when \ntaking medications',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,
