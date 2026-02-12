@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class ServiceItemCard extends StatelessWidget {
   final String name;
@@ -30,7 +31,7 @@ class ServiceItemCard extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withOpacity(0.15),
             blurRadius: 10,
             offset: const Offset(0, 4),
             spreadRadius: 0,
@@ -45,17 +46,14 @@ class ServiceItemCard extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                style: AppTextStyles.medium20.copyWith(
+                  color: const Color(0xFF000000),
                 ),
               ),
               Text(
                 type,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey.shade500,
+                style: AppTextStyles.medium16.copyWith(
+                  color: const Color(0xFF9A9797),
                 ),
               ),
             ],
@@ -65,23 +63,20 @@ class ServiceItemCard extends StatelessWidget {
             children: [
               Text(
                 distance,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey.shade600,
+                style: AppTextStyles.medium16.copyWith(
+                  color: const Color(0xFF9A9797),
                 ),
               ),
               Text(
                 ' - ',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey.shade600,
+                style: AppTextStyles.medium16.copyWith(
+                  color: const Color(0xFF9A9797),
                 ),
               ),
               Text(
                 address,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey.shade600,
+                style: AppTextStyles.medium14.copyWith(
+                  color: const Color(0xFF9A9797),
                 ),
               ),
             ],
@@ -89,10 +84,8 @@ class ServiceItemCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             status,
-            style: const TextStyle(
-              fontSize: 14,
-              color: Color(0xFF10B981),
-              fontWeight: FontWeight.w500,
+            style: AppTextStyles.medium16.copyWith(
+              color: const Color(0xFF20B15A),
             ),
           ),
           const SizedBox(height: 16),
@@ -105,11 +98,10 @@ class ServiceItemCard extends StatelessWidget {
                     Icons.phone,
                     size: 18,
                   ),
-                  label: const Text(
+                  label: Text(
                     'Call',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+                    style: AppTextStyles.medium18.copyWith(
+                      color: const Color(0xFFFFFFFF),
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -129,13 +121,12 @@ class ServiceItemCard extends StatelessWidget {
                   onPressed: () {},
                   icon: const Icon(
                     Icons.location_on,
-                    size: 18,
+                    size: 20,
                   ),
-                  label: const Text(
+                  label: Text(
                     'Location',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+                    style: AppTextStyles.medium18.copyWith(
+                      color: const Color(0xFFFFFFFF),
                     ),
                   ),
                   style: ElevatedButton.styleFrom(

@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class MedicineDescriptionSection extends StatelessWidget {
   const MedicineDescriptionSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Text(
-        'Paracetamol is used to relieve mild to moderate pain and reduce fever. '
-        'It is commonly used for headaches, toothache, muscle pain, and colds.',
-        style: TextStyle(
-          fontSize: 17,
-          height: 1.5,
-          color: Color(0xFF404040),
-          fontWeight: FontWeight.w500,
+        'Ibuprofen is used to relieve mild to moderate pain and reduce fever. It is',
+        style: AppTextStyles.regular14.copyWith(
+          color: const Color(0xFF000000),
         ),
       ),
     );

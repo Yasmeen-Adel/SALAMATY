@@ -20,7 +20,7 @@ class SalamatyApp extends StatelessWidget {
       title: 'Salamaty',
       onGenerateRoute: onGenerateRoute,
       initialRoute:
-          InsuranceProfileScreen.routeName, // <- عرض شاشة Insurance Profile
+          MedicineAlternativesScreen.routeName, // <- عرض شاشة Insurance Profile
     );
   }
 }

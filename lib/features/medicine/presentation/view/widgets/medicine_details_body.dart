@@ -19,8 +19,8 @@ class MedicineDetailsBody extends StatelessWidget {
           MedicineTitlePriceSection(),
           SizedBox(height: 16),
           MedicineDescriptionSection(),
-          SizedBox(height: 24),
-          MedicineSightEffectSection(), // 👈 Sight Effect
+          SizedBox(height: 16),
+          MedicineSightEffectSection(),
           SizedBox(height: 40),
           MedicineActionsSection(),
           SizedBox(height: 20),

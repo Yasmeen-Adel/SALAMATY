@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class MedicineTitlePriceSection extends StatelessWidget {
   const MedicineTitlePriceSection({super.key});
@@ -10,28 +11,16 @@ class MedicineTitlePriceSection extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
+          Text(
             'Paracetamol',
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.5,
-              color: Color(0xFF0D2D9E),
+            style: AppTextStyles.semiBold24.copyWith(
+              color: const Color(0xFF0D2D9E),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-            decoration: BoxDecoration(
+          Text(
+            '13.12\$',
+            style: AppTextStyles.semiBold20.copyWith(
               color: const Color(0xFF0D2D9E),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: const Text(
-              '13.12\$',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-              ),
             ),
           ),
         ],

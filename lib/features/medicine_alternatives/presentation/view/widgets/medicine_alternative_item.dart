@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class MedicineAlternativeItem extends StatelessWidget {
+  final String title;
+  final String description;
+  final String image;
+  final bool isNetworkImage;
+  final VoidCallback? onTap;
+
   const MedicineAlternativeItem({
     super.key,
     required this.title,
     required this.description,
     required this.image,
     this.isNetworkImage = false,
-    this.isSelected = false,
     this.onTap,
   });
-
-  final String title;
-  final String description;
-  final String image;
-  final bool isNetworkImage;
-  final bool isSelected;
-  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +27,8 @@ class MedicineAlternativeItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
-            color: Colors.grey,
-            width: 0.25,
+            color: Colors.grey.shade200,
+            width: 2,
           ),
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
@@ -44,21 +43,21 @@ class MedicineAlternativeItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // صورة الدواء داخل card
+            // Medicine Image
             Container(
-              width: 75,
-              height: 75,
-              padding: const EdgeInsets.all(8),
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.grey,
-                  width: 0.25,
+                  color: Colors.grey.shade200,
+                  width: 1,
                 ),
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.08),
+                    color: Colors.black.withOpacity(0.1),
                     blurRadius: 8,
                     spreadRadius: 0,
                     offset: const Offset(0, 2),
@@ -66,7 +65,7 @@ class MedicineAlternativeItem extends StatelessWidget {
                 ],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(2),
                 child: isNetworkImage
                     ? Image.network(
                         image,
@@ -79,18 +78,15 @@ class MedicineAlternativeItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 14),
-            // النصوص
+            // Text Content
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontSize: 27.32,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: "PlusJakartaSans-Bold",
-                      color: Colors.black,
+                    style: AppTextStyles.medium24.copyWith(
+                      color: const Color(0xFF000000),
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -98,12 +94,9 @@ class MedicineAlternativeItem extends StatelessWidget {
                     description,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
+                    style: AppTextStyles.regular14.copyWith(
+                      color: const Color(0xFF6B7280),
                       height: 1.5,
-                      fontFamily: "PlusJakartaSans-Regular",
-                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ],

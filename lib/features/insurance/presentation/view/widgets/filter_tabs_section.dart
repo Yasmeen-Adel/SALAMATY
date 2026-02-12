@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class FilterTabsSection extends StatefulWidget {
   const FilterTabsSection({super.key});
@@ -45,9 +46,7 @@ class _FilterTabsSectionState extends State<FilterTabsSection> {
                 ),
                 child: Text(
                   _tabs[index],
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                  style: AppTextStyles.medium16.copyWith(
                     color: _selectedIndex == index
                         ? Colors.white
                         : const Color(0xFF1E40AF),
