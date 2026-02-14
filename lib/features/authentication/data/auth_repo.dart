@@ -57,30 +57,54 @@ class AuthRepo {
 
     return response.data as Map<String, dynamic>;
   }
+Future<Map<String, dynamic>> verifyOtp({
+  required String email,
+  required String otpCode,
+}) async {
+  try {
+    final response = await DioHelper.post(
+      url: ApiConstants.verifyOtp,
+      data: {
+        "email": email,
+        "otpCode": otpCode,
+      },
+    );
 
-// Verify OTP ........ :)
-  Future<void> verifyOtp({
-    required String email,
-    required String otpCode,
-  }) async {
-    try {
-      await DioHelper.post(
-        url: ApiConstants.verifyOtp,
-        data: {
-          "email": email,
-          "otpCode": otpCode,
-        },
-      );
-    } on DioException catch (e) {
-      if (e.response?.data != null) {
-        throw e.response!.data;
-      }
-
-      throw {
-        "message": "Verification failed",
-      };
+    return response.data;
+  } on DioException catch (e) {
+    if (e.response?.data != null) {
+      throw e.response!.data;
     }
+
+    throw {
+      "message": "Verification failed",
+    };
   }
+}
+
+// // Verify OTP ........ :)
+//   Future<void> verifyOtp({
+//     required String email,
+//     required String otpCode,
+//   }) async {
+//     try {
+//       await DioHelper.post(
+//         url: ApiConstants.verifyOtp,
+//         data: {
+//           "email": email,
+//           "otpCode": otpCode,
+//         },
+//       );
+//     } on DioException catch (e) {
+//       if (e.response?.data != null) {
+//         throw e.response!.data;
+//       }
+
+//       throw {
+//         "message": "Verification failed",
+//       };
+//     }
+//   }
 
   // Resend OTP ............ :)
   Future<void> resendOtp({
@@ -206,4 +230,25 @@ class AuthRepo {
       rethrow;
     }
   }
+
+  // profile ............ upload image .......:) 
+  Future<String> uploadProfileImage(String imagePath) async {
+  try {
+    FormData formData = FormData.fromMap({
+      "image": await MultipartFile.fromFile(imagePath),
+    });
+
+    final response = await DioHelper.post(
+      url: ApiConstants.uploadProfileImage, 
+      data: formData,
+    );
+
+    final imageUrl = response.data['imageUrl'];
+
+    return imageUrl;
+  } on DioException catch (e) {
+    throw e.response?.data ?? {"message": "Upload failed"};
+  }
+}
+
 }

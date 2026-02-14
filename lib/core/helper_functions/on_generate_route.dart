@@ -4,7 +4,6 @@ import 'package:salamaty/features/authentication/SignUp/presentation/view/sign_u
 import 'package:salamaty/features/authentication/forgot%20password/presentation/view/forgot_password_screen.dart';
 import 'package:salamaty/features/authentication/reset%20password/presentation/view/reset_password_screen.dart';
 import 'package:salamaty/core/widgets/main_screen.dart';
-import 'package:salamaty/features/authentication/verification/presentation/view/account_created_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
 import 'package:salamaty/features/drug%20store/presentation/view/drug_store_screen.dart';
 import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
@@ -72,9 +71,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
 
     // case VerificationScreen.routeName:
     //   return MaterialPageRoute(builder: (_) => VerificationScreen());
-    //Account Created Screen :)
-    case AccountCreatedScreen.routeName:
-      return MaterialPageRoute(builder: (_) => AccountCreatedScreen());
+
     //Insurance Screen :)
     case InsuranceScreen.routeName:
       return MaterialPageRoute(builder: (_) => InsuranceScreen());
@@ -93,10 +90,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     //insurance services Screen :)
     case InsuranceServicesScreen.routeName:
       return MaterialPageRoute(builder: (_) => InsuranceServicesScreen());
-      //Drug Store Screen :)
+    //Drug Store Screen :)
     case DrugStoreScreen.routeName:
       return MaterialPageRoute(builder: (_) => DrugStoreScreen());
-       //Notification Screen :)
+    //Notification Screen :)
     case NotificationsScreen.routeName:
       return MaterialPageRoute(builder: (_) => NotificationsScreen());
     default:

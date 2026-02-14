@@ -34,4 +34,16 @@ class AuthLocalStorage {
     final token = await getToken();
     return token != null && token.isNotEmpty;
   }
+
+  static const String _profileImageKey = "profile_image";
+// profile image .....................:)
+  static Future<void> saveProfileImage(String url) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_profileImageKey, url);
+  }
+
+  static Future<String?> getProfileImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_profileImageKey);
+  }
 }

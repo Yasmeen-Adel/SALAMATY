@@ -7,6 +7,7 @@ import 'package:salamaty/core/widgets/arrow_back.dart';
 import 'package:salamaty/core/widgets/custom_image.dart';
 import 'package:salamaty/core/widgets/custom_screen_subtitle.dart';
 import 'package:salamaty/core/widgets/custom_screen_title.dart';
+import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/core/widgets/text_button_row.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
 import 'package:salamaty/features/authentication/reset%20password/presentation/view/reset_password_screen.dart';
@@ -57,8 +58,8 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
               builder: (_) => CustomDrawer(
                 title: 'Account Verified',
                 description: 'Your account has been verified successfully.',
-                buttonText: 'Sign In',
-                nextScreen: SignInScreen(),
+                buttonText: 'Continue',
+                nextScreen:  MainScreen(),
               ),
             );
           }
