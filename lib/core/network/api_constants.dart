@@ -9,6 +9,6 @@ class ApiConstants {
   static const String resetPassword = '/api/auth/reset-password'; //Done
   static const String logout = '/api/auth/logout';
   static const String googleLogin = '/api/auth/google-login'; //Done
-  static const String deleteAccount = '/api/auth/delete-account';//Done
-
+  static const String deleteAccount = '/api/auth/delete-account'; //Done
+  static const String uploadProfileImage = '';
 }
