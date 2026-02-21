@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class BenefitItem extends StatelessWidget {
   final String iconPath;
@@ -22,8 +23,8 @@ class BenefitItem extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: Colors.black.withOpacity(0.1),
-          width: 1,
+          color: const Color(0xFF0D2D9E).withOpacity(0.25),
+          width: 1.5,
         ),
       ),
       child: Column(
@@ -50,9 +51,7 @@ class BenefitItem extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+                  style: AppTextStyles.medium20.copyWith(
                     color: Colors.black,
                   ),
                 ),
@@ -62,9 +61,8 @@ class BenefitItem extends StatelessWidget {
                   children: [
                     Text(
                       'covered',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.green.shade600,
+                      style: AppTextStyles.regular14.copyWith(
+                        color: const Color(0xFF989898),
                       ),
                     ),
                     const SizedBox(width: 4),
@@ -85,9 +83,8 @@ class BenefitItem extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 2, left: 52),
                 child: Text(
                   item,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey.shade600,
+                  style: AppTextStyles.regular14.copyWith(
+                    color: const Color(0xFF989898),
                   ),
                 ),
               ),

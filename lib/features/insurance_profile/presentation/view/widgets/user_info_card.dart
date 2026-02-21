@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class UserInfoCard extends StatelessWidget {
   const UserInfoCard({Key? key}) : super(key: key);
@@ -13,8 +14,8 @@ class UserInfoCard extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-            color: Colors.black.withOpacity(0.1),
-            width: 1,
+            color: const Color(0xFF0D2D9E).withOpacity(0.25),
+            width: 1.5,
           ),
         ),
         child: Row(
@@ -39,20 +40,17 @@ class UserInfoCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Mohamed Ali',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                    style: AppTextStyles.medium20.copyWith(
                       color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Card holder ID: M123456789',
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.grey.shade600,
+                    style: AppTextStyles.regular14.copyWith(
+                      color: const Color(0xFF989898),
                     ),
                   ),
                 ],

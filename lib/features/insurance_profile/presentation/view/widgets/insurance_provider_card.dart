@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class InsuranceProviderCard extends StatelessWidget {
   const InsuranceProviderCard({Key? key}) : super(key: key);
@@ -10,12 +11,10 @@ class InsuranceProviderCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Insurance Provider',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF1E40AF),
+            style: AppTextStyles.semiBold20.copyWith(
+              color: const Color(0xFF0D2D9E),
             ),
           ),
           const SizedBox(height: 8),
@@ -25,8 +24,8 @@ class InsuranceProviderCard extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
-                color: Colors.black.withOpacity(0.1),
-                width: 1,
+                color: const Color(0xFF0D2D9E).withOpacity(0.25),
+                width: 1.5,
               ),
             ),
             child: Row(
@@ -35,7 +34,7 @@ class InsuranceProviderCard extends StatelessWidget {
                   width: 45,
                   height: 45,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF1E40AF).withOpacity(0.1),
+                    color: const Color(0xFF0D2D9E).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Padding(
@@ -51,28 +50,24 @@ class InsuranceProviderCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Misr Life Insurance',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                        style: AppTextStyles.medium20.copyWith(
                           color: Colors.black,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         'Policy: P123456789',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
+                        style: AppTextStyles.regular12.copyWith(
+                          color: const Color(0xFF989898),
                         ),
                       ),
                       const SizedBox(height: 2),
                       Text(
                         'Policy Number: Valid until 31 Dec 2027',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
+                        style: AppTextStyles.regular12.copyWith(
+                          color: const Color(0xFF989898),
                         ),
                       ),
                     ],
