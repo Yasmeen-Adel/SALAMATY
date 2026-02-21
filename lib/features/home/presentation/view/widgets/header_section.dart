@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salamaty/features/home/presentation/cubit/home_cubit.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/search_bar_widget.dart';
 import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
 
@@ -7,90 +9,248 @@ class HeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF1E40AF), Color.fromARGB(255, 108, 127, 197)],
-        ),
-        borderRadius: BorderRadius.only(
-          // Radius.circular(40),
-          bottomLeft: Radius.circular(40),
-          bottomRight: Radius.circular(40),
-        ),
-      ),
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        String fullName = "User";
+        String? imageUrl;
+
+        if (state is HomeLoaded) {
+          fullName = state.fullName;
+          imageUrl = state.imageUrl;
+        }
+
+        return Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFF1E40AF),
+                Color(0xFF6C7FC5),
+              ],
+            ),
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(40),
+              bottomRight: Radius.circular(40),
+            ),
+          ),
+          padding: const EdgeInsets.all(20),
+          child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 30.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: const BoxDecoration(
-                        color: Colors.black,
-                        shape: BoxShape.circle,
+                    Expanded(
+                      // 👈 نخلي الجزء الشمال يتمدد
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 54,
+                            height: 54,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 2.5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: ClipOval(
+                              child: imageUrl != null
+                                  ? Image.network(
+                                      imageUrl,
+                                      fit: BoxFit.cover,
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                        return _defaultAvatar();
+                                      },
+                                    )
+                                  : _defaultAvatar(),
+                            ),
+                          ),
+
+                          const SizedBox(width: 12),
+
+                          /// الاسم
+                          Expanded(
+                            // 👈 مهم جداً
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Hello,',
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                const SizedBox(height: 2),
+                                Text(
+                                  fullName,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        //
-                        Text(
-                          'Hello, User',
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 14,
-                          ),
-                        ),
-                        SizedBox(height: 2),
-                        Text(
-                          'Welcome to Salamaty!',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 26,
-                    ),
+
+                    /// Notifications
                     Container(
                       width: 50,
                       height: 50,
+                      margin: const EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.notifications_outlined,
                           color: Colors.white,
-                          size: 24,
                         ),
                         onPressed: () {
                           Navigator.pushNamed(
-                              context, NotificationsScreen.routeName);
+                            context,
+                            NotificationsScreen.routeName,
+                          );
                         },
                       ),
                     ),
                   ],
                 ),
               ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 30.0),
+              //   child: Expanded(
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Row(
+              //           children: [
+              //             Container(
+              //               width: 54,
+              //               height: 54,
+              //               decoration: BoxDecoration(
+              //                 shape: BoxShape.circle,
+              //                 border: Border.all(
+              //                   color: Colors.white,
+              //                   width: 2.5,
+              //                 ),
+              //                 boxShadow: [
+              //                   BoxShadow(
+              //                     color: Colors.black.withOpacity(0.2),
+              //                     blurRadius: 8,
+              //                     offset: const Offset(0, 3),
+              //                   ),
+              //                 ],
+              //               ),
+              //               child: ClipOval(
+              //                 child: imageUrl != null
+              //                     ? Image.network(
+              //                         imageUrl,
+              //                         fit: BoxFit.cover,
+              //                         errorBuilder:
+              //                             (context, error, stackTrace) {
+              //                           return _defaultAvatar();
+              //                         },
+              //                       )
+              //                     : _defaultAvatar(),
+              //               ),
+              //             ),
+
+              //             const SizedBox(width: 12),
+
+              //             /// الاسم
+              //             Column(
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               children: [
+              //                 const Text(
+              //                   'Hello,',
+              //                   style: TextStyle(
+              //                     color: Colors.white70,
+              //                     fontSize: 14,
+              //                   ),
+              //                 ),
+              //                 const SizedBox(height: 2),
+              //                 Text(
+              //                   fullName,
+              //                   style: const TextStyle(
+              //                     color: Colors.white,
+              //                     fontSize: 18,
+              //                     fontWeight: FontWeight.bold,
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ],
+              //         ),
+
+              //         ///  Notifications
+              //         Container(
+              //           width: 50,
+              //           height: 50,
+              //           decoration: BoxDecoration(
+              //             color: Colors.white.withOpacity(0.2),
+              //             borderRadius: BorderRadius.circular(20),
+              //           ),
+              //           child: IconButton(
+              //             icon: const Icon(
+              //               Icons.notifications_outlined,
+              //               color: Colors.white,
+              //             ),
+              //             onPressed: () {
+              //               Navigator.pushNamed(
+              //                 context,
+              //                 NotificationsScreen.routeName,
+              //               );
+              //             },
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+
+              const SizedBox(height: 20),
+
+              // Search + Filter
+              Row(
+                children: const [
+                  Expanded(
+                    child: SearchBarWidget(),
+                  ),
+                ],
+              ),
             ],
           ),
-          const SizedBox(height: 20),
-          const SearchBarWidget(),
-        ],
+        );
+      },
+    );
+  }
+
+  Widget _defaultAvatar() {
+    return Container(
+      color: const Color(0xFF1E3A8A),
+      child: const Icon(
+        Icons.person,
+        color: Colors.white70,
+        size: 28,
       ),
     );
   }

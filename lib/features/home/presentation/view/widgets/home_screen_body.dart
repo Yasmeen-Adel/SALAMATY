@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/facilities_section.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/header_section.dart';
-import 'package:salamaty/features/home/presentation/view/widgets/specialties_section.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/track_meds_section.dart';
+import 'package:salamaty/features/specialities/presentation/view/widgets/specialities_scection.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({super.key});

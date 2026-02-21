@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:salamaty/core/widgets/custom_text_field_label.dart';
-import 'package:salamaty/features/home/presentation/view/widgets/header_section.dart';
+import 'package:salamaty/core/widgets/custom_screen_subtitle.dart';
+import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/features/insurance%20information/presentation/view/insurance_information_screen.dart';
 import 'package:salamaty/features/select%20insurance/presentation/view/widgets/insurance_card.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
@@ -26,10 +26,13 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const HeaderSection(),
+        SizedBox(
+          height: 90,
+        ),
+        CustomScreenTitle(title: 'Select Insurance'),
+        CustomScreenSubtitle(
+            subtitleText: 'Please select your insurance provider'),
         const SizedBox(height: 30),
-        const CustomTextFieldLabel(labelText: 'Select Your Insurance'),
-        const SizedBox(height: 5),
         Expanded(
           child: ListView.builder(
             padding: EdgeInsets.zero,

@@ -9,36 +9,70 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
 
   final ImagePicker _picker = ImagePicker();
+  final AuthRepo _repo = getIt<AuthRepo>();
 
   String? imageUrl;
-
-  Future<void> pickAndUploadImage() async {
-    final XFile? image =
-        await _picker.pickImage(source: ImageSource.gallery);
-
-    if (image == null) return;
-
+  Future<void> loadProfile() async {
     emit(ProfileLoading());
 
     try {
-      final uploadedUrl =
-          await getIt<AuthRepo>().uploadProfileImage(image.path);
+      final response = await _repo.getProfile();
+
+      if (response['success'] != true) {
+        throw Exception("Failed");
+      }
+
+      final profile = response['data'];
+
+      imageUrl = profile['imageUrl'];
+
+      await AuthLocalStorage.saveProfileImage(imageUrl ?? '');
+      await AuthLocalStorage.saveAddress(profile['address'] ?? '');
+
+      emit(
+        ProfileLoaded(
+          fullName: profile['fullName'] ?? '',
+          email: profile['email'] ?? '',
+          gender: profile['genderText'] ?? '',
+          imageUrl: imageUrl,
+          birthday: profile['birthDate'] ?? '',
+        ),
+      );
+    } catch (e) {
+      emit(ProfileError("Failed to load profile"));
+    }
+  }
+
+  Future<void> pickAndUploadImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (image == null) return;
+
+    if (state is! ProfileLoaded) return;
+
+    final currentState = state as ProfileLoaded;
+
+    emit(currentState.copyWith(isImageUploading: true));
+
+    try {
+      final uploadedUrl = await _repo.uploadProfileImage(image.path);
 
       imageUrl = uploadedUrl;
 
       await AuthLocalStorage.saveProfileImage(uploadedUrl);
 
-      emit(ProfileImageUpdated(uploadedUrl));
+      emit(
+        currentState.copyWith(
+          imageUrl: uploadedUrl,
+          isImageUploading: false,
+        ),
+      );
     } catch (e) {
-      emit(ProfileError("Failed to upload image"));
+      emit(currentState.copyWith(isImageUploading: false));
     }
   }
 
   Future<void> loadSavedImage() async {
-    final savedUrl = await AuthLocalStorage.getProfileImage();
-    if (savedUrl != null) {
-      imageUrl = savedUrl;
-      emit(ProfileImageUpdated(savedUrl));
-    }
+    imageUrl = await AuthLocalStorage.getProfileImage();
   }
 }

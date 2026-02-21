@@ -15,10 +15,10 @@ class AuthRepo {
       await DioHelper.post(
         url: ApiConstants.register,
         data: {
-          "fullname": fullName,
+          "fullName": fullName,
           "email": email,
           "password": password,
-          "confirmpassword": confirmPassword,
+          "confirmPassword": confirmPassword,
         },
       );
     } on DioException catch (e) {
@@ -57,54 +57,31 @@ class AuthRepo {
 
     return response.data as Map<String, dynamic>;
   }
-Future<Map<String, dynamic>> verifyOtp({
-  required String email,
-  required String otpCode,
-}) async {
-  try {
-    final response = await DioHelper.post(
-      url: ApiConstants.verifyOtp,
-      data: {
-        "email": email,
-        "otpCode": otpCode,
-      },
-    );
 
-    return response.data;
-  } on DioException catch (e) {
-    if (e.response?.data != null) {
-      throw e.response!.data;
+  Future<Map<String, dynamic>> verifyOtp({
+    required String email,
+    required String otpCode,
+  }) async {
+    try {
+      final response = await DioHelper.post(
+        url: ApiConstants.verifyOtp,
+        data: {
+          "email": email,
+          "otpCode": otpCode,
+        },
+      );
+
+      return response.data;
+    } on DioException catch (e) {
+      if (e.response?.data != null) {
+        throw e.response!.data;
+      }
+
+      throw {
+        "message": "Verification failed",
+      };
     }
-
-    throw {
-      "message": "Verification failed",
-    };
   }
-}
-
-// // Verify OTP ........ :)
-//   Future<void> verifyOtp({
-//     required String email,
-//     required String otpCode,
-//   }) async {
-//     try {
-//       await DioHelper.post(
-//         url: ApiConstants.verifyOtp,
-//         data: {
-//           "email": email,
-//           "otpCode": otpCode,
-//         },
-//       );
-//     } on DioException catch (e) {
-//       if (e.response?.data != null) {
-//         throw e.response!.data;
-//       }
-
-//       throw {
-//         "message": "Verification failed",
-//       };
-//     }
-//   }
 
   // Resend OTP ............ :)
   Future<void> resendOtp({
@@ -211,7 +188,7 @@ Future<Map<String, dynamic>> verifyOtp({
       print('Logout error: ${e.response?.statusCode}');
     } finally {
       DioHelper.clearToken();
-      await AuthLocalStorage.clear();
+      await AuthLocalStorage.clearAuthData();
     }
   }
 
@@ -223,7 +200,7 @@ Future<Map<String, dynamic>> verifyOtp({
       );
 
       DioHelper.clearToken();
-      await AuthLocalStorage.clear();
+      await AuthLocalStorage.clearAll();
     } on DioException catch (e) {
       print('Delete error: ${e.response?.statusCode}');
       print('Delete error body: ${e.response?.data}');
@@ -231,24 +208,86 @@ Future<Map<String, dynamic>> verifyOtp({
     }
   }
 
-  // profile ............ upload image .......:) 
-  Future<String> uploadProfileImage(String imagePath) async {
-  try {
-    FormData formData = FormData.fromMap({
-      "image": await MultipartFile.fromFile(imagePath),
+  // profile ............ upload image .......:)
+  Future<String> uploadProfileImage(String filePath) async {
+    final formData = FormData.fromMap({
+      'file': await MultipartFile.fromFile(
+        filePath,
+        filename: filePath.split('/').last,
+      ),
     });
 
-    final response = await DioHelper.post(
-      url: ApiConstants.uploadProfileImage, 
+    final response = await DioHelper.dio.post(
+      ApiConstants.uploadProfileImage,
       data: formData,
+      options: Options(
+        contentType: 'multipart/form-data',
+      ),
     );
 
-    final imageUrl = response.data['imageUrl'];
+    final data = response.data;
 
-    return imageUrl;
-  } on DioException catch (e) {
-    throw e.response?.data ?? {"message": "Upload failed"};
+    final relativePath = data['imageUrl'];
+
+    final fullUrl = ApiConstants.baseUrl + relativePath;
+
+    return fullUrl;
   }
-}
 
+// Update User Location ............ :)
+  Future<Map<String, dynamic>> updateLocation({
+    required double lat,
+    required double lng,
+  }) async {
+    try {
+      final response = await DioHelper.patch(
+        url: ApiConstants.updateLocation,
+        data: {
+          "locationLat": lat,
+          "locationLng": lng,
+        },
+      );
+
+      return response.data;
+    } on DioException catch (e) {
+      throw e.response?.data ?? {"message": "Failed to update location"};
+    }
+  }
+
+// Get Profile Data ............ :)
+  Future<Map<String, dynamic>> getProfile() async {
+    try {
+      final response = await DioHelper.dio.get(
+        ApiConstants.getProfile,
+      );
+
+      return response.data;
+    } on DioException catch (e) {
+      throw e.response?.data ?? {"message": "Failed to load profile"};
+    }
+  }
+
+  // edit profile ............)
+  Future<void> editProfile({
+    required String fullName,
+    required String gender,
+    required String birthDate,
+    required String address,
+  }) async {
+    try {
+      final Map<String, dynamic> data = {};
+
+      if (fullName.isNotEmpty) data["fullName"] = fullName;
+      if (gender.isNotEmpty) data["gender"] = gender;
+      if (birthDate.isNotEmpty) data["birthDate"] = birthDate;
+      if (address.isNotEmpty) data["address"] = address;
+
+      await DioHelper.put(
+        url: ApiConstants.editProfile,
+        data: data,
+      );
+    } on DioException catch (e) {
+      throw e.response?.data ?? {"message": "Failed to update profile"};
+    }
+  }
 }

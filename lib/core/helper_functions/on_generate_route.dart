@@ -35,9 +35,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     //Forgot Password Screen :)
     case ForgotPasswordScreen.routeName:
       return MaterialPageRoute(builder: (_) => ForgotPasswordScreen());
-    //Reset Password Screen :)
-    // case ResetPasswordScreen.routeName:
-    //   return MaterialPageRoute(builder: (_) => ResetPasswordScreen());
+//Reset Password Screen :)
     case ResetPasswordScreen.routeName:
       final args = settings.arguments as Map;
       return MaterialPageRoute(
@@ -69,9 +67,6 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
         builder: (_) => VerificationScreen(email: email),
       );
 
-    // case VerificationScreen.routeName:
-    //   return MaterialPageRoute(builder: (_) => VerificationScreen());
-
     //Insurance Screen :)
     case InsuranceScreen.routeName:
       return MaterialPageRoute(builder: (_) => InsuranceScreen());
@@ -96,6 +91,9 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     //Notification Screen :)
     case NotificationsScreen.routeName:
       return MaterialPageRoute(builder: (_) => NotificationsScreen());
+    //    //Specialties Section  :)
+    // case SpecialtiesSection.routeName:
+    //   return MaterialPageRoute(builder: (_) => SpecialtiesSection());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
