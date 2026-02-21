@@ -41,7 +41,6 @@ class FacilitiesHeader extends StatelessWidget {
                 ),
               ),
 
-              // Spacer وهمي علشان التوازن
               const SizedBox(width: 48),
             ],
           ),

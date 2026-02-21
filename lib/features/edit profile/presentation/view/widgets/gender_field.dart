@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class GenderField extends StatefulWidget {
-  const GenderField({super.key});
+  final Function(String?) onChanged;
 
+  const GenderField({
+    super.key,
+    required this.onChanged,
+  });
   @override
   State<GenderField> createState() => _GenderFieldState();
 }
@@ -13,7 +17,9 @@ class _GenderFieldState extends State<GenderField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,7 +32,6 @@ class _GenderFieldState extends State<GenderField> {
             ),
           ),
           const SizedBox(height: 6),
-          
           DropdownButtonFormField<String>(
             value: selectedGender,
             icon: const Icon(
@@ -124,6 +129,7 @@ class _GenderFieldState extends State<GenderField> {
               setState(() {
                 selectedGender = value;
               });
+              widget.onChanged(value);
             },
             isExpanded: true,
             menuMaxHeight: 300,

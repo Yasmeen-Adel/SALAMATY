@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:salamaty/features/home/presentation/view/widgets/medical_specialties.dart';
-import 'package:salamaty/features/home/presentation/view/widgets/specialty_card.dart';
+import 'package:salamaty/features/specialities/presentation/view/widgets/medical_specialties.dart';
+import 'package:salamaty/features/specialities/presentation/view/widgets/specialty_card.dart';
 
 class SpecialtiesSection extends StatelessWidget {
   const SpecialtiesSection({super.key});
@@ -9,7 +9,6 @@ class SpecialtiesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,7 +33,12 @@ class SpecialtiesSection extends StatelessWidget {
                   icon: specialty.icon,
                   title: specialty.name,
                   onTap: () {
-                    // TODO: navigate to doctors by specialty
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => specialty.screen,
+                      ),
+                    );
                   },
                 );
               },

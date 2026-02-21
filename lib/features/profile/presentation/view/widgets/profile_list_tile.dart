@@ -4,14 +4,15 @@ import 'package:salamaty/core/utils/app_colors.dart';
 class ProfileListTile extends StatelessWidget {
   final String title;
   final IconData prefixIcon;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final IconData? trailingIcon;
   const ProfileListTile(
       {super.key,
       required this.title,
       required this.prefixIcon,
-      required this.onTap,
-      this.trailingIcon});
+      this.trailingIcon,
+        this.onTap,
+      });
 
   static const Color primaryColor = Color(0xFF0D2D9E);
 

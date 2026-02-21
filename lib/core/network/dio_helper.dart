@@ -5,17 +5,17 @@ import 'api_constants.dart';
 class DioHelper {
   static late Dio dio;
 
-  static init() {
+  static init() async {
     dio = Dio(
       BaseOptions(
         baseUrl: ApiConstants.baseUrl,
         headers: {
           'Content-Type': 'application/json',
-          // 'Accept': '*/*',
+          'Accept': '*/*',
         },
       ),
     );
-
+    await loadToken();
     dio.interceptors.add(
       LogInterceptor(
         requestBody: true,
@@ -43,23 +43,36 @@ class DioHelper {
     return await dio.post(url, data: data);
   }
 
-
   // DELETE
-static Future<Response> delete({
-  required String url,
-  dynamic data, 
-}) async {
-  return await dio.delete(
-    url,
-    data: data,
-  );
-}
+  static Future<Response> delete({
+    required String url,
+    dynamic data,
+  }) async {
+    return await dio.delete(
+      url,
+      data: data,
+    );
+  }
 
   static Future<void> loadToken() async {
-  final token = await AuthLocalStorage.getToken();
-  if (token != null) {
-    setToken(token);
+    final token = await AuthLocalStorage.getToken();
+    if (token != null) {
+      setToken(token);
+    }
   }
-}
 
+  // PATCH .............. :)
+  static Future<Response> patch({
+    required String url,
+    dynamic data,
+  }) async {
+    return await dio.patch(url, data: data);
+  }
+
+  static Future<Response> put({
+    required String url,
+    dynamic data,
+  }) async {
+    return await dio.put(url, data: data);
+  }
 }

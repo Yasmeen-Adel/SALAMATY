@@ -15,12 +15,19 @@ class ProfileImage extends StatelessWidget {
       child: Center(
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
-            final cubit = context.read<ProfileCubit>();
+            String? imageUrl;
+            bool isUploading = false;
+
+            if (state is ProfileLoaded) {
+              imageUrl = state.imageUrl;
+              isUploading = state.isImageUploading;
+            }
 
             return Stack(
               clipBehavior: Clip.none,
+              alignment: Alignment.center,
               children: [
-                /// ================= Main Profile Image =================
+                /// ================= MAIN IMAGE =================
                 Container(
                   width: 120,
                   height: 120,
@@ -39,44 +46,65 @@ class ProfileImage extends StatelessWidget {
                     ],
                   ),
                   child: ClipOval(
-                    child: cubit.imageUrl != null
-                        ? Image.network(
-                            cubit.imageUrl!,
-                            fit: BoxFit.cover,
-                          )
-                        : Image.asset(
-                            'assets/images/onboarding3.png',
-                            fit: BoxFit.cover,
-                          ),
-                  ),
+                      child: imageUrl != null && imageUrl.isNotEmpty
+                          ? Image.network(
+                              imageUrl,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Container(
+                                    color: Colors.white,
+                                    child: const Icon(
+                                      Icons.person,
+                                      size: 90,
+                                      color: Colors.grey,
+                                    ));
+                              },
+                            )
+                          : Container(
+                              color: Colors.white,
+                              child: const Icon(
+                                Icons.person,
+                                size: 90,
+                                color: Colors.grey,
+                              ))),
                 ),
 
-                /// ================= Edit Button =================
+                /// ================= IMAGE LOADING ONLY =================
+                if (isUploading)
+                  const Positioned.fill(
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+
+                /// ================= EDIT BUTTON =================
                 Positioned(
                   bottom: -10,
-                  left: 40,
-                  right: -5,
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        context.read<ProfileCubit>().pickAndUploadImage();
-                      },
-                      child: Container(
-                        width: 35,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle, 
-                          color: const Color(0xFF0033A0),
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 3,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.edit_outlined,
-                          size: 18,
+                  right: 10,
+                  child: GestureDetector(
+                    onTap: isUploading
+                        ? null
+                        : () {
+                            context.read<ProfileCubit>().pickAndUploadImage();
+                          },
+                    child: Container(
+                      width: 35,
+                      height: 35,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: const Color(0xFF0033A0),
+                        border: Border.all(
                           color: Colors.white,
+                          width: 3,
                         ),
+                      ),
+                      child: const Icon(
+                        Icons.edit_outlined,
+                        size: 18,
+                        color: Colors.white,
                       ),
                     ),
                   ),
