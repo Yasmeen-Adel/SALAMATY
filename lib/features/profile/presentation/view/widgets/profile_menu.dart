@@ -7,9 +7,14 @@ import 'package:salamaty/features/profile/presentation/cubit/profile_cubit.dart'
 import 'package:salamaty/features/profile/presentation/cubit/profile_state.dart';
 import 'package:salamaty/features/profile/presentation/view/widgets/profile_list_tile.dart';
 
-class ProfileMenu extends StatelessWidget {
+class ProfileMenu extends StatefulWidget {
   const ProfileMenu({super.key});
 
+  @override
+  State<ProfileMenu> createState() => _ProfileMenuState();
+}
+
+class _ProfileMenuState extends State<ProfileMenu> {
   Future<String> _loadLocation() async {
     final address = await AuthLocalStorage.getAddress();
     return address ?? "Location not set";

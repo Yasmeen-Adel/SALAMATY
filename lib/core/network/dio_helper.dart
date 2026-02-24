@@ -73,6 +73,7 @@ class DioHelper {
     required String url,
     dynamic data,
   }) async {
+    print("EDIT DATA: $data");
     return await dio.put(url, data: data);
   }
 }

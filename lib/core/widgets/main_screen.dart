@@ -30,57 +30,58 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     _initializeLocation();
   }
+
   Future<void> _initializeLocation() async {
-  final isLoggedIn = await AuthLocalStorage.isLoggedIn();
-  if (!isLoggedIn) return;
+    final isLoggedIn = await AuthLocalStorage.isLoggedIn();
+    if (!isLoggedIn) return;
 
-  final savedLocation = await AuthLocalStorage.getLocation();
-  if (savedLocation != null) {
-    print("Location already saved, skipping update");
-    return;
+    final savedLocation = await AuthLocalStorage.getLocation();
+    if (savedLocation != null) {
+      print("Location already saved, skipping update");
+      return;
+    }
+
+    final locationService = LocationService();
+    final position = await locationService.getCurrentLocation();
+
+    if (position == null) {
+      print("Location permission denied or service disabled");
+      return;
+    }
+
+    final lat = position.latitude;
+    final lng = position.longitude;
+
+    try {
+      await getIt<AuthRepo>().updateLocation(
+        lat: lat,
+        lng: lng,
+      );
+
+      //  lat & lng
+      await AuthLocalStorage.saveLocation(lat, lng);
+
+      final placemarks = await placemarkFromCoordinates(lat, lng);
+      final place = placemarks.first;
+
+      final address =
+          "${place.street ?? ""}, ${place.locality ?? ""}, ${place.country ?? ""}";
+
+      await AuthLocalStorage.saveAddress(address);
+
+      print("Location + Address saved successfully");
+    } catch (e) {
+      print("Failed to update location: $e");
+    }
   }
 
-  final locationService = LocationService();
-  final position = await locationService.getCurrentLocation();
-
-  if (position == null) {
-    print("Location permission denied or service disabled");
-    return;
-  }
-
-  final lat = position.latitude;
-  final lng = position.longitude;
-
-  try {
-    await getIt<AuthRepo>().updateLocation(
-      lat: lat,
-      lng: lng,
-    );
-
-    //  lat & lng
-    await AuthLocalStorage.saveLocation(lat, lng);
-
-    final placemarks = await placemarkFromCoordinates(lat, lng);
-    final place = placemarks.first;
-
-    final address =
-        "${place.street ?? ""}, ${place.locality ?? ""}, ${place.country ?? ""}";
-
-    await AuthLocalStorage.saveAddress(address);
-
-    print("Location + Address saved successfully");
-  } catch (e) {
-    print("Failed to update location: $e");
-  }
-}
-  final List<Widget> screens = const [
-    Center(child: HomeScreen()),
-    Center(child: DrugStoreScreen()),
-    Center(child: ScanScreen()),
-    Center(child: InsuranceScreen()),
-    Center(child: ProfileScreen()),
-  ];
-
+  List<Widget> get screens => [
+        const HomeScreen(),
+        const DrugStoreScreen(),
+        const ScanScreen(),
+        const InsuranceScreen(),
+        const ProfileScreen(),
+      ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

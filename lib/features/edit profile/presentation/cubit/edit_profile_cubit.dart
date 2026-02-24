@@ -46,7 +46,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
       emit(EditProfileSuccess());
     } catch (e) {
-      emit(EditProfileFailure("Failed to update profile"));
+      emit(EditProfileFailure(e.toString()));
     }
   }
 }

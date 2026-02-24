@@ -273,20 +273,24 @@ class AuthRepo {
     required String gender,
     required String birthDate,
     required String address,
+    // required int genderValue,
   }) async {
     try {
-      final Map<String, dynamic> data = {};
+      final data = {
+        "fullName": fullName,
+        "gender": gender.toLowerCase(),
+        "birthDate": birthDate.split("T").first,
+        "address": address,
+      };
 
-      if (fullName.isNotEmpty) data["fullName"] = fullName;
-      if (gender.isNotEmpty) data["gender"] = gender;
-      if (birthDate.isNotEmpty) data["birthDate"] = birthDate;
-      if (address.isNotEmpty) data["address"] = address;
+      print("EDIT DATA: $data");
 
       await DioHelper.put(
         url: ApiConstants.editProfile,
         data: data,
       );
     } on DioException catch (e) {
+      print(e.response?.data);
       throw e.response?.data ?? {"message": "Failed to update profile"};
     }
   }

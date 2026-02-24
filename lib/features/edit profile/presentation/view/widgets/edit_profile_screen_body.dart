@@ -16,6 +16,7 @@ class EditProfileScreenBody extends StatefulWidget {
   @override
   State<EditProfileScreenBody> createState() => _EditProfileScreenBodyState();
 }
+
 class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
@@ -42,8 +43,8 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
     fullNameController.text = data["fullName"] ?? '';
     addressController.text = data["address"] ?? '';
 
-    /// 👇 مهم جدًا
-    birthDateController.text = data["birthDateText"] ?? '';
+    // birthDateController.text = data["birthDateText"] ?? '';
+    birthDateController.text = data["birthDate"] ?? '';
 
     selectedGender = data["genderText"] ?? '';
   }
@@ -55,7 +56,6 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
         if (state is EditProfileSuccess) {
           final cubit = context.read<EditProfileCubit>();
 
-          /// أول مرة تحميل بيانات
           if (!isDataLoaded && cubit.profileData != null) {
             _fillData(cubit.profileData!);
             isDataLoaded = true;
@@ -63,7 +63,6 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
             return;
           }
 
-          /// بعد الحفظ
           AppSnackBar.show(
             context,
             message: "Profile updated successfully!",
@@ -93,35 +92,26 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
               const ArrowBack(),
               const CustomScreenTitle(title: 'Edit Profile'),
               const SizedBox(height: 30),
-
               EditProfileTextField(
                 label: 'Full name',
                 controller: fullNameController,
               ),
-
               const SizedBox(height: 10),
-
               EditProfileTextField(
                 label: 'Address',
                 controller: addressController,
               ),
-
               const SizedBox(height: 10),
-
               GenderField(
                 onChanged: (value) {
                   selectedGender = value ?? '';
                 },
               ),
-
               const SizedBox(height: 10),
-
               BirthdayField(
                 controller: birthDateController,
               ),
-
               const SizedBox(height: 40),
-
               LargeAppButton(
                 text: state is EditProfileLoading ? 'Loading...' : 'Save',
                 onPressed: state is EditProfileLoading

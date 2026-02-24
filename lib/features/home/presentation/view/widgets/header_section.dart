@@ -43,7 +43,6 @@ class HeaderSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      // 👈 نخلي الجزء الشمال يتمدد
                       child: Row(
                         children: [
                           Container(
@@ -76,12 +75,8 @@ class HeaderSection extends StatelessWidget {
                                   : _defaultAvatar(),
                             ),
                           ),
-
                           const SizedBox(width: 12),
-
-                          /// الاسم
                           Expanded(
-                            // 👈 مهم جداً
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -135,97 +130,6 @@ class HeaderSection extends StatelessWidget {
                   ],
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 30.0),
-              //   child: Expanded(
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Row(
-              //           children: [
-              //             Container(
-              //               width: 54,
-              //               height: 54,
-              //               decoration: BoxDecoration(
-              //                 shape: BoxShape.circle,
-              //                 border: Border.all(
-              //                   color: Colors.white,
-              //                   width: 2.5,
-              //                 ),
-              //                 boxShadow: [
-              //                   BoxShadow(
-              //                     color: Colors.black.withOpacity(0.2),
-              //                     blurRadius: 8,
-              //                     offset: const Offset(0, 3),
-              //                   ),
-              //                 ],
-              //               ),
-              //               child: ClipOval(
-              //                 child: imageUrl != null
-              //                     ? Image.network(
-              //                         imageUrl,
-              //                         fit: BoxFit.cover,
-              //                         errorBuilder:
-              //                             (context, error, stackTrace) {
-              //                           return _defaultAvatar();
-              //                         },
-              //                       )
-              //                     : _defaultAvatar(),
-              //               ),
-              //             ),
-
-              //             const SizedBox(width: 12),
-
-              //             /// الاسم
-              //             Column(
-              //               crossAxisAlignment: CrossAxisAlignment.start,
-              //               children: [
-              //                 const Text(
-              //                   'Hello,',
-              //                   style: TextStyle(
-              //                     color: Colors.white70,
-              //                     fontSize: 14,
-              //                   ),
-              //                 ),
-              //                 const SizedBox(height: 2),
-              //                 Text(
-              //                   fullName,
-              //                   style: const TextStyle(
-              //                     color: Colors.white,
-              //                     fontSize: 18,
-              //                     fontWeight: FontWeight.bold,
-              //                   ),
-              //                 ),
-              //               ],
-              //             ),
-              //           ],
-              //         ),
-
-              //         ///  Notifications
-              //         Container(
-              //           width: 50,
-              //           height: 50,
-              //           decoration: BoxDecoration(
-              //             color: Colors.white.withOpacity(0.2),
-              //             borderRadius: BorderRadius.circular(20),
-              //           ),
-              //           child: IconButton(
-              //             icon: const Icon(
-              //               Icons.notifications_outlined,
-              //               color: Colors.white,
-              //             ),
-              //             onPressed: () {
-              //               Navigator.pushNamed(
-              //                 context,
-              //                 NotificationsScreen.routeName,
-              //               );
-              //             },
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
 
               const SizedBox(height: 20),
 
@@ -246,10 +150,10 @@ class HeaderSection extends StatelessWidget {
 
   Widget _defaultAvatar() {
     return Container(
-      color: const Color(0xFF1E3A8A),
+      color: Colors.grey,
       child: const Icon(
         Icons.person,
-        color: Colors.white70,
+        color: Colors.white,
         size: 28,
       ),
     );

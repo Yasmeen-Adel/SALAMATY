@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:salamaty/core/widgets/arrow_back.dart';
 import 'package:salamaty/core/widgets/custom_screen_subtitle.dart';
 import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/features/scan/presentation/view/widgets/extract_screen.dart';
