@@ -35,7 +35,8 @@ class ProfileCubit extends Cubit<ProfileState> {
           email: profile['email'] ?? '',
           gender: profile['genderText'] ?? '',
           imageUrl: imageUrl,
-          birthday: profile['birthDate'] ?? '',
+          // birthday: profile['birthDate'] ?? 'Birthday not set',
+          birthday: profile['birthDateText'] ?? 'Birthday',
         ),
       );
     } catch (e) {
