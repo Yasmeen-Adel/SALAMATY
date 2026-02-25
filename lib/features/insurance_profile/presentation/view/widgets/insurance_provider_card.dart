@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:salamaty/core/utils/app_colors.dart';
 import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class InsuranceProviderCard extends StatelessWidget {
@@ -22,7 +24,7 @@ class InsuranceProviderCard extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: const Color(0xFF0D2D9E).withOpacity(0.25),
                 width: 1.5,
@@ -30,21 +32,8 @@ class InsuranceProviderCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Container(
-                  width: 45,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF0D2D9E).withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Image.asset(
-                      'assets/icons/insurance_provider_icon.png',
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
+                Icon(Icons.health_and_safety_outlined,
+                    color: AppColors.primaryColor, size: 40),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(

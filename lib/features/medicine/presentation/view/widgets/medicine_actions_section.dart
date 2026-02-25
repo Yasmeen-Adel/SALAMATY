@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:salamaty/core/utils/app_text_styles.dart';
-import 'package:salamaty/core/widgets/large_app_Button.dart';
-import 'package:salamaty/core/widgets/outlined_large_button.dart';
+import 'package:salamaty/features/medicine_alternatives/presentation/view/medicine_alternatives_screen.dart';
 
 class MedicineActionsSection extends StatefulWidget {
   const MedicineActionsSection({super.key});
@@ -16,15 +14,15 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
           Row(
             children: [
               // Favorite Icon Button
               Container(
-                width: 60,
-                height: 60,
+                width: 50,
+                height: 50,
                 decoration: BoxDecoration(
                   color: isFavorite ? Colors.red : const Color(0xFF0D2D9E),
                   shape: BoxShape.circle,
@@ -44,11 +42,11 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
                   },
                 ),
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 10),
               // See Alternatives Button
               Expanded(
                 child: SizedBox(
-                  height: 60,
+                  height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF0D2D9E),
@@ -56,11 +54,15 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, MedicineAlternativesScreen.routeName);
+                    },
                     child: Text(
                       'See Alternatives',
-                      style: AppTextStyles.semiBold24.copyWith(
-                        color: const Color.fromARGB(255, 255, 255, 255),
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -69,11 +71,6 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
             ],
           ),
           const SizedBox(height: 16),
-          // Find Pharmacies Outlined Button
-          OutlinedLargeButton(
-            text: 'Find Pharmacies',
-            onPressed: () {},
-          ),
         ],
       ),
     );

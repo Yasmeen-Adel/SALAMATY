@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:salamaty/features/medicine_alternatives/presentation/view/widgets/medicine_alternatives_header_section.dart';
+import 'package:salamaty/core/widgets/arrow_back.dart';
+import 'package:salamaty/core/widgets/custom_screen_subtitle.dart';
+import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/features/medicine_alternatives/presentation/view/widgets/alternatives_list_section.dart';
 
 class MedicineAlternativesBody extends StatelessWidget {
@@ -15,8 +17,19 @@ class MedicineAlternativesBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            MedicineAlternativesHeaderSection(),
-            SizedBox(height: 10),
+            //arrow back , titl ,subtitle ...................................................
+            // MedicineAlternativesHeaderSection(),
+            SizedBox(
+              height: 60,
+            ),
+            ArrowBack(),
+            CustomScreenTitle(title: 'Medicine Alternatives'),
+            SizedBox(
+              height: 5,
+            ),
+            CustomScreenSubtitle(
+                subtitleText:
+                    'Here are some alternatives for the medicine you are looking for'),
             AlternativesListSection(),
           ],
         ),

@@ -8,10 +8,10 @@ class MedicineImageSection extends StatelessWidget {
     final double screenHeight = MediaQuery.of(context).size.height;
 
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
         width: double.infinity,
-        height: screenHeight * 0.42,
+        height: screenHeight * 0.35,
         decoration: BoxDecoration(
           color: const Color(0xFFE5E9F5),
           borderRadius: BorderRadius.circular(40),

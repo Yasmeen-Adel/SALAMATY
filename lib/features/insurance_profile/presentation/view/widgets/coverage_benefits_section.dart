@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/core/utils/app_colors.dart';
 import 'package:salamaty/features/insurance_profile/presentation/view/widgets/benefit_item.dart';
 import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class CoverageBenefitsSection extends StatelessWidget {
-  const CoverageBenefitsSection({Key? key}) : super(key: key);
+  const CoverageBenefitsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +21,35 @@ class CoverageBenefitsSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           BenefitItem(
-            iconPath: 'assets/icons/medicines_icon.png',
+            iconPath: Icon(
+              Icons.medical_services_outlined,
+              color: AppColors.primaryColor,
+              size: 26,
+            ),
             title: 'Medicines',
             items: const ['Prophine', 'Catafast', 'panadol'],
             isCovered: true,
           ),
           const SizedBox(height: 12),
           BenefitItem(
-            iconPath: 'assets/icons/lab_tests_icon.png',
+            iconPath: Icon(
+              Icons.science_outlined,
+              color: AppColors.primaryColor,
+              size: 26,
+            ),
             title: 'Lab Tests',
             items: const ['Prophine', 'Catafast', 'panadol'],
             isCovered: true,
           ),
           const SizedBox(height: 12),
           BenefitItem(
-            iconPath: 'assets/icons/hospitals_icon.png',
+            iconPath: Icon(
+              Icons.local_hospital_outlined,
+              color: AppColors.primaryColor,
+              size: 26,
+            ),
             title: 'Hospitals',
-            items: const [],
+            items: const ['Prophine', 'Catafast', 'panadol'],
             isCovered: true,
           ),
         ],

@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class BenefitItem extends StatelessWidget {
-  final String iconPath;
+  final Widget iconPath;
   final String title;
   final List<String> items;
   final bool isCovered;
 
   const BenefitItem({
-    Key? key,
+    super.key,
     required this.iconPath,
     required this.title,
     required this.items,
     required this.isCovered,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: const Color(0xFF0D2D9E).withOpacity(0.25),
           width: 1.5,
@@ -39,13 +39,13 @@ class BenefitItem extends StatelessWidget {
                   color: const Color(0xFF1E40AF).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    iconPath,
-                    fit: BoxFit.contain,
-                  ),
-                ),
+                child:
+                    Padding(padding: const EdgeInsets.all(8.0), child: iconPath
+                        // Image.asset(
+                        //   iconPath,
+                        //   fit: BoxFit.contain,
+                        // ),
+                        ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -66,12 +66,17 @@ class BenefitItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 4),
-                    Image.asset(
-                      'assets/icons/covered_icon.png',
-                      width: 16,
-                      height: 16,
-                      fit: BoxFit.contain,
+                    Icon(
+                      Icons.check_circle_outline,
+                      color: Color.fromARGB(255, 57, 195, 55),
+                      size: 20,
                     ),
+                    // Image.asset(
+                    //   'assets/icons/covered_icon.png',
+                    //   width: 16,
+                    //   height: 16,
+                    //   fit: BoxFit.contain,
+                    // ),
                   ],
                 ),
             ],
