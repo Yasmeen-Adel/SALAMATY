@@ -24,7 +24,6 @@ import 'package:salamaty/features/home/presentation/view/home_screen.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
-    //Splash Screen :)
     case SplashScreen.routeName:
       return MaterialPageRoute(builder: (_) => SplashScreen());
     //Splash Screen2 :)
