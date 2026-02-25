@@ -8,8 +8,12 @@ import 'package:salamaty/features/authentication/verification/presentation/view/
 import 'package:salamaty/features/drug%20store/presentation/view/drug_store_screen.dart';
 import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
+import 'package:salamaty/features/favorite/presentation/view/favorite_screen.dart';
 import 'package:salamaty/features/insurance%20information/presentation/view/insurance_information_screen.dart';
 import 'package:salamaty/features/insurance%20services/presentation/view/insurance_services_screen.dart';
+import 'package:salamaty/features/insurance_profile/presentation/view/insurance_profile_screen.dart';
+import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
+import 'package:salamaty/features/medicine_alternatives/presentation/view/medicine_alternatives_screen.dart';
 import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
 import 'package:salamaty/features/select%20insurance/presentation/view/insurance_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
@@ -94,7 +98,21 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     //    //Specialties Section  :)
     // case SpecialtiesSection.routeName:
     //   return MaterialPageRoute(builder: (_) => SpecialtiesSection());
-    default:
+    //Medicine Details Screen :)
+    case MedicineDetailsScreen.routeName:
+      return MaterialPageRoute(builder: (_) => const MedicineDetailsScreen());
+    //Medicine Alternatives Screen :)
+    case MedicineAlternativesScreen.routeName:
+      return MaterialPageRoute(
+          builder: (_) => const MedicineAlternativesScreen());
+    //Insurance Profile Screen :) 
+    case InsuranceProfileScreen.routeName:
+      return MaterialPageRoute(builder: (_) => const InsuranceProfileScreen());
+    //favorite Screen :)
+    case FavoriteScreen.routeName:
+      return MaterialPageRoute(builder: (_) => const FavoriteScreen());
+    
+  default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
 }

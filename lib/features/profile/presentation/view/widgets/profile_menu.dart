@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/core/services/auth_local_storage.dart';
 import 'package:salamaty/core/widgets/language_selector.dart';
 import 'package:salamaty/features/edit profile/presentation/view/edit_profile_screen.dart';
+import 'package:salamaty/features/insurance_profile/presentation/view/insurance_profile_screen.dart';
 import 'package:salamaty/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:salamaty/features/profile/presentation/cubit/profile_state.dart';
 import 'package:salamaty/features/profile/presentation/view/widgets/profile_list_tile.dart';
@@ -47,7 +48,17 @@ class _ProfileMenuState extends State<ProfileMenu> {
                 ProfileListTile(
                   title: addressText,
                   prefixIcon: Icons.location_on_outlined,
-                 
+                ),
+                ProfileListTile(
+                  title: 'Insurance Profile',
+                  prefixIcon: Icons.health_and_safety_outlined,
+                  trailingIcon: Icons.arrow_forward_ios,
+                  onTap: () async {
+                    await Navigator.pushNamed(
+                      context,
+                      InsuranceProfileScreen.routeName,
+                    );
+                  },
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -56,17 +67,14 @@ class _ProfileMenuState extends State<ProfileMenu> {
                 ProfileListTile(
                   title: state.email,
                   prefixIcon: Icons.email_outlined,
-                
                 ),
                 ProfileListTile(
                   title: state.gender,
                   prefixIcon: Icons.female,
-                
                 ),
-                  ProfileListTile(
+                ProfileListTile(
                   title: state.birthday,
                   prefixIcon: Icons.cake_outlined,
-               
                 ),
                 ProfileListTile(
                   title: 'Edit Profile',

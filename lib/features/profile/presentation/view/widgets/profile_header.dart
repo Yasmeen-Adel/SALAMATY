@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/features/favorite/presentation/view/favorite_screen.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});
@@ -28,7 +29,9 @@ class ProfileHeader extends StatelessWidget {
                 Icons.favorite_border,
                 color: Colors.white,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, FavoriteScreen.routeName);
+              },
             ),
           ),
         ],
