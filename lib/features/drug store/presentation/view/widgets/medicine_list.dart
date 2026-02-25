@@ -1,36 +1,5 @@
-// import 'package:flutter/material.dart';
-// import 'medicine_card.dart';
-
-// class MedicineList extends StatelessWidget {
-//   const MedicineList({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//     return GridView.builder(
-//       padding: const EdgeInsets.all(16),
-//       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//         crossAxisCount: 2,
-//         mainAxisSpacing: 14,
-//         crossAxisSpacing: 8,
-//         childAspectRatio: 0.75,
-//       ),
-//       itemCount: 6,
-//       itemBuilder: (context, index) {
-//         return MedicineCard(
-//           imageUrl:
-//               'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae',
-//           name: index.isEven
-//               ? 'Fish Oil Omega 3'
-//               : 'Lansoprazole 30 mg',
-//           price: index.isEven ? 'Rp75.000' : 'Rp15.000',
-//           onFindPharmacy: () {},
-//         );
-//       },
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
+import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
 import 'medicine_card.dart';
 
 class MedicineList extends StatelessWidget {
@@ -40,7 +9,7 @@ class MedicineList extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, String>> medicines = [
       {
-        'name': 'Lansoprazole 30 mg',
+        'name': 'Paracetamol',
         'price': 'Rp15.000',
         'image': 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5',
       },
@@ -79,7 +48,7 @@ class MedicineList extends StatelessWidget {
         crossAxisSpacing: 8,
         childAspectRatio: 0.75,
       ),
-      itemCount: medicines.length, // ✅ عدد العناصر من الليست
+      itemCount: medicines.length,
       itemBuilder: (context, index) {
         final medicine = medicines[index];
 
@@ -88,6 +57,9 @@ class MedicineList extends StatelessWidget {
           name: medicine['name']!,
           price: medicine['price']!,
           onFindPharmacy: () {},
+          onTap: () {
+            Navigator.pushNamed(context,MedicineDetailsScreen.routeName);
+          },
         );
       },
     );
