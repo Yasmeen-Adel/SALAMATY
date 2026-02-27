@@ -6,13 +6,15 @@ class HomeInitial extends HomeState {}
 
 class HomeLoading extends HomeState {}
 
-class HomeLoaded extends HomeState {
+class HomeSuccess extends HomeState {
   final String fullName;
   final String? imageUrl;
+  final List<TipModel> tips;
 
-  HomeLoaded({
+  HomeSuccess({
     required this.fullName,
-    this.imageUrl,
+    required this.imageUrl,
+    required this.tips,
   });
 }
 

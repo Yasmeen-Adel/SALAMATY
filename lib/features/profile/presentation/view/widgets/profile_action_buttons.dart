@@ -3,7 +3,7 @@ import 'package:salamaty/core/services/get_it_services.dart';
 import 'package:salamaty/core/widgets/app_dialog.dart';
 import 'package:salamaty/core/widgets/app_snackbar.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
-import 'package:salamaty/features/authentication/data/auth_repo.dart';
+import 'package:salamaty/features/profile/data/profile_repo.dart';
 
 class ProfileActionButtons extends StatelessWidget {
   const ProfileActionButtons({super.key});
@@ -31,7 +31,7 @@ class ProfileActionButtons extends StatelessWidget {
                     Navigator.pop(context);
 
                     try {
-                      await getIt<AuthRepo>().deleteAccount();
+                      await getIt<ProfileRepo>().deleteAccount();
                       if (!context.mounted) return;
 
                       AppSnackBar.show(
@@ -93,7 +93,7 @@ class ProfileActionButtons extends StatelessWidget {
                     // close dialog first ........)
                     Navigator.pop(context);
 
-                    await getIt<AuthRepo>().logout();
+                    await getIt<ProfileRepo>().logout();
                     if (!context.mounted) return;
 
                     AppSnackBar.show(

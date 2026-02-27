@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:salamaty/core/services/get_it_services.dart';
-import 'package:salamaty/features/authentication/data/auth_repo.dart';
+import 'package:salamaty/features/profile/data/profile_repo.dart';
 import 'profile_state.dart';
 import 'package:salamaty/core/services/auth_local_storage.dart';
 
@@ -9,7 +9,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
 
   final ImagePicker _picker = ImagePicker();
-  final AuthRepo _repo = getIt<AuthRepo>();
+  final ProfileRepo _repo = getIt<ProfileRepo>();
 
   String? imageUrl;
   Future<void> loadProfile() async {

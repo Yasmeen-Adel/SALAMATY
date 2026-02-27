@@ -43,7 +43,6 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
     fullNameController.text = data["fullName"] ?? '';
     addressController.text = data["address"] ?? '';
 
-    // birthDateController.text = data["birthDateText"] ?? '';
     birthDateController.text = data["birthDate"] ?? '';
 
     selectedGender = data["genderText"] ?? '';
@@ -117,6 +116,19 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
                 onPressed: state is EditProfileLoading
                     ? null
                     : () {
+                        if (fullNameController.text.trim().isEmpty ||
+                            addressController.text.trim().isEmpty ||
+                            birthDateController.text.trim().isEmpty ||
+                            selectedGender.isEmpty) {
+                          AppSnackBar.show(
+                            context,
+                            message: "Please complete all required fields",
+                            type: SnackBarType.error,
+                          );
+
+                          return;
+                        }
+
                         context.read<EditProfileCubit>().updateProfile(
                               fullName: fullNameController.text.trim(),
                               gender: selectedGender,
