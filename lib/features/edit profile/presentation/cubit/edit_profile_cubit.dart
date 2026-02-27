@@ -1,12 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/core/services/get_it_services.dart';
-import 'package:salamaty/features/authentication/data/auth_repo.dart';
+import 'package:salamaty/features/profile/data/profile_repo.dart';
 import 'edit_profile_state.dart';
 
 class EditProfileCubit extends Cubit<EditProfileState> {
   EditProfileCubit() : super(EditProfileInitial());
 
-  final AuthRepo _repo = getIt<AuthRepo>();
+  final ProfileRepo _repo = getIt<ProfileRepo>();
 
   Map<String, dynamic>? profileData;
 

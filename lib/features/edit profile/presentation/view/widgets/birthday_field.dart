@@ -21,7 +21,6 @@ class _BirthdayFieldState extends State<BirthdayField> {
     try {
       final parsed = DateTime.parse(widget.controller.text);
 
-      /// لو السيرفر باعت 0001-01-01
       if (parsed.year < 1900) {
         return DateTime(2000);
       }

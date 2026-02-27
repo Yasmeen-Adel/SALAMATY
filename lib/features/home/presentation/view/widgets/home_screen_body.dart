@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/facilities_section.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/header_section.dart';
-import 'package:salamaty/features/home/presentation/view/widgets/track_meds_section.dart';
+import 'package:salamaty/features/home/presentation/view/widgets/med_tips.dart';
 import 'package:salamaty/features/specialities/presentation/view/widgets/specialities_scection.dart';
 
 class HomeScreenBody extends StatelessWidget {
@@ -19,7 +19,7 @@ class HomeScreenBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
                 SpecialtiesSection(),
-                TrackMedsSection(),
+                MedTips(),
                 SizedBox(height: 6),
                 FacilitiesSection(),
                 SizedBox(height: 6),

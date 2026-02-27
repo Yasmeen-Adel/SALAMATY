@@ -16,6 +16,15 @@ class ProfileMenu extends StatefulWidget {
 }
 
 class _ProfileMenuState extends State<ProfileMenu> {
+
+  late Future<String> _locationFuture; 
+
+  @override
+  void initState() {
+    super.initState();
+    _locationFuture = _loadLocation(); 
+  }
+
   Future<String> _loadLocation() async {
     final address = await AuthLocalStorage.getAddress();
     return address ?? "Location not set";
@@ -25,14 +34,22 @@ class _ProfileMenuState extends State<ProfileMenu> {
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
+
         if (state is! ProfileLoaded) {
           return const SizedBox();
         }
 
         return FutureBuilder<String>(
-          future: _loadLocation(),
+          future: _locationFuture,
           builder: (context, snapshot) {
-            final addressText = snapshot.data ?? "Loading...";
+
+            String addressText;
+
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              addressText = "Loading...";
+            } else {
+              addressText = snapshot.data ?? "Location not set";
+            }
 
             return Column(
               children: [
@@ -44,11 +61,14 @@ class _ProfileMenuState extends State<ProfileMenu> {
                     color: Color(0xFF0033A0),
                   ),
                 ),
+
                 const SizedBox(height: 16),
+
                 ProfileListTile(
                   title: addressText,
                   prefixIcon: Icons.location_on_outlined,
                 ),
+
                 ProfileListTile(
                   title: 'Insurance Profile',
                   prefixIcon: Icons.health_and_safety_outlined,
@@ -60,35 +80,46 @@ class _ProfileMenuState extends State<ProfileMenu> {
                     );
                   },
                 ),
+
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Divider(),
                 ),
+
                 ProfileListTile(
                   title: state.email,
                   prefixIcon: Icons.email_outlined,
                 ),
+
                 ProfileListTile(
                   title: state.gender,
                   prefixIcon: Icons.female,
                 ),
+
                 ProfileListTile(
                   title: state.birthday,
                   prefixIcon: Icons.cake_outlined,
                 ),
+
                 ProfileListTile(
                   title: 'Edit Profile',
                   prefixIcon: Icons.edit_outlined,
                   trailingIcon: Icons.arrow_forward_ios,
                   onTap: () async {
+
                     await Navigator.pushNamed(
                       context,
                       EditProfileScreen.routeName,
                     );
 
                     context.read<ProfileCubit>().loadProfile();
+
+                    setState(() {
+                      _locationFuture = _loadLocation();
+                    });
                   },
                 ),
+
                 const LanguageSelectorTile(),
               ],
             );
