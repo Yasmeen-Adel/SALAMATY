@@ -14,7 +14,7 @@ class HeaderSection extends StatelessWidget {
         String fullName = "User";
         String? imageUrl;
 
-        if (state is HomeLoaded) {
+        if (state is HomeSuccess) {
           fullName = state.fullName;
           imageUrl = state.imageUrl;
         }
