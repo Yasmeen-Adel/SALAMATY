@@ -1,11 +1,11 @@
-
 import 'package:flutter/material.dart';
-import 'package:salamaty/features/specialities/presentation/view/ophthalmology_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:salamaty/features/specialities/presentation/view/specialties_screen.dart';
 
 class MedicalSpecialty {
   final String name;
   final IconData icon;
- final Widget screen;
+  final Widget screen;
   MedicalSpecialty({
     required this.name,
     required this.icon,
@@ -16,52 +16,48 @@ class MedicalSpecialty {
 final List<MedicalSpecialty> medicalSpecialties = [
   MedicalSpecialty(
     name: 'Cardiology',
-    icon: Icons.favorite_border,
-   screen: OphthalmologyScreen(),
+    icon: FontAwesomeIcons.heartPulse,
+    screen: SpecialtiesScreens(specialtyName: 'Cardiology'),
   ),
   MedicalSpecialty(
     name: 'Ophthalmology',
-    icon: Icons.visibility_outlined,
-    screen: OphthalmologyScreen(),
+    icon:  FontAwesomeIcons.eye,
+    screen: SpecialtiesScreens(specialtyName: 'Ophthalmology'),
   ),
   MedicalSpecialty(
     name: 'Nephrology',
     icon: Icons.water_drop_outlined,
-    screen: OphthalmologyScreen(),
+    screen: SpecialtiesScreens(specialtyName: 'Nephrology'),
   ),
   MedicalSpecialty(
     name: 'Pediatrics',
-    icon: Icons.child_care,
-    screen: OphthalmologyScreen(),
+    icon:FontAwesomeIcons.baby,
+    screen: SpecialtiesScreens(specialtyName: 'Pediatrics'),
   ),
   MedicalSpecialty(
     name: 'Orthopedics',
-    icon: Icons.accessibility_new,
-    screen: OphthalmologyScreen(),
+    icon: Icons.personal_injury_outlined,
+    screen: SpecialtiesScreens(specialtyName: 'Orthopedics'),
   ),
   MedicalSpecialty(
     name: 'Neurology',
-    icon: Icons.psychology_outlined,
-    screen: OphthalmologyScreen(),
+    // icon: Icons.psychology_outlined,
+    icon: FontAwesomeIcons.brain,
+    screen: SpecialtiesScreens(specialtyName: 'Neurology'),
   ),
   MedicalSpecialty(
     name: 'Obstetrics & Gynecology',
-    icon: Icons.pregnant_woman_outlined,
-    screen: OphthalmologyScreen(),
-  ),
-  MedicalSpecialty(
-    name: 'General Surgery',
-    icon: Icons.medical_services_outlined,
-    screen: OphthalmologyScreen(),
-  ),
-  MedicalSpecialty(
-    name: 'Multi-Specialty',
-    icon: Icons.local_hospital_outlined,
-    screen: OphthalmologyScreen(),
+    icon: FontAwesomeIcons.personPregnant,
+    screen: SpecialtiesScreens(specialtyName: 'Obstetrics & Gynecology'),
   ),
   MedicalSpecialty(
     name: 'Dentistry',
-    icon: Icons.medical_information_outlined,
-    screen: OphthalmologyScreen(),
+    icon: FontAwesomeIcons.tooth,
+    screen: SpecialtiesScreens(specialtyName: 'Dentistry'),
+  ),
+   MedicalSpecialty(
+    name: 'Multidisciplinary',
+    icon: FontAwesomeIcons.stethoscope,
+    screen: SpecialtiesScreens(specialtyName: 'Multidisciplinary'),
   ),
 ];
