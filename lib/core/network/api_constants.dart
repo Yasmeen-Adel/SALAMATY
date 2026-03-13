@@ -14,7 +14,8 @@ class ApiConstants {
   static const String updateLocation = '/api/User/update-location'; //Done
   static const String getProfile = '/api/User/profile'; //Done
   static const String editProfile = '/api/User/EditProfile'; //Done
-  static const String nearbyFacilities = '';
   static const String homeTips = '/api/home/Tips';
   static const String specialtiesProviders = '/api/home/specialties-providers';
+  static const String nearbyTop3 = '/api/Facilities/nearby-top3';
+  static const String allFacilities = '/api/Facilities/all-facilities';
 }

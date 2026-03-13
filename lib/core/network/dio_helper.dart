@@ -76,20 +76,15 @@ class DioHelper {
     print("EDIT DATA: $data");
     return await dio.put(url, data: data);
   }
+
   // GET
   static Future<Response> get({
-  required String url,
-  Map<String, dynamic>? query,
-}) async {
-  return await dio.get(
-    url,
-    queryParameters: query,
-  );
-}
-// static Future<Response> get({
-//   required String url,
-// }) async {
-//   return await dio.get(url);
-// }
-
+    required String url,
+    Map<String, dynamic>? query,
+  }) async {
+    return await dio.get(
+      url,
+      queryParameters: query,
+    );
+  }
 }

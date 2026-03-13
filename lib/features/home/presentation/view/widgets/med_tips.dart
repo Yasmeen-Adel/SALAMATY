@@ -154,11 +154,11 @@ class _MedTipsState extends State<MedTips> {
             child: Center(child: Text("Failed to load tips")),
           );
         }
-
-        return const SizedBox(
-          height: 165,
-          child: Center(child: CircularProgressIndicator()),
-        );
+        return const SizedBox();
+        // return const SizedBox(
+        //   height: 165,
+        //   child: Center(child: CircularProgressIndicator()),
+        // );
       },
     );
   }
