@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
+import 'package:salamaty/features/drug%20store/presentation/view/widgets/drug_store_search_bar.dart';
 import 'package:salamaty/features/facilities/presentation/view/widgets/facilities_search_bar.dart';
 
 class DrugStoreHeader extends StatelessWidget {
@@ -47,7 +48,7 @@ class DrugStoreHeader extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Search
-          const FacilitiesSearchBar(),
+          const DrugStoreSearchBar(),
         ],
       ),
     );
