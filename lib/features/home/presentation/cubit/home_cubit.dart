@@ -12,7 +12,6 @@ class HomeCubit extends Cubit<HomeState> {
   final ProfileRepo _profileRepo = getIt<ProfileRepo>();
   final HomeRepo _homeRepo = getIt<HomeRepo>();
 
-
   Future<void> loadHomeData() async {
     emit(HomeLoading());
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
 
-class FacilityCard extends StatelessWidget {
+class SpecialtyItemCard extends StatelessWidget {
   final String name;
-  final String type;
+  final String governorate;
   final String distance;
   final String address;
   final String openTime;
@@ -11,10 +11,10 @@ class FacilityCard extends StatelessWidget {
   final VoidCallback onCall;
   final VoidCallback onLocation;
 
-  const FacilityCard({
+  const SpecialtyItemCard({
     super.key,
     required this.name,
-    required this.type,
+    required this.governorate,
     required this.distance,
     required this.address,
     required this.openTime,
@@ -46,13 +46,14 @@ class FacilityCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// Name + Type
+          /// Name + governorate
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: Text(
                   name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -60,8 +61,11 @@ class FacilityCard extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(width: 8),
               Text(
-                type,
+                governorate,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontSize: 14,
                   color: Colors.grey,
@@ -75,6 +79,8 @@ class FacilityCard extends StatelessWidget {
           /// Distance + Address
           Text(
             '$distance $address',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               fontSize: 13,
               color: Colors.grey,
