@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:salamaty/features/drug%20store/presentation/view/widgets/drug_store_screen_body.dart';
+import 'package:salamaty/features/drug_store/presentation/view/widgets/drug_store_screen_body.dart';
 
 class DrugStoreScreen extends StatelessWidget {
   const DrugStoreScreen({super.key});

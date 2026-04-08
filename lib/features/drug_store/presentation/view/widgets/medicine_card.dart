@@ -15,7 +15,6 @@ class MedicineCard extends StatelessWidget {
     required this.price,
     required this.onFindPharmacy,
     required this.onTap,
-
   });
 
   @override
@@ -52,9 +51,22 @@ class MedicineCard extends StatelessWidget {
                 height: 110,
                 width: double.infinity,
                 fit: BoxFit.cover,
+
+                ///mmmmmmmmmm
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 110,
+                    width: double.infinity,
+                    color: Colors.grey.shade200,
+                    child: const Icon(
+                      Icons.broken_image,
+                      color: Colors.grey,
+                    ),
+                  );
+                },
               ),
             ),
-      
+
             Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
@@ -70,9 +82,9 @@ class MedicineCard extends StatelessWidget {
                       color: Color.fromARGB(255, 141, 141, 141),
                     ),
                   ),
-      
+
                   const SizedBox(height: 6),
-      
+
                   /// Price
                   Text(
                     price,
@@ -81,9 +93,9 @@ class MedicineCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-      
+
                   const SizedBox(height: 10),
-      
+
                   /// Button
                   SizedBox(
                     width: double.infinity,
