@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
-
     return Row(
       children: [
         Expanded(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+            height: 48,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -22,21 +22,22 @@ class SearchBarWidget extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(
                   child: TextField(
-                    controller: controller,
-                    decoration: const InputDecoration(
-                      hintText: 'Search...',
-                      hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                      border: InputBorder.none,
-                      isDense: true,
-                    ),
-                    onSubmitted: (value) {
+                    readOnly: true,
+                    onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SearchResultsPage(query: value),
+                          builder: (context) => const FacilitiesScreen(),
                         ),
                       );
                     },
+                    style: const TextStyle(fontSize: 14),
+                    decoration: const InputDecoration(
+                      hintText: 'Search...',
+                      border: InputBorder.none,
+                      isDense: true,
+                      contentPadding: EdgeInsets.zero,
+                    ),
                   ),
                 ),
               ],
@@ -49,7 +50,7 @@ class SearchBarWidget extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SearchResultsPage(query: controller.text),
+                builder: (context) => const FacilitiesScreen(),
               ),
             );
           },
@@ -68,24 +69,6 @@ class SearchBarWidget extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class SearchResultsPage extends StatelessWidget {
-  final String query;
-  const SearchResultsPage({Key? key, required this.query}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Results for "$query"')),
-      body: Center(
-        child: Text(
-          'Display search results for "$query" here',
-          style: const TextStyle(fontSize: 18),
-        ),
-      ),
     );
   }
 }

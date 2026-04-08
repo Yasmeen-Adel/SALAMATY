@@ -72,7 +72,6 @@ class SalamatyApp extends StatelessWidget {
         fontFamily: 'Plus Jakarta Sans',
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
-      // home: const MainScreen(),
       onGenerateRoute: onGenerateRoute,
       initialRoute: SplashScreen.routeName,
     );

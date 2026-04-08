@@ -4,6 +4,7 @@ import 'package:salamaty/features/authentication/data/auth_repo.dart';
 import 'package:salamaty/features/facilities/data/facilities_repo.dart';
 import 'package:salamaty/features/home/data/home_repo.dart';
 import 'package:salamaty/features/profile/data/profile_repo.dart';
+import 'package:salamaty/features/specialities/data/specialities_repo.dart';
 
 final GetIt getIt = GetIt.instance;
 void setupGetIt() {
@@ -22,5 +23,8 @@ void setupGetIt() {
   getIt.registerLazySingleton<FacilitiesRepo>(
   () => FacilitiesRepo(),
 );
+  getIt.registerLazySingleton<SpecialitiesRepo>(
+    () => SpecialitiesRepo(),
+  );
 
 }
