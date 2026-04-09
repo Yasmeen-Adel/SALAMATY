@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MedicineImageSection extends StatelessWidget {
-  const MedicineImageSection({super.key});
+  final String imageUrl;
+
+  const MedicineImageSection({
+    super.key,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +22,10 @@ class MedicineImageSection extends StatelessWidget {
           borderRadius: BorderRadius.circular(40),
         ),
         child: Center(
-          child: Image.asset(
-            'assets/images/paracetamol.png',
+          child: Image.network(
+            imageUrl,
             fit: BoxFit.contain,
+            errorBuilder: (_, __, ___) => const Icon(Icons.image, size: 50),
           ),
         ),
       ),

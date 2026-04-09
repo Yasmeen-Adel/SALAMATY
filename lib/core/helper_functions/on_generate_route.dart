@@ -5,7 +5,7 @@ import 'package:salamaty/features/authentication/forgot%20password/presentation/
 import 'package:salamaty/features/authentication/reset%20password/presentation/view/reset_password_screen.dart';
 import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
-import 'package:salamaty/features/drug%20store/presentation/view/drug_store_screen.dart';
+import 'package:salamaty/features/drug_store/presentation/view/drug_store_screen.dart';
 import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
 import 'package:salamaty/features/favorite/presentation/view/favorite_screen.dart';
@@ -24,7 +24,6 @@ import 'package:salamaty/features/home/presentation/view/home_screen.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
-    //Splash Screen :)
     case SplashScreen.routeName:
       return MaterialPageRoute(builder: (_) => SplashScreen());
     //Splash Screen2 :)
@@ -99,20 +98,28 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     // case SpecialtiesSection.routeName:
     //   return MaterialPageRoute(builder: (_) => SpecialtiesSection());
     //Medicine Details Screen :)
+
     case MedicineDetailsScreen.routeName:
-      return MaterialPageRoute(builder: (_) => const MedicineDetailsScreen());
+      final id = settings.arguments as int;
+
+      return MaterialPageRoute(
+        builder: (_) => MedicineDetailsScreen(
+          key: ValueKey(id), // 👈 أهم سطر في الحل
+          productId: id,
+        ),
+      );
     //Medicine Alternatives Screen :)
     case MedicineAlternativesScreen.routeName:
       return MaterialPageRoute(
           builder: (_) => const MedicineAlternativesScreen());
-    //Insurance Profile Screen :) 
+    //Insurance Profile Screen :)
     case InsuranceProfileScreen.routeName:
       return MaterialPageRoute(builder: (_) => const InsuranceProfileScreen());
     //favorite Screen :)
     case FavoriteScreen.routeName:
       return MaterialPageRoute(builder: (_) => const FavoriteScreen());
-    
-  default:
+
+    default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
 }

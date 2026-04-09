@@ -6,7 +6,7 @@ import 'package:salamaty/core/services/get_it_services.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salamaty/features/authentication/data/auth_repo.dart';
-import 'package:salamaty/features/drug%20store/presentation/view/drug_store_screen.dart';
+import 'package:salamaty/features/drug_store/presentation/view/drug_store_screen.dart';
 import 'package:salamaty/features/home/presentation/view/home_screen.dart';
 import 'package:salamaty/features/select%20insurance/presentation/view/insurance_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
