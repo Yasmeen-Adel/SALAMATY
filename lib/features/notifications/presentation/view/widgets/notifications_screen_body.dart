@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/arrow_back.dart';
 import 'package:salamaty/core/widgets/custom_screen_title.dart';
-import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
+import 'package:salamaty/features/edit_profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/notifications/presentation/view/widgets/welcome_card.dart';
 
 class NotificationsScreenBody extends StatelessWidget {
