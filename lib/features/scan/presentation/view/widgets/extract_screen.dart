@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:salamaty/core/widgets/arrow_back.dart';
 import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
+import 'package:salamaty/features/detected_medicines/presentation/view/detected_medicine_screen.dart';
 
 class ExtractScreen extends StatelessWidget {
   final File imageFile;
@@ -68,7 +69,10 @@ class ExtractScreen extends StatelessWidget {
           const SizedBox(height: 30),
           LargeAppButton(
             text: 'View Detected Medicines',
-            onPressed: () {},
+            onPressed: () {
+              // Navigate to the Detected Medicines screen
+              Navigator.pushNamed(context,DetectedMedicineScreen.routeName );
+            },
           ),
         ],
       ),
