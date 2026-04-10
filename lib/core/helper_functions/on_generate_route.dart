@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
 import 'package:salamaty/features/authentication/SignUp/presentation/view/sign_up_screen.dart';
-import 'package:salamaty/features/authentication/forgot%20password/presentation/view/forgot_password_screen.dart';
-import 'package:salamaty/features/authentication/reset%20password/presentation/view/reset_password_screen.dart';
+import 'package:salamaty/features/authentication/forgot_password/presentation/view/forgot_password_screen.dart';
+import 'package:salamaty/features/authentication/reset_password/presentation/view/reset_password_screen.dart';
 import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
 import 'package:salamaty/features/drug_store/presentation/view/drug_store_screen.dart';
-import 'package:salamaty/features/edit%20profile/presentation/view/edit_profile_screen.dart';
+import 'package:salamaty/features/edit_profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
 import 'package:salamaty/features/favorite/presentation/view/favorite_screen.dart';
-import 'package:salamaty/features/insurance%20information/presentation/view/insurance_information_screen.dart';
-import 'package:salamaty/features/insurance%20services/presentation/view/insurance_services_screen.dart';
+import 'package:salamaty/features/insurance_information/presentation/view/insurance_information_screen.dart';
+import 'package:salamaty/features/insurance_services/presentation/view/insurance_services_screen.dart';
 import 'package:salamaty/features/insurance_profile/presentation/view/insurance_profile_screen.dart';
 import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
 import 'package:salamaty/features/medicine_alternatives/presentation/view/medicine_alternatives_screen.dart';
 import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
-import 'package:salamaty/features/select%20insurance/presentation/view/insurance_screen.dart';
+import 'package:salamaty/features/select_insurance/presentation/view/insurance_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
 import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
 import 'package:salamaty/features/splash/presentation/view/splash_screen2.dart';
@@ -104,7 +104,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
 
       return MaterialPageRoute(
         builder: (_) => MedicineDetailsScreen(
-          key: ValueKey(id), // 👈 أهم سطر في الحل
+          key: ValueKey(id), 
           productId: id,
         ),
       );
