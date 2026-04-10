@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/core/services/auth_local_storage.dart';
 import 'package:salamaty/core/widgets/language_selector.dart';
-import 'package:salamaty/features/edit profile/presentation/view/edit_profile_screen.dart';
+import 'package:salamaty/features/edit_profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/insurance_profile/presentation/view/insurance_profile_screen.dart';
 import 'package:salamaty/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:salamaty/features/profile/presentation/cubit/profile_state.dart';

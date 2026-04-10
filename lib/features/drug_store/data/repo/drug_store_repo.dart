@@ -16,13 +16,13 @@ class DrugStoreRepo {
         },
       );
 
-      print("RESPONSE: ${response.data}"); // 👈 هنا
+      print("RESPONSE: ${response.data}");
 
       final List data = response.data;
 
       return data.map((e) => DrugStoreProduct.fromJson(e)).toList();
     } catch (e) {
-      print("REPO ERROR: $e"); // 👈 هنا
+      print("REPO ERROR: $e");
       rethrow;
     }
   }

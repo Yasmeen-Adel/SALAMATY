@@ -14,7 +14,7 @@ import 'package:salamaty/features/authentication/SignIn/presentation/view/widget
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_in_subtitle.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/widgets/sign_in_title.dart';
 import 'package:salamaty/features/authentication/SignUp/presentation/view/sign_up_screen.dart';
-import 'package:salamaty/features/authentication/forgot%20password/presentation/view/forgot_password_screen.dart';
+import 'package:salamaty/features/authentication/forgot_password/presentation/view/forgot_password_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

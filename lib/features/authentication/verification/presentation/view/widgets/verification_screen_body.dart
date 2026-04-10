@@ -9,7 +9,7 @@ import 'package:salamaty/core/widgets/custom_screen_subtitle.dart';
 import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/core/widgets/text_button_row.dart';
-import 'package:salamaty/features/authentication/reset%20password/presentation/view/reset_password_screen.dart';
+import 'package:salamaty/features/authentication/reset_password/presentation/view/reset_password_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/cubit/verification_cubit.dart';
 import 'package:salamaty/features/authentication/verification/presentation/cubit/verification_state.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/widgets/otp_widget.dart';
