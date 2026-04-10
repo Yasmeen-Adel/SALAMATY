@@ -5,6 +5,7 @@ import 'package:salamaty/features/authentication/forgot_password/presentation/vi
 import 'package:salamaty/features/authentication/reset_password/presentation/view/reset_password_screen.dart';
 import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
+import 'package:salamaty/features/detected_medicines/presentation/view/detected_medicine_screen.dart';
 import 'package:salamaty/features/drug_store/presentation/view/drug_store_screen.dart';
 import 'package:salamaty/features/edit_profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
@@ -118,6 +119,9 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     //favorite Screen :)
     case FavoriteScreen.routeName:
       return MaterialPageRoute(builder: (_) => const FavoriteScreen());
+      //detected medicine Screen :)
+    case DetectedMedicineScreen.routeName:
+      return MaterialPageRoute(builder: (_) => const DetectedMedicineScreen());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
