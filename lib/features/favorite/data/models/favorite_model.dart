@@ -13,15 +13,7 @@ class FavoriteModel {
     required this.description,
   });
 
-  // factory FavoriteModel.fromJson(Map<String, dynamic> json) {
-  //   return FavoriteModel(
-  //     favoriteId: json['favoriteId'],
-  //     productId: json['product']['id'],
-  //     name: json['product']['name'],
-  //     imageUrl: json['product']['imageUrl'] ?? '',
-  //     description: json['product']['description'] ?? '',
-  //   );
-  // }
+
   factory FavoriteModel.fromJson(Map<String, dynamic> json) {
     const baseUrl = 'http://salamaty.runasp.net/';
 

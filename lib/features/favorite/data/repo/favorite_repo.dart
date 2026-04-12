@@ -6,7 +6,7 @@ class FavoriteRepo {
   Future<List<FavoriteModel>> getFavorites() async {
     final userId = await AuthLocalStorage.getUserId();
     final response =
-        await DioHelper.dio!.get('/api/Favorites/user/$userId');
+        await DioHelper.dio.get('/api/Favorites/user/$userId');
 
     final List data = response.data;
     return data.map((e) => FavoriteModel.fromJson(e)).toList();
@@ -14,7 +14,7 @@ class FavoriteRepo {
 
   Future<FavoriteModel> addFavorite(int productId) async {
     final userId = await AuthLocalStorage.getUserId();
-    final response = await DioHelper.dio!.post(
+    final response = await DioHelper.dio.post(
       '/api/Favorites',
       data: {
         "userId": userId,
@@ -25,6 +25,6 @@ class FavoriteRepo {
   }
 
   Future<void> removeFavorite(int favoriteId) async {
-    await DioHelper.dio!.delete('/api/Favorites/$favoriteId');
+    await DioHelper.dio.delete('/api/Favorites/$favoriteId');
   }
 }

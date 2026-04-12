@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart';
 import 'package:salamaty/core/network/dio_helper.dart';
 import 'package:salamaty/features/drug_store/data/models/drug_store_model.dart';
 
@@ -8,7 +8,7 @@ class DrugStoreRepo {
     String? search,
   }) async {
     try {
-      final response = await DioHelper.dio!.get(
+      final response = await DioHelper.dio.get(
         '/api/Products',
         queryParameters: {
           if (category != null && category != 'All') 'category': category,
