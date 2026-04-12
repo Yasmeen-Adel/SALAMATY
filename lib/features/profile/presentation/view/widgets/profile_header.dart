@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:salamaty/features/favorite/presentation/view/favorite_screen.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});
@@ -19,21 +18,25 @@ class ProfileHeader extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
-              shape: BoxShape.circle,
-            ),
-            child: IconButton(
-              icon: const Icon(
-                Icons.favorite_border,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, FavoriteScreen.routeName);
-              },
-            ),
-          ),
+          SizedBox(
+            height: 50,
+          )
+          // ================= FAVORITE BUTTON =================
+          //   Container(
+          //     decoration: BoxDecoration(
+          //       color: Colors.white.withOpacity(0.2),
+          //       shape: BoxShape.circle,
+          //     ),
+          //     child: IconButton(
+          //       icon: const Icon(
+          //         Icons.favorite_border,
+          //         color: Colors.white,
+          //       ),
+          //       onPressed: () {
+          //         Navigator.pushNamed(context, FavoriteScreen.routeName);
+          //       },
+          //     ),
+          //   ),
         ],
       ),
     );

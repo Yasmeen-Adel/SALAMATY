@@ -18,11 +18,26 @@ class MedicineImageSection extends StatelessWidget {
         width: double.infinity,
         height: screenHeight * 0.35,
         decoration: BoxDecoration(
-          color: const Color(0xFFE5E9F5),
-          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30),
+
+          // border
+          border: Border.all(
+            color: Color(0xFF0D2D9E).withOpacity(0.1),
+            width: 1,
+          ),
+
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFF0D2D9E).withOpacity(0.2),
+              blurRadius: 10,
+              offset: const Offset(0, 6),
+            ),
+          ],
         ),
         child: Center(
           child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
             child: Container(
               width: double.infinity,
               height: double.infinity,
