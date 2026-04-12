@@ -82,7 +82,7 @@ class ProfileImage extends StatelessWidget {
 
                 /// ================= EDIT BUTTON =================
                 Positioned(
-                  bottom: -10,
+                  bottom: -5,
                   right: 10,
                   child: GestureDetector(
                     onTap: isUploading
@@ -102,7 +102,7 @@ class ProfileImage extends StatelessWidget {
                         ),
                       ),
                       child: const Icon(
-                        Icons.edit_outlined,
+                        Icons.add_a_photo,
                         size: 18,
                         color: Colors.white,
                       ),
