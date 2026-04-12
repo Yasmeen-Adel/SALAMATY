@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salamaty/features/favorite/presentation/view/favorite_screen.dart';
 import 'package:salamaty/features/home/presentation/cubit/home_cubit.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/search_bar_widget.dart';
 import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
@@ -116,16 +117,28 @@ class HeaderSection extends StatelessWidget {
                       ),
                       child: IconButton(
                         icon: const Icon(
-                          Icons.notifications_outlined,
+                          Icons.favorite_border,
                           color: Colors.white,
+                          size: 28,
                         ),
                         onPressed: () {
                           Navigator.pushNamed(
-                            context,
-                            NotificationsScreen.routeName,
-                          );
+                              context, FavoriteScreen.routeName);
                         },
                       ),
+                      // child:
+                      // IconButton(
+                      //   icon: const Icon(
+                      //     Icons.notifications_outlined,
+                      //     color: Colors.white,
+                      //   ),
+                      //   onPressed: () {
+                      //     Navigator.pushNamed(
+                      //       context,
+                      //       NotificationsScreen.routeName,
+                      //     );
+                      //   },
+                      // ),
                     ),
                   ],
                 ),

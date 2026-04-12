@@ -14,7 +14,6 @@ class ProfileScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
-
         /// ================= FULL PAGE LOADING =================
         if (state is ProfileInitial || state is ProfileLoading) {
           return _buildFullSkeleton();
@@ -88,15 +87,12 @@ class ProfileScreenBody extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 70),
-
           Container(
             height: 24,
             width: 120,
             color: Colors.white24,
           ),
-
           const SizedBox(height: 40),
-
           Expanded(
             child: Container(
               margin: const EdgeInsets.only(top: 40),
