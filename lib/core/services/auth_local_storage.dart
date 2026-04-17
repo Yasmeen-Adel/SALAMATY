@@ -4,18 +4,40 @@ class AuthLocalStorage {
   static const _tokenKey = 'token';
   static const _emailKey = 'email';
   static const _nameKey = 'fullName';
+  static const _userIdKey = 'userId';
 
   // SAVE
+  // static Future<void> saveUser({
+  //   required String token,
+  //   required String email,
+  //   required String fullName,
+  
+  // }) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   await prefs.setString(_tokenKey, token);
+  //   await prefs.setString(_emailKey, email);
+  //   await prefs.setString(_nameKey, fullName);
+  // }
   static Future<void> saveUser({
-    required String token,
-    required String email,
-    required String fullName,
-  }) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_tokenKey, token);
-    await prefs.setString(_emailKey, email);
-    await prefs.setString(_nameKey, fullName);
+  required String token,
+  required String email,
+  required String fullName,
+  String? userId, // 👈 ضيف ده
+}) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setString(_tokenKey, token);
+  await prefs.setString(_emailKey, email);
+  await prefs.setString(_nameKey, fullName);
+
+  if (userId != null) {
+    await prefs.setString(_userIdKey, userId); // 👈 مهم
   }
+}
+//getUserId
+static Future<String?> getUserId() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString(_userIdKey);
+}
   static const _addressKey = "user_address";
 
 static Future<void> saveAddress(String address) async {

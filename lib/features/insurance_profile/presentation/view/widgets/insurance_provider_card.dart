@@ -4,7 +4,7 @@ import 'package:salamaty/core/utils/app_colors.dart';
 import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class InsuranceProviderCard extends StatelessWidget {
-  const InsuranceProviderCard({Key? key}) : super(key: key);
+  const InsuranceProviderCard({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:salamaty/features/medicine/data/models/medicine_details_model.da
 class MedicineDetailsRepo {
   Future<MedicineDetailsModel> getProductById(int id) async {
     try {
-      final response = await DioHelper.dio!.get('/api/Products/$id');
+      final response = await DioHelper.dio.get('/api/Products/$id');
       return MedicineDetailsModel.fromJson(response.data);
     } catch (e) {
       rethrow;
