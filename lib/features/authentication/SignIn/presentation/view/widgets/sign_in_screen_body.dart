@@ -17,6 +17,7 @@ import 'package:salamaty/features/authentication/SignUp/presentation/view/sign_u
 import 'package:salamaty/features/authentication/forgot_password/presentation/view/forgot_password_screen.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn(
   scopes: ['email'],
@@ -110,16 +111,16 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
             children: [
               const SizedBox(height: 24),
               const SignInHeaderImage(),
-              const SignInTitle(titleText: 'Sign In'),
-              const SignInSubtitle(
-                subtitleText: 'Please sign in to continue',
+              SignInTitle(titleText: S.of(context).signIn),
+              SignInSubtitle(
+                subtitleText: S.of(context).signInSubtitle,
               ),
               const SizedBox(height: 10),
 
               // Email
               CustomTextField(
                 controller: emailController,
-                hintText: 'Email',
+                hintText: S.of(context).email,
                 prefixIcon: Icons.email,
                 errorText: fieldErrors['email'],
               ),
@@ -128,7 +129,7 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               // Password
               CustomTextField(
                 controller: passwordController,
-                hintText: 'Password',
+                hintText: S.of(context).password,
                 prefixIcon: Icons.lock,
                 isPassword: true,
                 errorText: fieldErrors['password'],
@@ -149,7 +150,7 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               state is SignInLoading && !state.fromGoogle
                   ? const CircularProgressIndicator()
                   : LargeAppButton(
-                      text: 'Sign In',
+                      text: S.of(context).signIn,
                       onPressed: () {
                         context.read<SignInCubit>().login(
                               email: emailController.text.trim(),
@@ -161,8 +162,8 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               const SizedBox(height: 32),
 
               TextButtonRow(
-                questionText: 'Don\'t have an account? ',
-                textButton: 'Sign Up',
+                questionText: S.of(context).dontHaveAccount,
+                textButton: S.of(context).signUp,
                 onpressed: () {
                   Navigator.pushNamed(
                     context,

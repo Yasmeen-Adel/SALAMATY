@@ -11,6 +11,7 @@ import 'package:salamaty/core/widgets/custom_text_field_label.dart';
 import 'package:salamaty/features/authentication/forgot_password/presentation/cubit/forgot_password_cubit.dart';
 import 'package:salamaty/features/authentication/forgot_password/presentation/cubit/forgot_password_state.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ForgotPasswordScreenBody extends StatefulWidget {
   const ForgotPasswordScreenBody({super.key});
@@ -60,32 +61,32 @@ class _ForgotPasswordScreenBodyState extends State<ForgotPasswordScreenBody> {
                 const SizedBox(height: 24),
                 const ArrowBack(),
                 const SizedBox(height: 16),
-                const CustomScreenTitle(title: 'Forgot password ?'),
+                CustomScreenTitle(title: S.of(context).forgotPassword),
                 const SizedBox(height: 8),
-                const CustomScreenSubtitle(
-                  subtitleText:
-                      'Please enter your email to receive a link to create a new password via email',
+
+                CustomScreenSubtitle(
+                  subtitleText: S.of(context).forgotPasswordSubtitle,
                 ),
                 const SizedBox(height: 24),
                 const CustomImage(
                   imageUrl: 'assets/images/forget_password.png',
                 ),
                 const SizedBox(height: 32),
-                const CustomTextFieldLabel(
-                  labelText: 'Your Email : ',
+                CustomTextFieldLabel(
+                  labelText: S.of(context).email,
                 ),
                 CustomTextField(
                   controller: emailController,
-                  hintText: 'Enter your email',
+                  hintText: S.of(context).enterEmail,
                   prefixIcon: Icons.email,
                 ),
                 const SizedBox(height: 26),
 
                 // Loading OR Button
                 state is ForgotPasswordLoading
-                    ? const CircularProgressIndicator()
+                    ? CircularProgressIndicator()
                     : LargeAppButton(
-                        text: 'Reset Password',
+                        text: S.of(context).resetPassword,
                         onPressed: () {
                           FocusScope.of(context).unfocus();
 

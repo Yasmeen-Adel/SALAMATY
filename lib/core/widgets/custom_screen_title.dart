@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class CustomScreenTitle extends StatelessWidget {
   const CustomScreenTitle({super.key, required this.title});
-final String title;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: EdgeInsetsDirectional.only(start: 24),
       child: Align(
-        alignment: Alignment.centerLeft,
+        alignment: AlignmentDirectional.centerStart,
         child: Text(
           title,
           style: TextStyle(
