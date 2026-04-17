@@ -12,6 +12,7 @@ import 'package:salamaty/core/widgets/custom_text_field_label.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
 import 'package:salamaty/features/authentication/reset_password/presentation/cubit/reset_password_cubit.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ResetPasswordScreenBody extends StatefulWidget {
   final String email;
@@ -69,23 +70,23 @@ class _ResetPasswordScreenBodyState extends State<ResetPasswordScreenBody> {
                 const SizedBox(height: 16),
                 const ArrowBack(),
                 const SizedBox(height: 10),
-                const CustomScreenTitle(title: 'Reset password'),
+                CustomScreenTitle(title: S.of(context).resetPasswordTitle),
                 const SizedBox(height: 8),
-                const CustomScreenSubtitle(
-                  subtitleText: 'Please enter your new password',
+                CustomScreenSubtitle(
+                  subtitleText: S.of(context).resetPasswordSubtitle,
                 ),
                 const CustomImage(
                   imageUrl: 'assets/images/set_password.png',
                 ),
-                const CustomTextFieldLabel(labelText: 'New password :'),
+                CustomTextFieldLabel(labelText: S.of(context).newPassword),
                 CustomTextField(
                   controller: newPasswordController,
-                  hintText: 'New password',
+                  hintText: S.of(context).newPassword,
                   prefixIcon: Icons.lock,
                   isPassword: true,
                 ),
                 const SizedBox(height: 8),
-                const CustomTextFieldLabel(labelText: 'Confirm password :'),
+                CustomTextFieldLabel(labelText: S.of(context).confirmPassword),
                 CustomTextField(
                   controller: confirmPasswordController,
                   hintText: 'Confirm password',
@@ -96,7 +97,7 @@ class _ResetPasswordScreenBodyState extends State<ResetPasswordScreenBody> {
                 state is ResetPasswordLoading
                     ? const CircularProgressIndicator()
                     : LargeAppButton(
-                        text: 'Update Password',
+                        text: S.of(context).updatePassword,
                         onPressed: () {
                           context.read<ResetPasswordCubit>().resetPassword(
                                 email: widget.email,

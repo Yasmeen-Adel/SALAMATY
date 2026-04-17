@@ -10,6 +10,7 @@ import 'package:salamaty/features/authentication/SignIn/presentation/view/widget
 import 'package:salamaty/features/authentication/SignUp/presentation/cubit/sign_up_cubit.dart';
 import 'package:salamaty/features/authentication/SignUp/presentation/cubit/sign_up_state.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/verification_screen.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class SignUpScreenBody extends StatefulWidget {
   const SignUpScreenBody({super.key});
@@ -79,32 +80,32 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
             children: [
               const SizedBox(height: 10),
               const SignInHeaderImage(),
-              const SignInTitle(titleText: 'Sign Up'),
-              const SignInSubtitle(
-                subtitleText: 'Please sign up to continue',
+              SignInTitle(titleText: S.of(context).signUp),
+              SignInSubtitle(
+                subtitleText: S.of(context).signUpSubtitle,
               ),
               CustomTextField(
                 controller: fullNameController,
-                hintText: 'Name',
+                hintText: S.of(context).name,
                 prefixIcon: Icons.person,
                 errorText: fieldErrors['fullname'],
               ),
               CustomTextField(
                 controller: emailController,
-                hintText: 'Email',
+                hintText: S.of(context).email,
                 prefixIcon: Icons.email,
                 errorText: fieldErrors['email'],
               ),
               CustomTextField(
                 controller: passwordController,
-                hintText: 'Password',
+                hintText: S.of(context).password,
                 prefixIcon: Icons.lock,
                 isPassword: true,
                 errorText: fieldErrors['password'],
               ),
               CustomTextField(
                 controller: confirmPasswordController,
-                hintText: 'Confirm Password',
+                hintText: S.of(context).confirmPassword,
                 prefixIcon: Icons.lock,
                 isPassword: true,
                 errorText: fieldErrors['confirmpassword'],
@@ -113,15 +114,15 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
               BlocBuilder<SignUpCubit, SignUpState>(
                 builder: (context, state) {
                   return LargeAppButton(
-                    text: 'Sign Up',
+                    text: S.of(context).signUp,
                     onPressed: signUp,
                   );
                 },
               ),
               const SizedBox(height: 10),
               TextButtonRow(
-                questionText: 'Already have an account? ',
-                textButton: 'Sign In',
+                questionText: S.of(context).alreadyHaveAccount,
+                textButton: S.of(context).signIn,
                 onpressed: () {
                   Navigator.pushNamed(
                     context,

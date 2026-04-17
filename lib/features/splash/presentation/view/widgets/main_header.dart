@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
 import 'package:salamaty/core/utils/app_text_styles.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class MainHeader extends StatelessWidget {
   const MainHeader({super.key});

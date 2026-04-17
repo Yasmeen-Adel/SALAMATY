@@ -22,8 +22,104 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "accountVerified": MessageLookupByLibrary.simpleMessage("Account Verified"),
+    "accountVerifiedDesc": MessageLookupByLibrary.simpleMessage(
+      "Your account has been verified successfully.",
+    ),
+    "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Already have an account? ",
+    ),
+    "appName": MessageLookupByLibrary.simpleMessage("Salamaty"),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
+    "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
+    "didNotReceiveOtp": MessageLookupByLibrary.simpleMessage(
+      "Didn\'t receive OTP code? ",
+    ),
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account? ",
+    ),
+    "drugStore": MessageLookupByLibrary.simpleMessage("Drug Store"),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailNotVerified": MessageLookupByLibrary.simpleMessage(
+      "Email not verified",
+    ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
+    "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
+    "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+    "forgotPasswordSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Please enter your email to receive a link to create a new password via email",
+    ),
+    "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "googleSuccess": MessageLookupByLibrary.simpleMessage(
+      "Signed in with Google successfully",
+    ),
+    "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "insurance": MessageLookupByLibrary.simpleMessage("Insurance"),
+    "invalidOtp": MessageLookupByLibrary.simpleMessage(
+      "Please enter valid OTP",
+    ),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "loginSuccess": MessageLookupByLibrary.simpleMessage(
+      "Signed in successfully",
+    ),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+    "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "onboarding1Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Quickly find the nearest pharmacies, hospitals, and labs based on your current location.",
+    ),
+    "onboarding1Title": MessageLookupByLibrary.simpleMessage(
+      "Find the nearest pharmacies and hospitals.",
+    ),
+    "onboarding2Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Upload or snap prescriptions to identify medicines and safe alternatives instantly.",
+    ),
+    "onboarding2Title": MessageLookupByLibrary.simpleMessage(
+      "Scan and Analyze Your Prescriptions.",
+    ),
+    "onboarding3Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Quickly find medical facilities that accept your insurance for fast and easy access.",
+    ),
+    "onboarding3Title": MessageLookupByLibrary.simpleMessage(
+      "Manage Your Insurance Easily.",
+    ),
+    "onboardingSubtitle": MessageLookupByLibrary.simpleMessage(
+      "We\'re excited to have you\nonboard.",
+    ),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "resetPasswordSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Please enter your new password",
+    ),
+    "resetPasswordTitle": MessageLookupByLibrary.simpleMessage(
+      "Reset password",
+    ),
+    "scan": MessageLookupByLibrary.simpleMessage("Scan"),
+    "sendAgain": MessageLookupByLibrary.simpleMessage("Send Again"),
+    "sending": MessageLookupByLibrary.simpleMessage("Sending..."),
+    "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+    "signInSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Please sign in to continue",
+    ),
+    "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "signUpSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Please sign up to continue",
+    ),
+    "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "updatePassword": MessageLookupByLibrary.simpleMessage("Update Password"),
+    "verificationSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Please enter OTP sent to your email to verify your account",
+    ),
+    "verificationTitle": MessageLookupByLibrary.simpleMessage("Verification"),
+    "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+    "verifyMessage": MessageLookupByLibrary.simpleMessage(
+      "Your email is not verified yet. You need to verify it using the OTP code.",
+    ),
+    "verifyNow": MessageLookupByLibrary.simpleMessage("Verify Now"),
+    "welcome": MessageLookupByLibrary.simpleMessage("Welcome to "),
+    "yourEmail": MessageLookupByLibrary.simpleMessage("Your Email:"),
   };
 }
