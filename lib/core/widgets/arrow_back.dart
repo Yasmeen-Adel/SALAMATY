@@ -9,9 +9,9 @@ class ArrowBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 22.0),
+      padding:EdgeInsetsDirectional.only(start: 16) ,
       child: Align(
-        alignment: Alignment.topLeft,
+        alignment: AlignmentDirectional.topStart,
         child: IconButton(
           onPressed: () {
             Navigator.pop(context);

@@ -5,8 +5,8 @@ class SignInTitle extends StatelessWidget {
   final String titleText;
   @override
   Widget build(BuildContext context) {
-    return  Align(
-      alignment: Alignment.centerLeft,
+    return Align(
+      alignment: AlignmentDirectional.centerStart,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Text(

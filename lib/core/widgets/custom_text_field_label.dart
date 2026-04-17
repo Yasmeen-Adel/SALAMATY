@@ -3,16 +3,17 @@ import 'package:salamaty/core/utils/app_colors.dart';
 
 class CustomTextFieldLabel extends StatelessWidget {
   const CustomTextFieldLabel({
-    super.key, required this.labelText,
+    super.key,
+    required this.labelText,
   });
 
-final String labelText;
+  final String labelText;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 26.0),
+      padding: EdgeInsetsDirectional.only(start: 26),
       child: Align(
-        alignment: Alignment.topLeft,
+        alignment: AlignmentDirectional.topStart,
         child: Text(
           labelText,
           style: TextStyle(
