@@ -1,9 +1,16 @@
+
+
+
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/core/widgets/custom_screen_subtitle.dart';
 import 'package:salamaty/core/widgets/custom_screen_title.dart';
-import 'package:salamaty/features/insurance_information/presentation/view/insurance_information_screen.dart';
-import 'package:salamaty/features/select_insurance/presentation/view/widgets/insurance_card.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
+import 'package:salamaty/features/insurance_information/presentation/view/insurance_information_screen.dart';
+import 'package:salamaty/features/select_insurance/presentation/cubit/select_insurance_cubit.dart';
+import 'package:salamaty/features/select_insurance/presentation/view/widgets/insurance_card.dart';
 
 class InsuranceScreenBody extends StatefulWidget {
   const InsuranceScreenBody({super.key});
@@ -13,55 +20,89 @@ class InsuranceScreenBody extends StatefulWidget {
 }
 
 class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
-  String selectedInsurance = '';
-
-  final List<Map<String, String>> insuranceList = [
-    {'name': 'Misr Insurance', 'imageUrl': 'assets/images/onboarding2.png'},
-    {'name': 'Al Ahly Insurance', 'imageUrl': 'assets/images/onboarding2.png'},
-    {'name': 'Bupa Arabia', 'imageUrl': 'assets/images/onboarding2.png'},
-    {'name': 'Al Hayat Insurance', 'imageUrl': 'assets/images/onboarding2.png'},
-  ];
+  @override
+  void initState() {
+    super.initState();
+    context.read<InsuranceCubit>().fetchProviders();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 90,
-        ),
-        CustomScreenTitle(title: 'Select Insurance'),
-        CustomScreenSubtitle(
-            subtitleText: 'Please select your insurance provider'),
-        const SizedBox(height: 30),
-        Expanded(
-          child: ListView.builder(
-            padding: EdgeInsets.zero,
-            itemCount: insuranceList.length,
-            itemBuilder: (context, index) {
-              final insurance = insuranceList[index];
-              return InsuranceCard(
-                name: insurance['name']!,
-                imageUrl: insurance['imageUrl']!,
-                selected: selectedInsurance == insurance['name'],
-                onTap: () {
-                  setState(() {
-                    selectedInsurance = insurance['name']!;
-                  });
-                },
-              );
-            },
-          ),
-        ),
-        LargeAppButton(
-          text: 'Continue',
-          onPressed: () {
-            Navigator.pushNamed(context, InsuranceInformationScreen.routeName);
-
-            print('Selected Insurance: $selectedInsurance');
-          },
-        ),
-        const SizedBox(height: 50),
-      ],
+    return BlocBuilder<InsuranceCubit, InsuranceState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            const SizedBox(height: 90),
+            const CustomScreenTitle(title: 'Select Insurance'),
+            const CustomScreenSubtitle(
+              subtitleText: 'Select your insurance to view covered services.',
+            ),
+            const SizedBox(height: 30),
+            Expanded(child: _buildBody(context, state)),
+            if (state is InsuranceLoaded)
+              LargeAppButton(
+                text: 'Continue',
+                onPressed: state.selectedProvider == null
+                    ? null
+                    : () {
+                        Navigator.pushNamed(
+                          context,
+                          InsuranceInformationScreen.routeName,
+                          // pass selected provider if needed:
+                          // arguments: state.selectedProvider,
+                        );
+                      },
+              ),
+            const SizedBox(height: 50),
+          ],
+        );
+      },
     );
+  }
+
+  Widget _buildBody(BuildContext context, InsuranceState state) {
+    if (state is InsuranceLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (state is InsuranceError) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.error_outline, color: Colors.red, size: 48),
+            const SizedBox(height: 12),
+            Text(
+              'Failed to load providers',
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            TextButton(
+              onPressed: () => context.read<InsuranceCubit>().fetchProviders(),
+              child: const Text('Retry'),
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (state is InsuranceLoaded) {
+      return ListView.builder(
+        padding: EdgeInsets.zero,
+        itemCount: state.providers.length,
+        itemBuilder: (context, index) {
+          final provider = state.providers[index];
+          return InsuranceCard(
+            name: provider.name,
+            imageUrl: provider.logoUrl ?? '',
+            selected: state.selectedProvider?.id == provider.id,
+            onTap: () =>
+                context.read<InsuranceCubit>().selectProvider(provider),
+          );
+        },
+      );
+    }
+
+    return const SizedBox();
   }
 }
