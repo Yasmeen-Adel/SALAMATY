@@ -110,9 +110,14 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
         ),
       );
     //Medicine Alternatives Screen :)
+    // case MedicineAlternativesScreen.routeName:
+    //   return MaterialPageRoute(
+    //       builder: (_) => const MedicineAlternativesScreen());
     case MedicineAlternativesScreen.routeName:
+      final id = settings.arguments as int;
       return MaterialPageRoute(
-          builder: (_) => const MedicineAlternativesScreen());
+        builder: (_) => MedicineAlternativesScreen(productId: id),
+      );
     //Insurance Profile Screen :)
     case InsuranceProfileScreen.routeName:
       return MaterialPageRoute(builder: (_) => const InsuranceProfileScreen());
