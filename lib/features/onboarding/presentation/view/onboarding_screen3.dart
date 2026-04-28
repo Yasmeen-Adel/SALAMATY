@@ -4,6 +4,7 @@ import 'package:salamaty/core/widgets/large_app_button.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
 import 'package:salamaty/features/onboarding/presentation/view/widgets/onboarding_subtitle.dart';
 import 'package:salamaty/features/onboarding/presentation/view/widgets/onboarding_title.dart';
+import 'package:salamaty/generated/l10n.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen3 extends StatelessWidget {
@@ -37,43 +38,21 @@ class OnboardingScreen3 extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          const OnboardingTitle(
-            onboardingTitle: 'Manage Your Insurance Easily.',
+          OnboardingTitle(
+            onboardingTitle: S.of(context).onboarding3Title,
           ),
           const SizedBox(height: 20),
-          const OnboardingSubtitle(
-            onboardingSubtitle:
-                'Quickly find medical facilities that accept your insurance for fast and easy access.',
+          OnboardingSubtitle(
+            onboardingSubtitle: S.of(context).onboarding3Subtitle,
           ),
           Spacer(),
           LargeAppButton(
-            text: 'Get Started',
+            text: S.of(context).getStarted,
             onPressed: () {
               Navigator.pushNamedAndRemoveUntil(
                   context, SignInScreen.routeName, (route) => false);
             },
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //   children: [
-          //     SmallOutlinedButton(
-          //       text: 'Skip',
-          //       onPressed: () {
-          //         Navigator.pushReplacementNamed(
-          //             context, SignInScreen.routeName);
-          //       },
-          //     ),
-          //     SmallAppButton(
-          //       text: 'Next',
-          //       onPressed: () {
-          //         controller.nextPage(
-          //           duration: const Duration(milliseconds: 400),
-          //           curve: Curves.easeInOut,
-          //         );
-          //       },
-          //     ),
-          //   ],
-          // ),
           const SizedBox(height: 80),
         ],
       ),

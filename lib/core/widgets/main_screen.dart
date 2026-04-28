@@ -12,6 +12,7 @@ import 'package:salamaty/features/select_insurance/presentation/view/insurance_s
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
 import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
 import 'package:salamaty/core/services/location_service.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class MainScreen extends StatefulWidget {
   static const String routeName = 'main_screen';
@@ -86,47 +87,50 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[currentIndex],
-      bottomNavigationBar: GlazeNavBar(
-        index: currentIndex,
-        color: AppColors.primaryColor,
-        backgroundColor: Colors.transparent,
-        glassBorderColor: AppColors.primaryColor,
-        buttonBackgroundColor: AppColors.primaryColor,
-        glassBlur: 15,
-        glassOpacity: 0.9,
-        items: const [
-          GlazeNavBarItem(
-            child: Icon(Icons.home_outlined, color: Colors.white),
-            label: 'Home',
-            labelStyle: TextStyle(color: Colors.white),
-          ),
-          GlazeNavBarItem(
-            child: Icon(FontAwesomeIcons.pills, color: Colors.white),
-            label: 'Drug Store',
-            labelStyle: TextStyle(color: Colors.white),
-          ),
-          GlazeNavBarItem(
-            child: Icon(Icons.qr_code_scanner_outlined, color: Colors.white),
-            label: 'Scan',
-            labelStyle: TextStyle(color: Colors.white),
-          ),
-          GlazeNavBarItem(
-            child:
-                Icon(FontAwesomeIcons.handHoldingMedical, color: Colors.white),
-            label: 'Insurance',
-            labelStyle: TextStyle(color: Colors.white),
-          ),
-          GlazeNavBarItem(
-            child: Icon(Icons.person, color: Colors.white),
-            label: 'Profile',
-            labelStyle: TextStyle(color: Colors.white),
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
+      bottomNavigationBar: Directionality(
+        textDirection: Directionality.of(context),
+        child: GlazeNavBar(
+          index: currentIndex,
+          color: AppColors.primaryColor,
+          backgroundColor: Colors.transparent,
+          glassBorderColor: AppColors.primaryColor,
+          buttonBackgroundColor: AppColors.primaryColor,
+          glassBlur: 15,
+          glassOpacity: 0.9,
+          items: [
+            GlazeNavBarItem(
+              child: Icon(Icons.home_outlined, color: Colors.white),
+              label: S.of(context).home,
+              labelStyle: TextStyle(color: Colors.white),
+            ),
+            GlazeNavBarItem(
+              child: Icon(FontAwesomeIcons.pills, color: Colors.white),
+              label: S.of(context).drugStore,
+              labelStyle: TextStyle(color: Colors.white),
+            ),
+            GlazeNavBarItem(
+              child: Icon(Icons.qr_code_scanner_outlined, color: Colors.white),
+              label: S.of(context).scan,
+              labelStyle: TextStyle(color: Colors.white),
+            ),
+            GlazeNavBarItem(
+              child: Icon(FontAwesomeIcons.handHoldingMedical,
+                  color: Colors.white),
+              label: S.of(context).insurance,
+              labelStyle: TextStyle(color: Colors.white),
+            ),
+            GlazeNavBarItem(
+              child: Icon(Icons.person, color: Colors.white),
+              label: S.of(context).profile,
+              labelStyle: TextStyle(color: Colors.white),
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+        ),
       ),
     );
   }

@@ -37,6 +37,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: TextFormField(
+        textDirection: Directionality.of(context),
+        textAlign: TextAlign.start,
         controller: widget.controller,
         obscureText: _obscureText,
         decoration: InputDecoration(

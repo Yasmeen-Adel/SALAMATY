@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class DetectedMedicineItem extends StatelessWidget {
   final String title;
@@ -19,91 +18,144 @@ class DetectedMedicineItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 8),
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(
-            color: Colors.grey.shade200,
-            width: 2,
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.grey.shade200),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade100,
+            blurRadius: 6,
+            offset: const Offset(0, 2),
           ),
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 20,
-              spreadRadius: 0,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Medicine Image
-            Container(
-              width: 100,
-              height: 100,
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey.shade200,
-                  width: 1,
-                ),
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 8,
-                    spreadRadius: 0,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(2),
-                child: isNetworkImage
-                    ? Image.network(
+        ],
+      ),
+      child: Row(
+        children: [
+          // Icon/Image
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: isNetworkImage
+                ? Image.network(
+                    image,
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.contain,
+                    errorBuilder: (_, __, ___) => Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFE3F2FD),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Icon(
+                        Icons.medication_rounded,
+                        color: Color(0xFF1565C0),
+                        size: 28,
+                      ),
+                    ),
+                  )
+                : image.isNotEmpty
+                    ? Image.asset(
                         image,
+                        width: 60,
+                        height: 60,
                         fit: BoxFit.contain,
                       )
-                    : Image.asset(
-                        image,
-                        fit: BoxFit.contain,
+                    : Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE3F2FD),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(
+                          Icons.medication_rounded,
+                          color: Color(0xFF1565C0),
+                          size: 28,
+                        ),
                       ),
-              ),
-            ),
-            const SizedBox(width: 14),
-            // Text Content
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: AppTextStyles.medium24.copyWith(
-                      color: const Color(0xFF000000),
+          ),
+
+          const SizedBox(width: 12),
+
+          // Content
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF1A1A2E),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFE8F5E9),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Text(
+                        "AVAILABLE",
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF2E7D32),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  description,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFF9E9E9E),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: SizedBox(
+                    height: 36,
+                    child: ElevatedButton(
+                      onPressed: onTap,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF0D2D9E),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        elevation: 0,
+                      ),
+                      child: const Text(
+                        "View Details",
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Text(
-                    description,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.regular14.copyWith(
-                      color: const Color(0xFF6B7280),
-                      height: 1.5,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

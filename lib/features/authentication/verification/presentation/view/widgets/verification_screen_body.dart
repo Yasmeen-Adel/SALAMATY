@@ -13,6 +13,7 @@ import 'package:salamaty/features/authentication/reset_password/presentation/vie
 import 'package:salamaty/features/authentication/verification/presentation/cubit/verification_cubit.dart';
 import 'package:salamaty/features/authentication/verification/presentation/cubit/verification_state.dart';
 import 'package:salamaty/features/authentication/verification/presentation/view/widgets/otp_widget.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class VerificationScreenBody extends StatefulWidget {
   final String email;
@@ -54,11 +55,11 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
               context: context,
               isScrollControlled: true,
               backgroundColor: Colors.transparent,
-              builder: (_) => CustomDrawer(
-                title: 'Account Verified',
-                description: 'Your account has been verified successfully.',
-                buttonText: 'Continue',
-                nextScreen:  MainScreen(),
+              builder: (context) => CustomDrawer(
+                title: S.of(context).accountVerified,
+                description: S.of(context).accountVerifiedDesc,
+                buttonText: S.of(context).continueText,
+                nextScreen: const MainScreen(),
               ),
             );
           }
@@ -103,11 +104,10 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
                 const SizedBox(height: 16),
                 const ArrowBack(),
                 const SizedBox(height: 16),
-                const CustomScreenTitle(title: 'Verification'),
+                CustomScreenTitle(title: S.of(context).verificationTitle),
                 const SizedBox(height: 8),
-                const CustomScreenSubtitle(
-                  subtitleText:
-                      'Please enter OTP sent to your email to verify your account',
+                CustomScreenSubtitle(
+                  subtitleText: S.of(context).verificationSubtitle,
                 ),
                 const CustomImage(
                   imageUrl: 'assets/images/verification.png',
@@ -125,9 +125,10 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
 
                 /// Resend OTP
                 TextButtonRow(
-                  questionText: 'Didn\'t receive OTP code? ',
-                  textButton:
-                      state is ResendOtpLoading ? 'Sending...' : 'Send Again',
+                  questionText: S.of(context).didNotReceiveOtp,
+                  textButton: state is ResendOtpLoading
+                      ? S.of(context).sending
+                      : S.of(context).sendAgain,
                   onpressed: state is ResendOtpLoading
                       ? null
                       : () {
@@ -144,14 +145,14 @@ class _VerificationScreenBodyState extends State<VerificationScreenBody> {
                 state is VerificationLoading
                     ? const CircularProgressIndicator()
                     : LargeAppButton(
-                        text: 'Verify',
+                        text: S.of(context).verify,
                         onPressed: () {
                           FocusScope.of(context).unfocus();
 
                           if (otpCode.length < 5) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: const Text('Please enter valid OTP'),
+                                content: Text(S.of(context).invalidOtp),
                                 backgroundColor: Colors.red,
                                 behavior: SnackBarBehavior.floating,
                                 margin: const EdgeInsets.all(16),
