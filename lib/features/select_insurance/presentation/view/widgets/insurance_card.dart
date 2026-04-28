@@ -1,16 +1,22 @@
+
+
+
+
+
+
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
 
 class InsuranceCard extends StatelessWidget {
   final String name;
-  final String imageUrl;
+  final String? imageUrl;   // now nullable — supports network URLs
   final bool selected;
   final VoidCallback onTap;
 
   const InsuranceCard({
     super.key,
     required this.name,
-    required this.imageUrl,
+    this.imageUrl,
     required this.selected,
     required this.onTap,
   });
@@ -42,13 +48,15 @@ class InsuranceCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.transparent,
-                backgroundImage: AssetImage(imageUrl),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: _buildImage(),
+                ),
               ),
               const SizedBox(width: 16),
-      
               Expanded(
                 child: Text(
                   name,
@@ -56,11 +64,10 @@ class InsuranceCard extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
-                  overflow: TextOverflow.ellipsis, 
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
-      
-              const SizedBox(width: 8),           
+              const SizedBox(width: 8),
               Container(
                 width: 24,
                 height: 24,
@@ -85,6 +92,38 @@ class InsuranceCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildImage() {
+    if (imageUrl == null || imageUrl!.isEmpty) {
+      return const Icon(Icons.business, color: Colors.grey);
+    }
+
+    if (imageUrl!.startsWith('http')) {
+      return Image.network(
+        imageUrl!,
+        width: 60,
+        height: 60,
+        fit: BoxFit.contain,
+        errorBuilder: (_, __, ___) =>
+            const Icon(Icons.business, color: Colors.grey),
+        loadingBuilder: (_, child, progress) {
+          if (progress == null) return child;
+          return const Center(
+            child: CircularProgressIndicator(strokeWidth: 2),
+          );
+        },
+      );
+    }
+
+    return Image.asset(
+      imageUrl!,
+      width: 60,
+      height: 60,
+      fit: BoxFit.contain,
+      errorBuilder: (_, __, ___) =>
+          const Icon(Icons.business, color: Colors.grey),
     );
   }
 }
