@@ -91,7 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "نحن متحمسون لانضمامك إلينا.",
     ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
-    "profile": MessageLookupByLibrary.simpleMessage("الملف"),
+    "profile": MessageLookupByLibrary.simpleMessage("الحساب"),
     "resetPassword": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
