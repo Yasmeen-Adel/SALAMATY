@@ -126,7 +126,12 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const FavoriteScreen());
     //detected medicine Screen :)
     case DetectedMedicineScreen.routeName:
-      return MaterialPageRoute(builder: (_) => const DetectedMedicineScreen());
+      final data = settings.arguments;
+      return MaterialPageRoute(
+        builder: (_) => DetectedMedicineScreen(data: data),
+      );
+    // case DetectedMedicineScreen.routeName:
+    //   return MaterialPageRoute(builder: (_) => const DetectedMedicineScreen());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

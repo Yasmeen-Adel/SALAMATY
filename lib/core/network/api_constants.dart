@@ -18,4 +18,5 @@ class ApiConstants {
   static const String specialtiesProviders = '/api/home/specialties-providers';
   static const String nearbyTop3 = '/api/Facilities/nearby-top3';
   static const String allFacilities = '/api/Facilities/all-facilities';
+  static const String scanPrescription = '/api/Prescription/scan';
 }

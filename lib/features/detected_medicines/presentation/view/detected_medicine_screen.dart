@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:salamaty/features/detected_medicines/presentation/view/widgets/detected_medicine_body.dart';
+import 'widgets/detected_medicine_body.dart';
 
 class DetectedMedicineScreen extends StatelessWidget {
-  const DetectedMedicineScreen({super.key});
-
+  final dynamic data;
   static const String routeName = 'detected-medicine';
+
+  const DetectedMedicineScreen({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: DetectedMedicineBody(),
+    return Scaffold(
+      body: DetectedMedicineBody(data: data),
     );
   }
 }
