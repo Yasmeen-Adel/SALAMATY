@@ -22,6 +22,7 @@ import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
 import 'package:salamaty/features/splash/presentation/view/splash_screen2.dart';
 import 'package:salamaty/features/splash/presentation/view/splash_screen.dart';
 import 'package:salamaty/features/home/presentation/view/home_screen.dart';
+import 'package:salamaty/features/nearby_pharmacy/presentation/view/nearby_pharmacy_screen.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -133,6 +134,13 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     // case DetectedMedicineScreen.routeName:
     //   return MaterialPageRoute(builder: (_) => const DetectedMedicineScreen());
 
+    //Nearby Pharmacy Screen :)
+    case NearbyPharmacyScreen.routeName:
+      final id = settings.arguments as int;
+      return MaterialPageRoute(
+        builder: (_) => const NearbyPharmacyScreen(),
+        settings: RouteSettings(arguments: id),
+      );
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
