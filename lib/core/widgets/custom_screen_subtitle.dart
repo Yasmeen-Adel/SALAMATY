@@ -10,8 +10,9 @@ class CustomScreenSubtitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Align(
-        alignment: Alignment.centerLeft,
+        alignment: AlignmentDirectional.centerStart,
         child: Text(
+          textAlign: TextAlign.start,
           subtitleText,
           style: TextStyle(
             color: Color(0xFF989898),

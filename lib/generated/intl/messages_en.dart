@@ -29,11 +29,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account? ",
     ),
+    "analyzePrescription": MessageLookupByLibrary.simpleMessage(
+      "Analyze Prescription",
+    ),
     "appName": MessageLookupByLibrary.simpleMessage("Salamaty"),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "available": MessageLookupByLibrary.simpleMessage("AVAILABLE"),
+    "availableMedicines": MessageLookupByLibrary.simpleMessage(
+      "Available Medicines",
+    ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "continueText": MessageLookupByLibrary.simpleMessage("Continue"),
+    "currentlyUnavailable": MessageLookupByLibrary.simpleMessage(
+      "Currently unavailable",
+    ),
+    "detectedFromPrescription": MessageLookupByLibrary.simpleMessage(
+      "Detected from prescription",
+    ),
+    "detectedMedicines": MessageLookupByLibrary.simpleMessage(
+      "Detected Medicines",
+    ),
     "didNotReceiveOtp": MessageLookupByLibrary.simpleMessage(
       "Didn\'t receive OTP code? ",
     ),
@@ -47,15 +63,23 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
+    "favoriteMedicines": MessageLookupByLibrary.simpleMessage(
+      "Favorite Medicines",
+    ),
+    "favoriteSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Here are the medicines you have added to your favorites list",
+    ),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "forgotPasswordSubtitle": MessageLookupByLibrary.simpleMessage(
       "Please enter your email to receive a link to create a new password via email",
     ),
+    "found": MessageLookupByLibrary.simpleMessage("found"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "googleSuccess": MessageLookupByLibrary.simpleMessage(
       "Signed in with Google successfully",
     ),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "inStock": MessageLookupByLibrary.simpleMessage("IN STOCK"),
     "insurance": MessageLookupByLibrary.simpleMessage("Insurance"),
     "invalidOtp": MessageLookupByLibrary.simpleMessage(
       "Please enter valid OTP",
@@ -67,6 +91,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "noFavorites": MessageLookupByLibrary.simpleMessage("No Favorites Yet"),
+    "notAvailable": MessageLookupByLibrary.simpleMessage("NOT AVAILABLE"),
+    "notAvailableMedicines": MessageLookupByLibrary.simpleMessage(
+      "Not Available Medicines",
+    ),
     "onboarding1Subtitle": MessageLookupByLibrary.simpleMessage(
       "Quickly find the nearest pharmacies, hospitals, and labs based on your current location.",
     ),
@@ -88,8 +117,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "onboardingSubtitle": MessageLookupByLibrary.simpleMessage(
       "We\'re excited to have you\nonboard.",
     ),
+    "outOfStock": MessageLookupByLibrary.simpleMessage("OUT OF STOCK"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "removedFromFavorites": MessageLookupByLibrary.simpleMessage(
+      "Removed from favorites successfully",
+    ),
     "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
     "resetPasswordSubtitle": MessageLookupByLibrary.simpleMessage(
       "Please enter your new password",
@@ -98,6 +131,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "Reset password",
     ),
     "scan": MessageLookupByLibrary.simpleMessage("Scan"),
+    "scanAgain": MessageLookupByLibrary.simpleMessage("Scan Again"),
+    "scanPrescription": MessageLookupByLibrary.simpleMessage(
+      "Scan Prescription",
+    ),
+    "scanSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Use your camera to scan your prescription or upload an image from your gallery.",
+    ),
+    "scanWithCamera": MessageLookupByLibrary.simpleMessage("Scan with Camera"),
     "sendAgain": MessageLookupByLibrary.simpleMessage("Send Again"),
     "sending": MessageLookupByLibrary.simpleMessage("Sending..."),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
@@ -109,7 +150,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please sign up to continue",
     ),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "startAddingFavorites": MessageLookupByLibrary.simpleMessage(
+      "Start adding medicines to your favorites",
+    ),
     "updatePassword": MessageLookupByLibrary.simpleMessage("Update Password"),
+    "uploadFromGallery": MessageLookupByLibrary.simpleMessage(
+      "Upload from Gallery",
+    ),
     "verificationSubtitle": MessageLookupByLibrary.simpleMessage(
       "Please enter OTP sent to your email to verify your account",
     ),
@@ -119,6 +166,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Your email is not verified yet. You need to verify it using the OTP code.",
     ),
     "verifyNow": MessageLookupByLibrary.simpleMessage("Verify Now"),
+    "viewDetails": MessageLookupByLibrary.simpleMessage("View Details"),
+    "viewDetectedMedicines": MessageLookupByLibrary.simpleMessage(
+      "View Detected Medicines",
+    ),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome to "),
     "yourEmail": MessageLookupByLibrary.simpleMessage("Your Email:"),
   };
