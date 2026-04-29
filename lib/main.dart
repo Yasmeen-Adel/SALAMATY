@@ -25,8 +25,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salamaty/core/network/dio_helper.dart';
+import 'package:salamaty/core/services/auth_local_storage.dart';
 import 'package:salamaty/core/services/get_it_services.dart';
 import 'package:salamaty/core/services/localization_provider.dart';
+import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
 import 'package:salamaty/features/medicine_alternatives/presentation/view/medicine_alternatives_screen.dart';
 import 'package:salamaty/generated/l10n.dart';
@@ -41,17 +43,19 @@ void main() async {
 
   // Setup GetIt for singletons
   setupGetIt();
-
+  final isLoggedIn = await AuthLocalStorage.isLoggedIn();
   runApp(
     ChangeNotifierProvider<LocalizationProvider>(
       create: (_) => getIt<LocalizationProvider>(),
-      child: const SalamatyApp(),
+      child: SalamatyApp(isLoggedIn: isLoggedIn),
     ),
   );
 }
 
 class SalamatyApp extends StatelessWidget {
-  const SalamatyApp({super.key});
+  final bool isLoggedIn;
+
+  const SalamatyApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +77,7 @@ class SalamatyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
       onGenerateRoute: onGenerateRoute,
-      initialRoute: SplashScreen.routeName,
+      initialRoute: isLoggedIn ? MainScreen.routeName : SplashScreen.routeName,
     );
   }
 }

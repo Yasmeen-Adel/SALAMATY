@@ -5,6 +5,7 @@ import 'package:salamaty/features/detected_medicines/presentation/view/widgets/a
 import 'package:salamaty/features/detected_medicines/presentation/view/widgets/detected_section.dart';
 import 'package:salamaty/features/detected_medicines/presentation/view/widgets/not_available_section.dart';
 import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class DetectedMedicineBody extends StatelessWidget {
   final dynamic data;
@@ -21,25 +22,21 @@ class DetectedMedicineBody extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       child: Column(
         children: [
-          const SizedBox(height: 40),
+          const SizedBox(height: 20),
           const ArrowBack(),
-          // Text(
-          //   'Detected Medicines',
-          //   style: AppTextStyles.semiBold24.copyWith(
-          //     color: const Color(0xFF0D2D9E),
-          //   ),
-          // ),
+
           Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: Text(
-              'Detected Medicines',
+              // 'Detected Medicines',
+              S.of(context).detectedMedicines,
               style: AppTextStyles.semiBold24.copyWith(
                 color: const Color(0xFF0D2D9E),
               ),
             ),
           ),
           SizedBox(
-            height: 16,
+            height: 10,
           ),
           DetectedSection(extracted: extracted),
 
@@ -62,7 +59,9 @@ class DetectedMedicineBody extends StatelessWidget {
           NotAvailableSection(
             notAvailable: notAvailable.map((e) => {"name": e.name}).toList(),
           ),
-
+          SizedBox(
+            height: 12,
+          ),
           // Scan Again Button
           SizedBox(
             width: double.infinity,
@@ -75,8 +74,9 @@ class DetectedMedicineBody extends StatelessWidget {
                 Icons.document_scanner_outlined,
                 size: 24,
               ),
-              label: const Text(
-                "Scan Again",
+              label: Text(
+                // "Scan Again",
+                S.of(context).scanAgain,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,

@@ -9,6 +9,7 @@ import 'package:salamaty/features/detected_medicines/data/repo/detected_medicine
 import 'package:salamaty/features/detected_medicines/presentation/cubit/detected_medicine_cubit.dart';
 import 'package:salamaty/features/detected_medicines/presentation/cubit/detected_medicine_state.dart';
 import 'package:salamaty/features/detected_medicines/presentation/view/detected_medicine_screen.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ExtractScreen extends StatelessWidget {
   final File imageFile;
@@ -40,7 +41,9 @@ class ExtractScreen extends StatelessWidget {
                   const SizedBox(height: 50),
                   const ArrowBack(),
                   const SizedBox(height: 15),
-                  const CustomScreenTitle(title: 'Analyze Prescription'),
+                  CustomScreenTitle(
+                    title: S.of(context).analyzePrescription,
+                  ),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -105,7 +108,7 @@ class ExtractScreen extends StatelessWidget {
 
                   // if (state is! DetectedMedicineLoading)
                   //   LargeAppButton(
-                  //     text: 'View Detected Medicines',
+                  //     text: S.of(context).viewDetectedMedicines,
                   //     onPressed: () {
                   //       cubit.scan(
                   //         image: imageFile,
@@ -114,7 +117,7 @@ class ExtractScreen extends StatelessWidget {
                   //     },
                   //   ),
                   LargeAppButton(
-                    text: 'View Detected Medicines',
+                    text: S.of(context).viewDetectedMedicines,
                     onPressed: state is DetectedMedicineLoading
                         ? null
                         : () {

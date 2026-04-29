@@ -10,6 +10,7 @@ import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/features/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:salamaty/features/favorite/presentation/cubit/favorite_state.dart';
 import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class FavoriteScreenBody extends StatefulWidget {
   const FavoriteScreenBody({super.key});
@@ -28,14 +29,15 @@ class _FavoriteScreenBodyState extends State<FavoriteScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 50),
         const ArrowBack(),
-        const CustomScreenTitle(title: 'Favorite Medicines'),
+        CustomScreenTitle(title: S.of(context).favoriteMedicines),
         const SizedBox(height: 5),
-        const CustomScreenSubtitle(
-          subtitleText:
-              'Here are the medicines you have added to your favorites list',
+        CustomScreenSubtitle(
+          subtitleText: S.of(context).favoriteSubtitle,
+          
         ),
         SizedBox(
           height: 16,
@@ -53,7 +55,7 @@ class _FavoriteScreenBodyState extends State<FavoriteScreenBody> {
 
               if (state is FavoriteSuccess) {
                 if (state.favorites.isEmpty) {
-                  return const Center(
+                  return Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -61,7 +63,7 @@ class _FavoriteScreenBodyState extends State<FavoriteScreenBody> {
                             size: 90, color: Color(0xFF0D2D9E)),
                         SizedBox(height: 16),
                         Text(
-                          "No Favorites Yet",
+                          S.of(context).noFavorites,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -70,7 +72,7 @@ class _FavoriteScreenBodyState extends State<FavoriteScreenBody> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          "Start adding medicines to your favorites",
+                          S.of(context).startAddingFavorites,
                           textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.grey),
                         ),
@@ -101,8 +103,7 @@ class _FavoriteScreenBodyState extends State<FavoriteScreenBody> {
 
                                 AppSnackBar.show(
                                   context,
-                                  message:
-                                      "Removed from favorites successfully",
+                                  message: S.of(context).removedFromFavorites,
                                   type: SnackBarType.info,
                                 );
                               },
