@@ -1,10 +1,6 @@
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salamaty/core/widgets/app_snackbar.dart';
 import 'package:salamaty/core/widgets/custom_screen_subtitle.dart';
 import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
@@ -42,16 +38,31 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
             if (state is InsuranceLoaded)
               LargeAppButton(
                 text: 'Continue',
-                onPressed: state.selectedProvider == null
-                    ? null
-                    : () {
-                        Navigator.pushNamed(
-                          context,
-                          InsuranceInformationScreen.routeName,
-                          // pass selected provider if needed:
-                          // arguments: state.selectedProvider,
-                        );
-                      },
+                // onPressed: state.selectedProvider == null
+                //     ? null
+                //     : () {
+                //         Navigator.pushNamed(
+                //           context,
+                //           InsuranceInformationScreen.routeName,
+                //           // pass selected provider if needed:
+                //           // arguments: state.selectedProvider,
+                //         );
+                //       },
+                onPressed: () {
+                  if (state.selectedProvider == null) {
+                    AppSnackBar.show(
+                      context,
+                      message: 'Please select an insurance provider',
+                      type: SnackBarType.info,
+                    );
+                    return;
+                  }
+
+                  Navigator.pushNamed(
+                    context,
+                    InsuranceInformationScreen.routeName,
+                  );
+                },
               ),
             const SizedBox(height: 50),
           ],

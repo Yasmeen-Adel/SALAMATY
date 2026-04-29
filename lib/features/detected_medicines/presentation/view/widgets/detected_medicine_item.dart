@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class DetectedMedicineItem extends StatelessWidget {
   final String title;
@@ -24,12 +25,13 @@ class DetectedMedicineItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.grey.shade200),
+        border: Border.all(
+            color: const Color.fromARGB(255, 116, 199, 120), width: 0.5),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.shade100,
+            color: Color.fromARGB(255, 116, 199, 120).withOpacity(0.09),
             blurRadius: 6,
-            offset: const Offset(0, 2),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -107,8 +109,9 @@ class DetectedMedicineItem extends StatelessWidget {
                         color: const Color(0xFFE8F5E9),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: const Text(
-                        "AVAILABLE",
+                      child: Text(
+                        // "AVAILABLE",
+                        S.of(context).available,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
@@ -128,7 +131,7 @@ class DetectedMedicineItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Align(
-                  alignment: Alignment.bottomRight,
+                  alignment: AlignmentDirectional.bottomEnd,
                   child: SizedBox(
                     height: 36,
                     child: ElevatedButton(
@@ -142,8 +145,9 @@ class DetectedMedicineItem extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         elevation: 0,
                       ),
-                      child: const Text(
-                        "View Details",
+                      child: Text(
+                        // "View Details",
+                        S.of(context).viewDetails,
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,

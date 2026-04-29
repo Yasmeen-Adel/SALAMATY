@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
+import 'package:salamaty/generated/l10n.dart';
 import 'detected_medicine_item.dart';
 
 class AvailableSection extends StatelessWidget {
@@ -18,8 +19,9 @@ class AvailableSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Available Medicines",
+            Text(
+              // "Available Medicines",
+              S.of(context).availableMedicines,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -32,8 +34,9 @@ class AvailableSection extends StatelessWidget {
                 color: const Color(0xFFE8F5E9),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Text(
-                "IN STOCK",
+              child: Text(
+                // "IN STOCK",
+                S.of(context).inStock,
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.bold,

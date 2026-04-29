@@ -27,17 +27,26 @@ class UploadButton extends StatelessWidget {
           ),
           onPressed: onPressed,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.photo, color: AppColors.primaryColor,size: 26,),
-              const SizedBox(width: 10),
-              Text(
-                text,
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color:  AppColors.primaryColor,
-                ),
+              Icon(
+                Icons.photo,
+                color: AppColors.primaryColor,
+                size: 26,
               ),
+              const SizedBox(width: 10),
+              Flexible(
+                child: Text(
+                  text,
+                  textAlign: TextAlign.start,
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.primaryColor,
+                  ),
+                ),
+              )
             ],
           ),
         ),
