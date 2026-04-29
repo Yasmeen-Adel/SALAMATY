@@ -50,6 +50,7 @@ import 'medicine_title_price_section.dart';
 import 'medicine_description_section.dart';
 import 'medicine_sight_effect_section.dart';
 import 'medicine_actions_section.dart';
+import 'package:salamaty/features/nearby_pharmacy/presentation/view/nearby_pharmacy_screen.dart';
 
 class MedicineDetailsBody extends StatelessWidget {
   final MedicineDetailsModel medicine;
@@ -100,9 +101,19 @@ class MedicineDetailsBody extends StatelessWidget {
 
           const SizedBox(height: 10),
 
+          // LargeOutlinedAppButton(
+          //   text: 'Find Pharmacies',
+          //   onPressed: () {},
+          // ),
           LargeOutlinedAppButton(
             text: 'Find Pharmacies',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                NearbyPharmacyScreen.routeName,
+                arguments: medicine.id,
+              );
+            },
           ),
         ],
       ),
