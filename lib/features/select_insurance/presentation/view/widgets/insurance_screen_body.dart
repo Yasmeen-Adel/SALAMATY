@@ -38,6 +38,7 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
             if (state is InsuranceLoaded)
               LargeAppButton(
                 text: 'Continue',
+
                 // onPressed: state.selectedProvider == null
                 //     ? null
                 //     : () {
@@ -63,6 +64,9 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
                     InsuranceInformationScreen.routeName,
                   );
                 },
+
+              
+
               ),
             const SizedBox(height: 50),
           ],
