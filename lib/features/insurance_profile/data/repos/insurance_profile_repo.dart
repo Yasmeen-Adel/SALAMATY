@@ -13,6 +13,7 @@ class InsuranceProfileRepo {
       '/api/insurance/profile/details',
       queryParameters: {'userId': userId},
     );
+    print('PROFILE RESPONSE: ${response.data}');
     return InsuranceProfileModel.fromJson(response.data);
   }
 }

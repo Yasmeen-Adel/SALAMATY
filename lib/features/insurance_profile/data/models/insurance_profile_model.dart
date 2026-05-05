@@ -1,91 +1,7 @@
-// class InsuranceProfileModel {
-//   final String fullName;
-//   final String cardHolderId;
-//   final ProfileProvider provider;
-//   final Coverage coverage;
-//   final LabTests labTests;
 
-//   InsuranceProfileModel({
-//     required this.fullName,
-//     required this.cardHolderId,
-//     required this.provider,
-//     required this.coverage,
-//     required this.labTests,
-//   });
 
-//   factory InsuranceProfileModel.fromJson(Map<String, dynamic> json) {
-//     return InsuranceProfileModel(
-//       fullName: json['user']?['fullName'] ?? '',
-//       cardHolderId: json['user']?['cardHolderId'] ?? '',
-//       provider: ProfileProvider.fromJson(json['provider'] ?? {}),
-//       coverage: Coverage.fromJson(json['coverage'] ?? {}),
-//       labTests: LabTests.fromJson(json['labTests'] ?? {}),
-//     );
-//   }
-// }
 
-// class ProfileProvider {
-//   final int id;
-//   final String name;
-//   final String? logoUrl;
-//   final String? policyNumber;
-//   final String? validUntil;
 
-//   ProfileProvider({
-//     required this.id,
-//     required this.name,
-//     this.logoUrl,
-//     this.policyNumber,
-//     this.validUntil,
-//   });
-
-//   factory ProfileProvider.fromJson(Map<String, dynamic> json) {
-//     return ProfileProvider(
-//       id: json['id'] ?? 0,
-//       name: json['name'] ?? '',
-//       logoUrl: json['logoUrl'],
-//       policyNumber: json['policyNumber'],
-//       validUntil: json['validUntil'],
-//     );
-//   }
-// }
-
-// class Coverage {
-//   final bool isCovered;
-//   final List<String> items;
-//   final List<String> medicines;
-
-//   Coverage({
-//     required this.isCovered,
-//     required this.items,
-//     required this.medicines,
-//   });
-
-//   factory Coverage.fromJson(Map<String, dynamic> json) {
-//     return Coverage(
-//       isCovered: json['isCovered'] ?? false,
-//       items: List<String>.from(json['items'] ?? []),
-//       medicines: List<String>.from(json['medicines'] ?? []),
-//     );
-//   }
-// }
-
-// class LabTests {
-//   final bool isCovered;
-//   final List<String> items;
-
-//   LabTests({
-//     required this.isCovered,
-//     required this.items,
-//   });
-
-//   factory LabTests.fromJson(Map<String, dynamic> json) {
-//     return LabTests(
-//       isCovered: json['isCovered'] ?? false,
-//       items: List<String>.from(json['items'] ?? []),
-//     );
-//   }
-// }
 
 
 class InsuranceProfileModel {
@@ -122,6 +38,7 @@ class ProfileProvider {
   final String? logoUrl;
   final String? policyNumber;
   final String? validUntil;
+  final String? status;
 
   ProfileProvider({
     required this.id,
@@ -129,6 +46,7 @@ class ProfileProvider {
     this.logoUrl,
     this.policyNumber,
     this.validUntil,
+    this.status,
   });
 
   factory ProfileProvider.fromJson(Map<String, dynamic> json) {
@@ -138,6 +56,7 @@ class ProfileProvider {
       logoUrl: json['logoUrl'],
       policyNumber: json['policyNumber'],
       validUntil: json['validUntil'],
+      status: json['status'],
     );
   }
 }
