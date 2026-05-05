@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
@@ -127,10 +125,20 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                         ),
+                        // onPressed: () {
+                        //   Navigator.pushNamed(
+                        //     context,
+                        //     MedicineAlternativesScreen.routeName,
+                        //   );
+                        // },
                         onPressed: () {
-                          Navigator.pushNamed(
+                          Navigator.push(
                             context,
-                            MedicineAlternativesScreen.routeName,
+                            MaterialPageRoute(
+                              builder: (_) => MedicineAlternativesScreen(
+                                productId: widget.productId,
+                              ),
+                            ),
                           );
                         },
                         child: const Text(

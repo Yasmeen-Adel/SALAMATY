@@ -478,6 +478,211 @@ class S {
   String get profile {
     return Intl.message('Profile', name: 'profile', desc: '', args: []);
   }
+
+  /// `Available Medicines`
+  String get availableMedicines {
+    return Intl.message(
+      'Available Medicines',
+      name: 'availableMedicines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IN STOCK`
+  String get inStock {
+    return Intl.message('IN STOCK', name: 'inStock', desc: '', args: []);
+  }
+
+  /// `Detected Medicines`
+  String get detectedMedicines {
+    return Intl.message(
+      'Detected Medicines',
+      name: 'detectedMedicines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan Again`
+  String get scanAgain {
+    return Intl.message('Scan Again', name: 'scanAgain', desc: '', args: []);
+  }
+
+  /// `AVAILABLE`
+  String get available {
+    return Intl.message('AVAILABLE', name: 'available', desc: '', args: []);
+  }
+
+  /// `View Details`
+  String get viewDetails {
+    return Intl.message(
+      'View Details',
+      name: 'viewDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `found`
+  String get found {
+    return Intl.message('found', name: 'found', desc: '', args: []);
+  }
+
+  /// `Detected from prescription`
+  String get detectedFromPrescription {
+    return Intl.message(
+      'Detected from prescription',
+      name: 'detectedFromPrescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Available Medicines`
+  String get notAvailableMedicines {
+    return Intl.message(
+      'Not Available Medicines',
+      name: 'notAvailableMedicines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OUT OF STOCK`
+  String get outOfStock {
+    return Intl.message('OUT OF STOCK', name: 'outOfStock', desc: '', args: []);
+  }
+
+  /// `Currently unavailable`
+  String get currentlyUnavailable {
+    return Intl.message(
+      'Currently unavailable',
+      name: 'currentlyUnavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NOT AVAILABLE`
+  String get notAvailable {
+    return Intl.message(
+      'NOT AVAILABLE',
+      name: 'notAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Analyze Prescription`
+  String get analyzePrescription {
+    return Intl.message(
+      'Analyze Prescription',
+      name: 'analyzePrescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Detected Medicines`
+  String get viewDetectedMedicines {
+    return Intl.message(
+      'View Detected Medicines',
+      name: 'viewDetectedMedicines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan Prescription`
+  String get scanPrescription {
+    return Intl.message(
+      'Scan Prescription',
+      name: 'scanPrescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use your camera to scan your prescription or upload an image from your gallery.`
+  String get scanSubtitle {
+    return Intl.message(
+      'Use your camera to scan your prescription or upload an image from your gallery.',
+      name: 'scanSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan with Camera`
+  String get scanWithCamera {
+    return Intl.message(
+      'Scan with Camera',
+      name: 'scanWithCamera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload from Gallery`
+  String get uploadFromGallery {
+    return Intl.message(
+      'Upload from Gallery',
+      name: 'uploadFromGallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite Medicines`
+  String get favoriteMedicines {
+    return Intl.message(
+      'Favorite Medicines',
+      name: 'favoriteMedicines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here are the medicines you have added to your favorites list`
+  String get favoriteSubtitle {
+    return Intl.message(
+      'Here are the medicines you have added to your favorites list',
+      name: 'favoriteSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Favorites Yet`
+  String get noFavorites {
+    return Intl.message(
+      'No Favorites Yet',
+      name: 'noFavorites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start adding medicines to your favorites`
+  String get startAddingFavorites {
+    return Intl.message(
+      'Start adding medicines to your favorites',
+      name: 'startAddingFavorites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Removed from favorites successfully`
+  String get removedFromFavorites {
+    return Intl.message(
+      'Removed from favorites successfully',
+      name: 'removedFromFavorites',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

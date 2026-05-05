@@ -31,13 +31,29 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "لديك حساب بالفعل؟ ",
     ),
+    "analyzePrescription": MessageLookupByLibrary.simpleMessage(
+      "تحليل الروشتة",
+    ),
     "appName": MessageLookupByLibrary.simpleMessage("سلامتي"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "available": MessageLookupByLibrary.simpleMessage("متاح"),
+    "availableMedicines": MessageLookupByLibrary.simpleMessage(
+      "الأدوية المتوفرة",
+    ),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
     "continueText": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "currentlyUnavailable": MessageLookupByLibrary.simpleMessage(
+      "غير متوفر حالياً",
+    ),
+    "detectedFromPrescription": MessageLookupByLibrary.simpleMessage(
+      "تم اكتشافه من الروشتة",
+    ),
+    "detectedMedicines": MessageLookupByLibrary.simpleMessage(
+      "الأدوية المكتشفة",
+    ),
     "didNotReceiveOtp": MessageLookupByLibrary.simpleMessage(
       "لم يصلك رمز التحقق؟ ",
     ),
@@ -49,15 +65,23 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "enterEmail": MessageLookupByLibrary.simpleMessage("أدخل بريدك الإلكتروني"),
+    "favoriteMedicines": MessageLookupByLibrary.simpleMessage(
+      "الأدوية المفضلة",
+    ),
+    "favoriteSubtitle": MessageLookupByLibrary.simpleMessage(
+      "هذه هي الأدوية التي أضفتها إلى المفضلة",
+    ),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
     "forgotPasswordSubtitle": MessageLookupByLibrary.simpleMessage(
       "من فضلك أدخل بريدك الإلكتروني لاستلام رابط إنشاء كلمة مرور جديدة",
     ),
+    "found": MessageLookupByLibrary.simpleMessage("تم العثور على"),
     "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ"),
     "googleSuccess": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بجوجل بنجاح",
     ),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "inStock": MessageLookupByLibrary.simpleMessage("متوفر"),
     "insurance": MessageLookupByLibrary.simpleMessage("التأمين"),
     "invalidOtp": MessageLookupByLibrary.simpleMessage(
       "من فضلك أدخل رمز تحقق صحيح",
@@ -69,6 +93,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "newPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "noFavorites": MessageLookupByLibrary.simpleMessage("لا توجد مفضلات بعد"),
+    "notAvailable": MessageLookupByLibrary.simpleMessage("غير متاح"),
+    "notAvailableMedicines": MessageLookupByLibrary.simpleMessage(
+      "الأدوية غير المتوفرة",
+    ),
     "onboarding1Subtitle": MessageLookupByLibrary.simpleMessage(
       "اعثر بسرعة على أقرب الصيدليات والمستشفيات والمعامل بناءً على موقعك الحالي.",
     ),
@@ -90,8 +119,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "onboardingSubtitle": MessageLookupByLibrary.simpleMessage(
       "نحن متحمسون لانضمامك إلينا.",
     ),
+    "outOfStock": MessageLookupByLibrary.simpleMessage("غير متوفر"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "profile": MessageLookupByLibrary.simpleMessage("الحساب"),
+    "removedFromFavorites": MessageLookupByLibrary.simpleMessage(
+      "تمت الإزالة من المفضلة بنجاح",
+    ),
     "resetPassword": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
@@ -102,6 +135,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "إعادة تعيين كلمة المرور",
     ),
     "scan": MessageLookupByLibrary.simpleMessage("مسح"),
+    "scanAgain": MessageLookupByLibrary.simpleMessage("إعادة المسح"),
+    "scanPrescription": MessageLookupByLibrary.simpleMessage("مسح الروشتة"),
+    "scanSubtitle": MessageLookupByLibrary.simpleMessage(
+      "استخدم الكاميرا لمسح الروشتة أو قم برفع صورة من المعرض.",
+    ),
+    "scanWithCamera": MessageLookupByLibrary.simpleMessage("التقاط بالكاميرا"),
     "sendAgain": MessageLookupByLibrary.simpleMessage("إعادة الإرسال"),
     "sending": MessageLookupByLibrary.simpleMessage("جاري الإرسال..."),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -113,7 +152,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "من فضلك قم بإنشاء حساب للمتابعة",
     ),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+    "startAddingFavorites": MessageLookupByLibrary.simpleMessage(
+      "ابدأ بإضافة أدوية إلى المفضلة",
+    ),
     "updatePassword": MessageLookupByLibrary.simpleMessage("تحديث كلمة المرور"),
+    "uploadFromGallery": MessageLookupByLibrary.simpleMessage("رفع من المعرض"),
     "verificationSubtitle": MessageLookupByLibrary.simpleMessage(
       "من فضلك أدخل رمز التحقق المرسل إلى بريدك الإلكتروني",
     ),
@@ -123,6 +166,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "البريد الإلكتروني غير مفعل، يجب التحقق باستخدام رمز OTP",
     ),
     "verifyNow": MessageLookupByLibrary.simpleMessage("تحقق الآن"),
+    "viewDetails": MessageLookupByLibrary.simpleMessage("عرض التفاصيل"),
+    "viewDetectedMedicines": MessageLookupByLibrary.simpleMessage(
+      "عرض الأدوية المكتشفة",
+    ),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بك في "),
     "yourEmail": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني:"),
   };

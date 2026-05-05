@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class NotAvailableSection extends StatelessWidget {
   final List<dynamic> notAvailable;
@@ -16,8 +17,9 @@ class NotAvailableSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Not Available Medicines",
+            Text(
+              // "Not Available Medicines",
+              S.of(context).notAvailableMedicines,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -30,8 +32,9 @@ class NotAvailableSection extends StatelessWidget {
                 color: const Color(0xFFFFEBEE),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Text(
-                "OUT OF STOCK",
+              child: Text(
+                // "OUT OF STOCK",
+                S.of(context).outOfStock,
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.bold,
@@ -87,8 +90,9 @@ class NotAvailableSection extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 2),
-                      const Text(
-                        "Currently unavailable",
+                      Text(
+                        // "Currently unavailable",
+                        S.of(context).currentlyUnavailable,
                         style: TextStyle(
                           fontSize: 12,
                           color: Color(0xFFE57373),
@@ -104,8 +108,9 @@ class NotAvailableSection extends StatelessWidget {
                     color: const Color(0xFFFFEBEE),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Text(
-                    "NOT AVAILABLE",
+                  child: Text(
+                    // "NOT AVAILABLE",
+                    S.of(context).notAvailable,
                     style: TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.bold,

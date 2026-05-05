@@ -1,5 +1,6 @@
 // detected_section.dart
 import 'package:flutter/material.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class DetectedSection extends StatelessWidget {
   final List<String> extracted;
@@ -30,8 +31,9 @@ class DetectedSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "Detected Medicines",
+              Text(
+                // "Detected Medicines",
+                S.of(context).detectedMedicines,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -46,7 +48,7 @@ class DetectedSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  "${extracted.length} found",
+                  "${extracted.length} ${S.of(context).found}",
                   style: const TextStyle(
                     fontSize: 12,
                     color: Color(0xFF2E7D32),
@@ -103,8 +105,9 @@ class DetectedSection extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 2),
-                          const Text(
-                            "Detected from prescription",
+                          Text(
+                            // "Detected from prescription",
+                            S.of(context).detectedFromPrescription,
                             style: TextStyle(
                               fontSize: 12,
                               color: Color(0xFF9E9E9E),

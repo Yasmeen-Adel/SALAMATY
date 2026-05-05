@@ -7,6 +7,7 @@ import 'package:salamaty/features/scan/presentation/view/widgets/extract_screen.
 import 'package:salamaty/features/scan/presentation/view/widgets/prescription_image_widget.dart';
 import 'package:salamaty/features/scan/presentation/view/widgets/scan_button.dart';
 import 'package:salamaty/features/scan/presentation/view/widgets/upload_button.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ScanScreenBody extends StatelessWidget {
   const ScanScreenBody({super.key});
@@ -36,24 +37,23 @@ class ScanScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 100),
-          const CustomScreenTitle(title: 'Scan Prescription'),
+          CustomScreenTitle(title: S.of(context).scanPrescription),
           SizedBox(
             height: 10,
           ),
-          const CustomScreenSubtitle(
-            subtitleText:
-                'Use your camera to scan your prescription or upload an image from your gallery.',
+          CustomScreenSubtitle(
+            subtitleText: S.of(context).scanSubtitle,
           ),
           const SizedBox(height: 20),
           const PrescriptionImageWidget(),
           const SizedBox(height: 30),
           ScanButton(
-            text: 'Scan with Camera',
+            text: S.of(context).scanWithCamera,
             onPressed: () => _pickImage(context, ImageSource.camera),
           ),
           const SizedBox(height: 20),
           UploadButton(
-            text: 'Upload from Gallery',
+            text: S.of(context).uploadFromGallery,
             onPressed: () => _pickImage(context, ImageSource.gallery),
           ),
           const SizedBox(height: 30),
