@@ -43,19 +43,19 @@ void main() async {
 
   // Setup GetIt for singletons
   setupGetIt();
-  final isLoggedIn = await AuthLocalStorage.isLoggedIn();
+  // final isLoggedIn = await AuthLocalStorage.isLoggedIn();
   runApp(
     ChangeNotifierProvider<LocalizationProvider>(
       create: (_) => getIt<LocalizationProvider>(),
-      child: SalamatyApp(isLoggedIn: isLoggedIn),
+      child: SalamatyApp(),
     ),
   );
 }
 
 class SalamatyApp extends StatelessWidget {
-  final bool isLoggedIn;
+  // final bool isLoggedIn;
 
-  const SalamatyApp({super.key, required this.isLoggedIn});
+  const SalamatyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,7 @@ class SalamatyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
       onGenerateRoute: onGenerateRoute,
-      initialRoute: isLoggedIn ? MainScreen.routeName : SplashScreen.routeName,
+      initialRoute: SplashScreen.routeName,
     );
   }
 }

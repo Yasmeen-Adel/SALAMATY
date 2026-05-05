@@ -10,47 +10,55 @@ class FacilitiesCubit extends Cubit<FacilitiesState> {
   FacilitiesCubit() : super(FacilitiesInitial());
 
   final repo = getIt<FacilitiesRepo>();
-
   List<FacilityModel> facilities = [];
 
-  // Nearby Top 3
   Future<void> loadNearbyTop3() async {
     emit(FacilitiesLoading());
 
-    final location = await AuthLocalStorage.getLocation();
-    if (location == null) return;
+    try {
+      final location = await AuthLocalStorage.getLocation();
+      if (location == null) {
+        emit(FacilitiesError("Location not available"));
+        return;
+      }
 
-    final data = await repo.getNearbyTop3(
-      lat: location["lat"]!,
-      lon: location["lng"]!,
-    );
+      final data = await repo.getNearbyTop3(
+        lat: location["lat"]!,
+        lon: location["lng"]!,
+      );
 
-    facilities =
-        data.map<FacilityModel>((e) => FacilityModel.fromJson(e)).toList();
+      facilities =
+          data.map<FacilityModel>((e) => FacilityModel.fromJson(e)).toList();
 
-    emit(FacilitiesLoaded());
+      emit(FacilitiesLoaded());
+    } catch (e) {
+      emit(FacilitiesError(e.toString()));
+    }
   }
 
-  // All Facilities (Search + Filter)
-  Future<void> loadAllFacilities({
-    String? type,
-    String? search,
-  }) async {
+  Future<void> loadAllFacilities({String? type, String? search}) async {
     emit(FacilitiesLoading());
 
-    final location = await AuthLocalStorage.getLocation();
-    if (location == null) return;
+    try {
+      final location = await AuthLocalStorage.getLocation();
+      if (location == null) {
+        emit(FacilitiesError("Location not available"));
+        return;
+      }
 
-    final data = await repo.getAllFacilities(
-      lat: location["lat"]!,
-      lon: location["lng"]!,
-      type: type,
-      search: search,
-    );
+      final data = await repo.getAllFacilities(
+        lat: location["lat"]!,
+        lon: location["lng"]!,
+        type: type,
+        search: search,
+      );
 
-    facilities =
-        data.map<FacilityModel>((e) => FacilityModel.fromJson(e)).toList();
+      facilities =
+          data.map<FacilityModel>((e) => FacilityModel.fromJson(e)).toList();
 
-    emit(FacilitiesLoaded());
+      emit(FacilitiesLoaded());
+    } catch (e) {
+      emit(FacilitiesError(e.toString()));
+    }
   }
 }
