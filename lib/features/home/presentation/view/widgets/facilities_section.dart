@@ -7,24 +7,30 @@ import 'package:url_launcher/url_launcher.dart';
 
 class FacilitiesSection extends StatelessWidget {
   const FacilitiesSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => FacilitiesCubit()..loadNearbyTop3(),
       child: BlocBuilder<FacilitiesCubit, FacilitiesState>(
         builder: (context, state) {
+          if (state is FacilitiesLoading || state is FacilitiesInitial) {
+            return _buildFacilitiesSkeleton();
+          }
+
+          if (state is FacilitiesError) {
+            return const SizedBox.shrink();
+          }
+
           final cubit = context.read<FacilitiesCubit>();
 
-          if (state is FacilitiesLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
+          if (cubit.facilities.isEmpty) return const SizedBox.shrink();
 
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -57,10 +63,7 @@ class FacilitiesSection extends StatelessWidget {
                     ),
                   ],
                 ),
-
                 const SizedBox(height: 8),
-
-                // Cards
                 ...cubit.facilities.take(3).map((facility) {
                   return FacilityCard(
                     name: facility.name,
@@ -76,8 +79,10 @@ class FacilitiesSection extends StatelessWidget {
                     },
                     onLocation: () async {
                       final uri = Uri.parse(facility.locationUrl);
-                      await launchUrl(uri,
-                          mode: LaunchMode.externalApplication);
+                      await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      );
                     },
                   );
                 }).toList(),
@@ -85,6 +90,42 @@ class FacilitiesSection extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildFacilitiesSkeleton() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 16),
+          _skeletonLine(120, 16),
+          const SizedBox(height: 12),
+          ...List.generate(
+            3,
+            (_) => Container(
+              margin: const EdgeInsets.only(bottom: 12),
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _skeletonLine(double width, double height) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade300,
+        borderRadius: BorderRadius.circular(8),
       ),
     );
   }

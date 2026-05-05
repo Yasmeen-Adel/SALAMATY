@@ -16,7 +16,6 @@ import 'package:salamaty/generated/l10n.dart';
 
 class MainScreen extends StatefulWidget {
   static const String routeName = 'main_screen';
-
   const MainScreen({super.key});
 
   @override
@@ -25,52 +24,38 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int currentIndex = 0;
+  late Future<void> _locationFuture;
 
   @override
   void initState() {
     super.initState();
-    _initializeLocation();
+    _locationFuture = _initializeLocation();
   }
 
   Future<void> _initializeLocation() async {
     final isLoggedIn = await AuthLocalStorage.isLoggedIn();
     if (!isLoggedIn) return;
 
+    // لو موجود بالفعل، خلاص مش محتاجين نعمل حاجة
     final savedLocation = await AuthLocalStorage.getLocation();
-    if (savedLocation != null) {
-      print("Location already saved, skipping update");
-      return;
-    }
+    if (savedLocation != null) return;
 
     final locationService = LocationService();
     final position = await locationService.getCurrentLocation();
-
-    if (position == null) {
-      print("Location permission denied or service disabled");
-      return;
-    }
+    if (position == null) return;
 
     final lat = position.latitude;
     final lng = position.longitude;
 
     try {
-      await getIt<AuthRepo>().updateLocation(
-        lat: lat,
-        lng: lng,
-      );
-
-      //  lat & lng
+      await getIt<AuthRepo>().updateLocation(lat: lat, lng: lng);
       await AuthLocalStorage.saveLocation(lat, lng);
 
       final placemarks = await placemarkFromCoordinates(lat, lng);
       final place = placemarks.first;
-
       final address =
           "${place.street ?? ""}, ${place.locality ?? ""}, ${place.country ?? ""}";
-
       await AuthLocalStorage.saveAddress(address);
-
-      print("Location + Address saved successfully");
     } catch (e) {
       print("Failed to update location: $e");
     }
@@ -83,55 +68,70 @@ class _MainScreenState extends State<MainScreen> {
         const InsuranceScreen(),
         const ProfileScreen(),
       ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[currentIndex],
-      bottomNavigationBar: Directionality(
-        textDirection: Directionality.of(context),
-        child: GlazeNavBar(
-          index: currentIndex,
-          color: AppColors.primaryColor,
-          backgroundColor: Colors.transparent,
-          glassBorderColor: AppColors.primaryColor,
-          buttonBackgroundColor: AppColors.primaryColor,
-          glassBlur: 15,
-          glassOpacity: 0.9,
-          items: [
-            GlazeNavBarItem(
-              child: Icon(Icons.home_outlined, color: Colors.white),
-              label: S.of(context).home,
-              labelStyle: TextStyle(color: Colors.white),
+    return FutureBuilder<void>(
+      future: _locationFuture,
+      builder: (context, snapshot) {
+        // استنى لحد ما الـ location يتحفظ
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        // بعد ما الـ location يبقى جاهز، ابني الـ UI
+        return Scaffold(
+          body: screens[currentIndex],
+          bottomNavigationBar: Directionality(
+            textDirection: Directionality.of(context),
+            child: GlazeNavBar(
+              index: currentIndex,
+              color: AppColors.primaryColor,
+              backgroundColor: Colors.transparent,
+              glassBorderColor: AppColors.primaryColor,
+              buttonBackgroundColor: AppColors.primaryColor,
+              glassBlur: 15,
+              glassOpacity: 0.9,
+              items: [
+                GlazeNavBarItem(
+                  child: Icon(Icons.home_outlined, color: Colors.white),
+                  label: S.of(context).home,
+                  labelStyle: const TextStyle(color: Colors.white),
+                ),
+                GlazeNavBarItem(
+                  child: Icon(FontAwesomeIcons.pills, color: Colors.white),
+                  label: S.of(context).drugStore,
+                  labelStyle: const TextStyle(color: Colors.white),
+                ),
+                GlazeNavBarItem(
+                  child: Icon(Icons.qr_code_scanner_outlined,
+                      color: Colors.white),
+                  label: S.of(context).scan,
+                  labelStyle: const TextStyle(color: Colors.white),
+                ),
+                GlazeNavBarItem(
+                  child: Icon(FontAwesomeIcons.handHoldingMedical,
+                      color: Colors.white),
+                  label: S.of(context).insurance,
+                  labelStyle: const TextStyle(color: Colors.white),
+                ),
+                GlazeNavBarItem(
+                  child: Icon(Icons.person, color: Colors.white),
+                  label: S.of(context).profile,
+                  labelStyle: const TextStyle(color: Colors.white),
+                ),
+              ],
+              onTap: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
             ),
-            GlazeNavBarItem(
-              child: Icon(FontAwesomeIcons.pills, color: Colors.white),
-              label: S.of(context).drugStore,
-              labelStyle: TextStyle(color: Colors.white),
-            ),
-            GlazeNavBarItem(
-              child: Icon(Icons.qr_code_scanner_outlined, color: Colors.white),
-              label: S.of(context).scan,
-              labelStyle: TextStyle(color: Colors.white),
-            ),
-            GlazeNavBarItem(
-              child: Icon(FontAwesomeIcons.handHoldingMedical,
-                  color: Colors.white),
-              label: S.of(context).insurance,
-              labelStyle: TextStyle(color: Colors.white),
-            ),
-            GlazeNavBarItem(
-              child: Icon(Icons.person, color: Colors.white),
-              label: S.of(context).profile,
-              labelStyle: TextStyle(color: Colors.white),
-            ),
-          ],
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

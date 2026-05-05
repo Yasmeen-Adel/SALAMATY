@@ -15,7 +15,7 @@ void main() {
     // Build our app and trigger a frame.
     // await tester.pumpWidget( SalamatyApp());
 
-    await tester.pumpWidget(SalamatyApp(isLoggedIn: false));
+    await tester.pumpWidget(SalamatyApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
