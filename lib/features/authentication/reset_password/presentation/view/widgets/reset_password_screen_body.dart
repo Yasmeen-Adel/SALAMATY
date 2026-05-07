@@ -89,7 +89,7 @@ class _ResetPasswordScreenBodyState extends State<ResetPasswordScreenBody> {
                 CustomTextFieldLabel(labelText: S.of(context).confirmPassword),
                 CustomTextField(
                   controller: confirmPasswordController,
-                  hintText: 'Confirm password',
+                  hintText: S.of(context).confirmPassword,
                   prefixIcon: Icons.lock,
                   isPassword: true,
                 ),

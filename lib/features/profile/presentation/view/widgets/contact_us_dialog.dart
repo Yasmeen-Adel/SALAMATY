@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ContactUsDialog extends StatefulWidget {
   const ContactUsDialog({super.key});
@@ -107,9 +108,7 @@ class _ContactUsDialogState extends State<ContactUsDialog>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          success
-              ? 'Message sent successfully ✓'
-              : 'Failed to send. Please try again.',
+          success ? S.of(context).sendSuccess : S.of(context).sendFailed,
           style: const TextStyle(color: Colors.white),
         ),
         backgroundColor: success ? Colors.green : Colors.redAccent,
@@ -163,7 +162,8 @@ class _ContactUsDialogState extends State<ContactUsDialog>
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        'Contact Us',
+                        // 'Contact Us',
+                        S.of(context).contactUs,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 22,
@@ -175,10 +175,10 @@ class _ContactUsDialogState extends State<ContactUsDialog>
                       TextFormField(
                         controller: _usernameController,
                         validator: (v) => (v == null || v.trim().isEmpty)
-                            ? 'Username is required'
+                            ? S.of(context).usernameRequired
                             : null,
-                        decoration:
-                            _fieldDecoration('Username', Icons.person_outline),
+                        decoration: _fieldDecoration(
+                            S.of(context).username, Icons.person_outline),
                       ),
                       const SizedBox(height: 12),
                       TextFormField(
@@ -186,29 +186,28 @@ class _ContactUsDialogState extends State<ContactUsDialog>
                         keyboardType: TextInputType.emailAddress,
                         validator: (v) {
                           if (v == null || v.trim().isEmpty) {
-                            return 'Email is required';
+                            return S.of(context).emailRequired;
                           }
                           final reg =
                               RegExp(r'^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$');
                           if (!reg.hasMatch(v.trim())) {
-                            return 'Enter a valid email';
+                            return S.of(context).invalidEmail;
                           }
                           return null;
                         },
-                        decoration:
-                            _fieldDecoration('E-mail', Icons.email_outlined),
+                        decoration: _fieldDecoration(
+                            S.of(context).email, Icons.email_outlined),
                       ),
                       const SizedBox(height: 12),
                       TextFormField(
                         controller: _messageController,
                         maxLines: 3,
                         validator: (v) => (v == null || v.trim().isEmpty)
-                            ? 'Message is required'
+                            ? S.of(context).messageRequired
                             : null,
                         decoration: _fieldDecoration(
-                            'Message', Icons.chat_bubble_outline),
+                            S.of(context).message, Icons.chat_bubble_outline),
                       ),
-                     
                       const SizedBox(height: 24),
                       Row(
                         children: [
@@ -224,7 +223,7 @@ class _ContactUsDialogState extends State<ContactUsDialog>
                                   borderRadius: BorderRadius.circular(30),
                                 ),
                               ),
-                              child: const Text('Cancel'),
+                              child: Text(S.of(context).cancel),
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -246,8 +245,9 @@ class _ContactUsDialogState extends State<ContactUsDialog>
                                         color: Colors.white,
                                       ),
                                     )
-                                  : const Text(
-                                      'Send',
+                                  : Text(
+                                      // 'Send',
+                                      S.of(context).send,
                                       style: TextStyle(color: Colors.white),
                                     ),
                             ),

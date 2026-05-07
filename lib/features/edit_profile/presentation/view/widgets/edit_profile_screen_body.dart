@@ -9,6 +9,7 @@ import 'package:salamaty/features/edit_profile/presentation/cubit/edit_profile_s
 import 'package:salamaty/features/edit_profile/presentation/view/widgets/birthday_field.dart';
 import 'package:salamaty/features/edit_profile/presentation/view/widgets/edit_profile_text_field.dart';
 import 'package:salamaty/features/edit_profile/presentation/view/widgets/gender_field.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class EditProfileScreenBody extends StatefulWidget {
   const EditProfileScreenBody({super.key});
@@ -64,7 +65,7 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
 
           AppSnackBar.show(
             context,
-            message: "Profile updated successfully!",
+            message: S.of(context).profileUpdatedSuccessfully,
             type: SnackBarType.success,
           );
 
@@ -89,15 +90,15 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
             children: [
               const SizedBox(height: 60),
               const ArrowBack(),
-              const CustomScreenTitle(title: 'Edit Profile'),
+              CustomScreenTitle(title: S.of(context).editProfile),
               const SizedBox(height: 30),
               EditProfileTextField(
-                label: 'Full name',
+                label: S.of(context).fullName,
                 controller: fullNameController,
               ),
               const SizedBox(height: 10),
               EditProfileTextField(
-                label: 'Address',
+                label: S.of(context).address,
                 controller: addressController,
               ),
               const SizedBox(height: 10),
@@ -112,7 +113,9 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
               ),
               const SizedBox(height: 40),
               LargeAppButton(
-                text: state is EditProfileLoading ? 'Loading...' : 'Save',
+                text: state is EditProfileLoading
+                    ? S.of(context).loading
+                    : S.of(context).save,
                 onPressed: state is EditProfileLoading
                     ? null
                     : () {
@@ -122,7 +125,8 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
                             selectedGender.isEmpty) {
                           AppSnackBar.show(
                             context,
-                            message: "Please complete all required fields",
+                            message:
+                                S.of(context).pleaseCompleteAllRequiredFields,
                             type: SnackBarType.error,
                           );
 

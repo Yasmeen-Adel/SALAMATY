@@ -7,9 +7,7 @@ import 'package:salamaty/features/chatbot/presentation/view/widgets/chatbot_inpu
 import 'package:salamaty/features/chatbot/presentation/view/widgets/quick_replies.dart';
 import 'package:salamaty/features/chatbot/presentation/view/widgets/typing_indicator.dart';
 
-
 class ChatbotScreen extends StatelessWidget {
-
   const ChatbotScreen({super.key});
 
   @override
@@ -60,65 +58,67 @@ class _ChatbotViewState extends State<_ChatbotView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF5F8FF),
-      appBar: _buildAppBar(context),
-      body: Column(
-        children: [
-          Expanded(
-            child: BlocConsumer<ChatbotCubit, ChatbotState>(
-              listener: (context, state) => _scrollToBottom(),
-              builder: (context, state) {
-                List<ChatMessage> messages = [];
-                bool isTyping = false;
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF5F8FF),
+        appBar: _buildAppBar(context),
+        body: Column(
+          children: [
+            Expanded(
+              child: BlocConsumer<ChatbotCubit, ChatbotState>(
+                listener: (context, state) => _scrollToBottom(),
+                builder: (context, state) {
+                  List<ChatMessage> messages = [];
+                  bool isTyping = false;
 
-                if (state is ChatbotLoaded) {
-                  messages = state.messages;
-                } else if (state is ChatbotTyping) {
-                  messages = state.messages;
-                  isTyping = true;
-                }
+                  if (state is ChatbotLoaded) {
+                    messages = state.messages;
+                  } else if (state is ChatbotTyping) {
+                    messages = state.messages;
+                    isTyping = true;
+                  }
 
-                return ListView.builder(
-                  controller: _scrollController,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 12,
-                  ),
-                  itemCount: messages.length + (isTyping ? 1 : 0),
-                  itemBuilder: (context, index) {
-                    if (index == messages.length && isTyping) {
-                      return const TypingIndicator();
-                    }
+                  return ListView.builder(
+                    controller: _scrollController,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    itemCount: messages.length + (isTyping ? 1 : 0),
+                    itemBuilder: (context, index) {
+                      if (index == messages.length && isTyping) {
+                        return const TypingIndicator();
+                      }
 
-                    final message = messages[index];
-                    final isLast = index == messages.length - 1;
+                      final message = messages[index];
+                      final isLast = index == messages.length - 1;
 
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        ChatBubble(message: message),
-                        if (!message.isUser &&
-                            message.quickReplies != null &&
-                            message.quickReplies!.isNotEmpty &&
-                            isLast)
-                          QuickReplies(
-                            replies: message.quickReplies!,
-                            onTap: (reply) =>
-                                _sendMessage(context, reply),
-                          ),
-                      ],
-                    );
-                  },
-                );
-              },
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ChatBubble(message: message),
+                          if (!message.isUser &&
+                              message.quickReplies != null &&
+                              message.quickReplies!.isNotEmpty &&
+                              isLast)
+                            QuickReplies(
+                              replies: message.quickReplies!,
+                              onTap: (reply) => _sendMessage(context, reply),
+                            ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
             ),
-          ),
-          ChatbotInput(
-            controller: _textController,
-            onSend: (text) => _sendMessage(context, text),
-          ),
-        ],
+            ChatbotInput(
+              controller: _textController,
+              onSend: (text) => _sendMessage(context, text),
+            ),
+          ],
+        ),
       ),
     );
   }

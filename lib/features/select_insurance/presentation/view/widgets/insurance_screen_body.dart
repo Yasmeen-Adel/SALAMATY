@@ -7,6 +7,7 @@ import 'package:salamaty/core/widgets/large_app_button.dart';
 import 'package:salamaty/features/insurance_information/presentation/view/insurance_information_screen.dart';
 import 'package:salamaty/features/select_insurance/presentation/cubit/select_insurance_cubit.dart';
 import 'package:salamaty/features/select_insurance/presentation/view/widgets/insurance_card.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class InsuranceScreenBody extends StatefulWidget {
   const InsuranceScreenBody({super.key});
@@ -29,25 +30,15 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
         return Column(
           children: [
             const SizedBox(height: 90),
-            const CustomScreenTitle(title: 'Select Insurance'),
-            const CustomScreenSubtitle(
-              subtitleText: 'Select your insurance to view covered services.',
+             CustomScreenTitle(title: S.of(context).selectInsurance),
+             CustomScreenSubtitle(
+              subtitleText: S.of(context).selectInsuranceSubtitle,
             ),
             const SizedBox(height: 30),
             Expanded(child: _buildBody(context, state)),
             if (state is InsuranceLoaded)
               LargeAppButton(
-                text: 'Continue',
-                // onPressed: state.selectedProvider == null
-                //     ? null
-                //     : () {
-                //         Navigator.pushNamed(
-                //           context,
-                //           InsuranceInformationScreen.routeName,
-                //           // pass selected provider if needed:
-                //           // arguments: state.selectedProvider,
-                //         );
-                //       },
+                text:S.of(context).continueText,
                 onPressed: () {
                   if (state.selectedProvider == null) {
                     AppSnackBar.show(
@@ -57,10 +48,11 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
                     );
                     return;
                   }
-
+                  // بنبعت الـ provider كـ arguments
                   Navigator.pushNamed(
                     context,
                     InsuranceInformationScreen.routeName,
+                    arguments: state.selectedProvider,
                   );
                 },
               ),
@@ -83,13 +75,13 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
           children: [
             const Icon(Icons.error_outline, color: Colors.red, size: 48),
             const SizedBox(height: 12),
-            Text(
-              'Failed to load providers',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
+            const Text('Failed to load providers',
+                style:
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             TextButton(
-              onPressed: () => context.read<InsuranceCubit>().fetchProviders(),
+              onPressed: () =>
+                  context.read<InsuranceCubit>().fetchProviders(),
               child: const Text('Retry'),
             ),
           ],

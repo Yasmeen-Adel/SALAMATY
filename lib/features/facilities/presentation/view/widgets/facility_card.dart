@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class FacilityCard extends StatelessWidget {
   final String name;
@@ -118,7 +119,7 @@ class FacilityCard extends StatelessWidget {
                 child: ElevatedButton.icon(
                   onPressed: onLocation,
                   icon: const Icon(Icons.location_on, size: 18),
-                  label: const Text('Location'),
+                  label: Text(S.of(context).location),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: Colors.white,

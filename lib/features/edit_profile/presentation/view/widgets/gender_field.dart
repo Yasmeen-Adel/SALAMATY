@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class GenderField extends StatefulWidget {
   final Function(String?) onChanged;
@@ -33,7 +34,7 @@ class _GenderFieldState extends State<GenderField> {
           ),
           const SizedBox(height: 6),
           DropdownButtonFormField<String>(
-            value: selectedGender,
+            initialValue: selectedGender,
             icon: const Icon(
               Icons.keyboard_arrow_down_rounded,
               color: Color(0xFF0D2D9E),
@@ -47,7 +48,7 @@ class _GenderFieldState extends State<GenderField> {
               fontWeight: FontWeight.w500,
             ),
             decoration: InputDecoration(
-              hintText: 'Select gender',
+              hintText: S.of(context).selectGender,
               hintStyle: const TextStyle(
                 color: Color(0xFF8F8D8D),
                 fontSize: 16,

@@ -8,6 +8,7 @@ import 'package:salamaty/features/profile/presentation/cubit/profile_cubit.dart'
 import 'package:salamaty/features/profile/presentation/cubit/profile_state.dart';
 import 'package:salamaty/features/profile/presentation/view/widgets/profile_list_tile.dart';
 import 'package:salamaty/features/profile/presentation/view/widgets/contact_us_dialog.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ProfileMenu extends StatefulWidget {
   const ProfileMenu({super.key});
@@ -65,7 +66,7 @@ class _ProfileMenuState extends State<ProfileMenu> {
                   prefixIcon: Icons.location_on_outlined,
                 ),
                 ProfileListTile(
-                  title: 'Insurance Profile',
+                  title: S.of(context).insuranceProfile,
                   prefixIcon: Icons.health_and_safety_outlined,
                   trailingIcon: Icons.arrow_forward_ios,
                   onTap: () async {
@@ -92,7 +93,7 @@ class _ProfileMenuState extends State<ProfileMenu> {
                   prefixIcon: Icons.cake_outlined,
                 ),
                 ProfileListTile(
-                  title: 'Edit Profile',
+                  title: S.of(context).editProfile,
                   prefixIcon: Icons.edit_outlined,
                   trailingIcon: Icons.arrow_forward_ios,
                   onTap: () async {
@@ -109,7 +110,7 @@ class _ProfileMenuState extends State<ProfileMenu> {
                   },
                 ),
                 ProfileListTile(
-                  title: 'Contact Us',
+                  title: S.of(context).contactUs,
                   prefixIcon: Icons.contact_support_outlined,
                   trailingIcon: Icons.arrow_forward_ios,
                   onTap: () => ContactUsDialog.show(context),

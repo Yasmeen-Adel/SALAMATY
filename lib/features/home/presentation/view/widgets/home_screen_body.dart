@@ -127,6 +127,7 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
     return Stack(
       children: [
         Column(
@@ -161,9 +162,15 @@ class HomeScreenBody extends StatelessWidget {
         ),
 
         // Floating Chatbot Button
+        // Positioned(
+        //   bottom: 16,
+        //   right: 16,
+        //   child: _ChatbotFAB(),
+        // ),
         Positioned(
           bottom: 16,
-          right: 16,
+          right: isArabic ? null : 16,
+          left: isArabic ? 16 : null,
           child: _ChatbotFAB(),
         ),
       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class MedicineCard extends StatelessWidget {
   final String imageUrl;
@@ -110,7 +111,8 @@ class MedicineCard extends StatelessWidget {
                         padding: EdgeInsets.zero,
                       ),
                       child: Text(
-                        'Find Pharmacies',
+                        // 'Find Pharmacies',
+                        S.of(context).findPharmacies,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
