@@ -38,16 +38,6 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
             if (state is InsuranceLoaded)
               LargeAppButton(
                 text: 'Continue',
-                // onPressed: state.selectedProvider == null
-                //     ? null
-                //     : () {
-                //         Navigator.pushNamed(
-                //           context,
-                //           InsuranceInformationScreen.routeName,
-                //           // pass selected provider if needed:
-                //           // arguments: state.selectedProvider,
-                //         );
-                //       },
                 onPressed: () {
                   if (state.selectedProvider == null) {
                     AppSnackBar.show(
@@ -57,10 +47,11 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
                     );
                     return;
                   }
-
+                  // بنبعت الـ provider كـ arguments
                   Navigator.pushNamed(
                     context,
                     InsuranceInformationScreen.routeName,
+                    arguments: state.selectedProvider,
                   );
                 },
               ),
@@ -83,13 +74,13 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
           children: [
             const Icon(Icons.error_outline, color: Colors.red, size: 48),
             const SizedBox(height: 12),
-            Text(
-              'Failed to load providers',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
+            const Text('Failed to load providers',
+                style:
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             TextButton(
-              onPressed: () => context.read<InsuranceCubit>().fetchProviders(),
+              onPressed: () =>
+                  context.read<InsuranceCubit>().fetchProviders(),
               child: const Text('Retry'),
             ),
           ],

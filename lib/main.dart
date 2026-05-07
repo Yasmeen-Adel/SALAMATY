@@ -25,12 +25,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salamaty/core/network/dio_helper.dart';
-import 'package:salamaty/core/services/auth_local_storage.dart';
+// import 'package:salamaty/core/services/auth_local_storage.dart';
 import 'package:salamaty/core/services/get_it_services.dart';
 import 'package:salamaty/core/services/localization_provider.dart';
-import 'package:salamaty/core/widgets/main_screen.dart';
-import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
-import 'package:salamaty/features/medicine_alternatives/presentation/view/medicine_alternatives_screen.dart';
+// import 'package:salamaty/core/widgets/main_screen.dart';
+// import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
+// import 'package:salamaty/features/medicine_alternatives/presentation/view/medicine_alternatives_screen.dart';
 import 'package:salamaty/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:salamaty/core/helper_functions/on_generate_route.dart';

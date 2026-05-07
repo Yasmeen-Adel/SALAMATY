@@ -61,7 +61,6 @@ class SplashScreenBody2 extends StatelessWidget {
                 builder: (_) {
                   final localeProvider =
                       Provider.of<LocalizationProvider>(context, listen: false);
-                  ;
                   String currentLang = localeProvider.locale.languageCode;
 
                   return Column(
