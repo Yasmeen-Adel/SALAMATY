@@ -217,10 +217,14 @@ import 'package:salamaty/features/authentication/verification/presentation/view/
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:salamaty/generated/l10n.dart';
 
+// final GoogleSignIn googleSignIn = GoogleSignIn(
+//   scopes: ['email'],
+//   serverClientId:
+//       '228110417008-saj9545qu0ib8aqee3njptpp9fp4404b.apps.googleusercontent.com',
+// );
 final GoogleSignIn googleSignIn = GoogleSignIn(
-  scopes: ['email'],
-  serverClientId:
-      '228110417008-saj9545qu0ib8aqee3njptpp9fp4404b.apps.googleusercontent.com',
+  scopes: ['email', 'profile', 'openid'],
+  serverClientId: '228110417008-saj9545qu0ib8aqee3njptpp9fp4404b.apps.googleusercontent.com',
 );
 
 class SignInScreenBody extends StatefulWidget {

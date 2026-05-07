@@ -79,6 +79,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/animations/
+    - assets/animations/lottie.json
 
   fonts:
     - family: Plus Jakarta Sans

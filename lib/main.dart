@@ -29,6 +29,7 @@ import 'package:salamaty/core/services/auth_local_storage.dart';
 import 'package:salamaty/core/services/get_it_services.dart';
 import 'package:salamaty/core/services/localization_provider.dart';
 import 'package:salamaty/core/widgets/main_screen.dart';
+import 'package:salamaty/features/chatbot/presentation/view/chatbot_screen.dart';
 import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
 import 'package:salamaty/features/medicine_alternatives/presentation/view/medicine_alternatives_screen.dart';
 import 'package:salamaty/generated/l10n.dart';
@@ -78,6 +79,7 @@ class SalamatyApp extends StatelessWidget {
       ),
       onGenerateRoute: onGenerateRoute,
       initialRoute: SplashScreen.routeName,
+      // home: ChatbotScreen(),
     );
   }
 }
