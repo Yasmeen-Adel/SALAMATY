@@ -217,8 +217,13 @@ import 'package:salamaty/features/authentication/verification/presentation/view/
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:salamaty/generated/l10n.dart';
 
+// final GoogleSignIn googleSignIn = GoogleSignIn(
+//   scopes: ['email'],
+//   serverClientId:
+//       '228110417008-saj9545qu0ib8aqee3njptpp9fp4404b.apps.googleusercontent.com',
+// );
 final GoogleSignIn googleSignIn = GoogleSignIn(
-  scopes: ['email'],
+  scopes: ['email', 'profile', 'openid'],
   serverClientId:
       '228110417008-saj9545qu0ib8aqee3njptpp9fp4404b.apps.googleusercontent.com',
 );
@@ -250,8 +255,8 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
           AppSnackBar.show(
             context,
             message: state.fromGoogle
-                ? 'Signed in with Google successfully'
-                : 'Signed in successfully',
+                ? S.of(context).signedInWithGoogle
+                : S.of(context).signedInSuccessfully,
             type: SnackBarType.success,
           );
 
@@ -270,11 +275,11 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
           if (state.needVerification && state.email != null) {
             AppDialog.show(
               context: context,
-              title: 'Email not verified',
+              title: S.of(context).emailNotVerified,
               description:
-                  'Your email is not verified yet. You need to verify it using OTP.',
-              cancelText: 'Cancel',
-              confirmText: 'Verify Now',
+                  S.of(context).emailNotVerifiedDescription,
+              cancelText: S.of(context).cancel,
+              confirmText: S.of(context).verifyNow,
               onConfirm: () {
                 Navigator.push(
                   context,

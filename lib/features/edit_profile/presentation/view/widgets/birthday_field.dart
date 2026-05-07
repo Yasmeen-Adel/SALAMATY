@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class BirthdayField extends StatefulWidget {
   final TextEditingController controller;
@@ -40,8 +41,7 @@ class _BirthdayFieldState extends State<BirthdayField> {
     );
 
     if (picked != null) {
-      widget.controller.text =
-          "${picked.year.toString().padLeft(4, '0')}-"
+      widget.controller.text = "${picked.year.toString().padLeft(4, '0')}-"
           "${picked.month.toString().padLeft(2, '0')}-"
           "${picked.day.toString().padLeft(2, '0')}";
     }
@@ -54,8 +54,9 @@ class _BirthdayFieldState extends State<BirthdayField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Birth Day',
+          Text(
+            // 'Birth Day',
+            S.of(context).birthDate,
             style: TextStyle(
               color: Color(0xFF8F8D8D),
               fontSize: 16,
@@ -68,7 +69,7 @@ class _BirthdayFieldState extends State<BirthdayField> {
             readOnly: true,
             onTap: () => _pickDate(context),
             decoration: InputDecoration(
-              hintText: 'Select birth date',
+              hintText: S.of(context).selectBirthDate,
               suffixIcon: const Icon(
                 Icons.calendar_today_rounded,
                 color: Color(0xFF0D2D9E),

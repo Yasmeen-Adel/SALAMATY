@@ -24,11 +24,23 @@ class CustomOutlinedButton extends StatelessWidget {
             ),
           ),
           alignment: Alignment.center,
-          child: SvgPicture.asset(
-            'assets/images/logo_google.svg',
-            width: 35,
-            height: 35,
-          ),
+          // child: SvgPicture.asset(
+          //   'assets/images/logo_google.svg',
+          //   width: 35,
+          //   height: 35,
+          // ),
+          child: Localizations.localeOf(context).languageCode == 'ar'
+              ? Image.asset(
+                  'assets/images/google_ar.png',
+                  width: 120,
+                  height: 50,
+                  fit: BoxFit.contain,
+                )
+              : SvgPicture.asset(
+                  'assets/images/logo_google.svg',
+                  width: 50,
+                  height: 35,
+                ),
         ),
       ),
     );

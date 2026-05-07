@@ -683,6 +683,791 @@ class S {
       args: [],
     );
   }
+
+  /// `Facilities`
+  String get facilities {
+    return Intl.message('Facilities', name: 'facilities', desc: '', args: []);
+  }
+
+  /// `See All`
+  String get seeAll {
+    return Intl.message('See All', name: 'seeAll', desc: '', args: []);
+  }
+
+  /// `Hello,`
+  String get hello {
+    return Intl.message('Hello,', name: 'hello', desc: '', args: []);
+  }
+
+  /// `Search...`
+  String get search {
+    return Intl.message('Search...', name: 'search', desc: '', args: []);
+  }
+
+  /// `Services`
+  String get services {
+    return Intl.message('Services', name: 'services', desc: '', args: []);
+  }
+
+  /// `Select Insurance`
+  String get selectInsurance {
+    return Intl.message(
+      'Select Insurance',
+      name: 'selectInsurance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Prescription`
+  String get uploadPrescription {
+    return Intl.message(
+      'Upload Prescription',
+      name: 'uploadPrescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find Medicines`
+  String get findMedicines {
+    return Intl.message(
+      'Find Medicines',
+      name: 'findMedicines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See Details`
+  String get seeDetails {
+    return Intl.message('See Details', name: 'seeDetails', desc: '', args: []);
+  }
+
+  /// `No tips available`
+  String get noTips {
+    return Intl.message(
+      'No tips available',
+      name: 'noTips',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to load tips`
+  String get errorTips {
+    return Intl.message(
+      'Failed to load tips',
+      name: 'errorTips',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get location {
+    return Intl.message('Location', name: 'location', desc: '', args: []);
+  }
+
+  /// `Medical Specialties`
+  String get medicalSpecialties {
+    return Intl.message(
+      'Medical Specialties',
+      name: 'medicalSpecialties',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cardiology`
+  String get cardiology {
+    return Intl.message('Cardiology', name: 'cardiology', desc: '', args: []);
+  }
+
+  /// `Ophthalmology`
+  String get ophthalmology {
+    return Intl.message(
+      'Ophthalmology',
+      name: 'ophthalmology',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nephrology`
+  String get nephrology {
+    return Intl.message('Nephrology', name: 'nephrology', desc: '', args: []);
+  }
+
+  /// `Pediatrics`
+  String get pediatrics {
+    return Intl.message('Pediatrics', name: 'pediatrics', desc: '', args: []);
+  }
+
+  /// `Orthopedics`
+  String get orthopedics {
+    return Intl.message('Orthopedics', name: 'orthopedics', desc: '', args: []);
+  }
+
+  /// `Neurology`
+  String get neurology {
+    return Intl.message('Neurology', name: 'neurology', desc: '', args: []);
+  }
+
+  /// `Obstetrics & Gynecology`
+  String get obstetricsGynecology {
+    return Intl.message(
+      'Obstetrics & Gynecology',
+      name: 'obstetricsGynecology',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dentistry`
+  String get dentistry {
+    return Intl.message('Dentistry', name: 'dentistry', desc: '', args: []);
+  }
+
+  /// `Multidisciplinary`
+  String get multidisciplinary {
+    return Intl.message(
+      'Multidisciplinary',
+      name: 'multidisciplinary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Account`
+  String get deleteAccount {
+    return Intl.message(
+      'Delete Account',
+      name: 'deleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log out`
+  String get logout {
+    return Intl.message('Log out', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Contact Us`
+  String get contactUs {
+    return Intl.message('Contact Us', name: 'contactUs', desc: '', args: []);
+  }
+
+  /// `Username`
+  String get username {
+    return Intl.message('Username', name: 'username', desc: '', args: []);
+  }
+
+  /// `Message`
+  String get message {
+    return Intl.message('Message', name: 'message', desc: '', args: []);
+  }
+
+  /// `Send`
+  String get send {
+    return Intl.message('Send', name: 'send', desc: '', args: []);
+  }
+
+  /// `Username is required`
+  String get usernameRequired {
+    return Intl.message(
+      'Username is required',
+      name: 'usernameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is required`
+  String get emailRequired {
+    return Intl.message(
+      'Email is required',
+      name: 'emailRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid email`
+  String get invalidEmail {
+    return Intl.message(
+      'Enter a valid email',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message is required`
+  String get messageRequired {
+    return Intl.message(
+      'Message is required',
+      name: 'messageRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message sent successfully ✓`
+  String get sendSuccess {
+    return Intl.message(
+      'Message sent successfully ✓',
+      name: 'sendSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to send. Please try again.`
+  String get sendFailed {
+    return Intl.message(
+      'Failed to send. Please try again.',
+      name: 'sendFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete your account? This action cannot be undone.`
+  String get deleteAccountDesc {
+    return Intl.message(
+      'Are you sure you want to delete your account? This action cannot be undone.',
+      name: 'deleteAccountDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Your account has been deleted successfully`
+  String get accountDeleted {
+    return Intl.message(
+      'Your account has been deleted successfully',
+      name: 'accountDeleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to log out?`
+  String get logoutDesc {
+    return Intl.message(
+      'Are you sure you want to log out?',
+      name: 'logoutDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You logged out successfully`
+  String get logoutSuccess {
+    return Intl.message(
+      'You logged out successfully',
+      name: 'logoutSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nearby Services`
+  String get nearbyServices {
+    return Intl.message(
+      'Nearby Services',
+      name: 'nearbyServices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Insurance Services`
+  String get insuranceServices {
+    return Intl.message(
+      'Insurance Services',
+      name: 'insuranceServices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A list of covered services near your location.`
+  String get insuranceServicesSubtitle {
+    return Intl.message(
+      'A list of covered services near your location.',
+      name: 'insuranceServicesSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Facilities`
+  String get facilitiesScreenHeader {
+    return Intl.message(
+      'All Facilities',
+      name: 'facilitiesScreenHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter by`
+  String get filterBy {
+    return Intl.message('Filter by', name: 'filterBy', desc: '', args: []);
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
+
+  /// `Labs`
+  String get labs {
+    return Intl.message('Labs', name: 'labs', desc: '', args: []);
+  }
+
+  /// `Hospitals`
+  String get hospitals {
+    return Intl.message('Hospitals', name: 'hospitals', desc: '', args: []);
+  }
+
+  /// `Pharmacies`
+  String get pharmacies {
+    return Intl.message('Pharmacies', name: 'pharmacies', desc: '', args: []);
+  }
+
+  /// `Side Effect`
+  String get sideEffect {
+    return Intl.message('Side Effect', name: 'sideEffect', desc: '', args: []);
+  }
+
+  /// `See Alternatives`
+  String get seeAlternatives {
+    return Intl.message(
+      'See Alternatives',
+      name: 'seeAlternatives',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find Pharmacies`
+  String get findPharmacies {
+    return Intl.message(
+      'Find Pharmacies',
+      name: 'findPharmacies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No nearby pharmacies found`
+  String get noNearbyPharmacies {
+    return Intl.message(
+      'No nearby pharmacies found',
+      name: 'noNearbyPharmacies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medicine Alternatives`
+  String get medicineAlternatives {
+    return Intl.message(
+      'Medicine Alternatives',
+      name: 'medicineAlternatives',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here are some alternatives for the medicine you are looking for`
+  String get medicineAlternativesSubtitle {
+    return Intl.message(
+      'Here are some alternatives for the medicine you are looking for',
+      name: 'medicineAlternativesSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medicine Details`
+  String get medicineDetails {
+    return Intl.message(
+      'Medicine Details',
+      name: 'medicineDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Detailed information about the medicine, including side effects and alternatives`
+  String get medicineDetailsSubtitle {
+    return Intl.message(
+      'Detailed information about the medicine, including side effects and alternatives',
+      name: 'medicineDetailsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nearby Pharmacies`
+  String get nearbyPharmacies {
+    return Intl.message(
+      'Nearby Pharmacies',
+      name: 'nearbyPharmacies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here are some pharmacies near your location`
+  String get nearbyPharmaciesSubtitle {
+    return Intl.message(
+      'Here are some pharmacies near your location',
+      name: 'nearbyPharmaciesSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your email is not verified yet. You need to verify it using OTP.`
+  String get emailNotVerifiedDescription {
+    return Intl.message(
+      'Your email is not verified yet. You need to verify it using OTP.',
+      name: 'emailNotVerifiedDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Signed in with Google successfully`
+  String get signedInWithGoogle {
+    return Intl.message(
+      'Signed in with Google successfully',
+      name: 'signedInWithGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Signed in successfully`
+  String get signedInSuccessfully {
+    return Intl.message(
+      'Signed in successfully',
+      name: 'signedInSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile updated successfully`
+  String get profileUpdatedSuccessfully {
+    return Intl.message(
+      'Profile updated successfully',
+      name: 'profileUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to update profile. Please try again.`
+  String get failedToUpdateProfile {
+    return Intl.message(
+      'Failed to update profile. Please try again.',
+      name: 'failedToUpdateProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please complete all required fields`
+  String get pleaseCompleteAllRequiredFields {
+    return Intl.message(
+      'Please complete all required fields',
+      name: 'pleaseCompleteAllRequiredFields',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get fullName {
+    return Intl.message('Full Name', name: 'fullName', desc: '', args: []);
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message('Address', name: 'address', desc: '', args: []);
+  }
+
+  /// `Birth Date`
+  String get birthDate {
+    return Intl.message('Birth Date', name: 'birthDate', desc: '', args: []);
+  }
+
+  /// `Gender`
+  String get gender {
+    return Intl.message('Gender', name: 'gender', desc: '', args: []);
+  }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message('Loading...', name: 'loading', desc: '', args: []);
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message('Save', name: 'save', desc: '', args: []);
+  }
+
+  /// `Select gender`
+  String get selectGender {
+    return Intl.message(
+      'Select gender',
+      name: 'selectGender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Male`
+  String get male {
+    return Intl.message('Male', name: 'male', desc: '', args: []);
+  }
+
+  /// `Female`
+  String get female {
+    return Intl.message('Female', name: 'female', desc: '', args: []);
+  }
+
+  /// `Select birth date`
+  String get selectBirthDate {
+    return Intl.message(
+      'Select birth date',
+      name: 'selectBirthDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Birth day`
+  String get birthday {
+    return Intl.message('Birth day', name: 'birthday', desc: '', args: []);
+  }
+
+  /// `Insurance Profile`
+  String get insuranceProfile {
+    return Intl.message(
+      'Insurance Profile',
+      name: 'insuranceProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select your insurance to view covered services.`
+  String get selectInsuranceSubtitle {
+    return Intl.message(
+      'Select your insurance to view covered services.',
+      name: 'selectInsuranceSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have an active insurance plan\nlinked to your account yet.`
+  String get noInsuranceSelected {
+    return Intl.message(
+      'You don\'t have an active insurance plan\nlinked to your account yet.',
+      name: 'noInsuranceSelected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coverage & Benefits`
+  String get coverageBenefits {
+    return Intl.message(
+      'Coverage & Benefits',
+      name: 'coverageBenefits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medicines`
+  String get medicines {
+    return Intl.message('Medicines', name: 'medicines', desc: '', args: []);
+  }
+
+  /// `Lab Tests`
+  String get labTests {
+    return Intl.message('Lab Tests', name: 'labTests', desc: '', args: []);
+  }
+
+  /// `Insurance ID`
+  String get insuranceId {
+    return Intl.message(
+      'Insurance ID',
+      name: 'insuranceId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Insurance ID Number`
+  String get insuranceIdHint {
+    return Intl.message(
+      'Insurance ID Number',
+      name: 'insuranceIdHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Your Insurance Photos`
+  String get uploadInsurancePhotos {
+    return Intl.message(
+      'Upload Your Insurance Photos',
+      name: 'uploadInsurancePhotos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Insurance Card Front`
+  String get insuranceCardFront {
+    return Intl.message(
+      'Insurance Card Front',
+      name: 'insuranceCardFront',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload the front side of your Insurance Card.`
+  String get uploadFrontSide {
+    return Intl.message(
+      'Upload the front side of your Insurance Card.',
+      name: 'uploadFrontSide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Insurance Card Back`
+  String get insuranceCardBack {
+    return Intl.message(
+      'Insurance Card Back',
+      name: 'insuranceCardBack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload the back side of your Insurance Card.`
+  String get uploadBackSide {
+    return Intl.message(
+      'Upload the back side of your Insurance Card.',
+      name: 'uploadBackSide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message('Submit', name: 'submit', desc: '', args: []);
+  }
+
+  /// `Full Name`
+  String get fullNameHint {
+    return Intl.message('Full Name', name: 'fullNameHint', desc: '', args: []);
+  }
+
+  /// `Insurance Information`
+  String get insuranceInformation {
+    return Intl.message(
+      'Insurance Information',
+      name: 'insuranceInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retrieving insurance information...`
+  String get retrrievingInsuranceInfo {
+    return Intl.message(
+      'Retrieving insurance information...',
+      name: 'retrrievingInsuranceInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to load insurance information. Please try again.`
+  String get failedToLoadInsuranceInfo {
+    return Intl.message(
+      'Failed to load insurance information. Please try again.',
+      name: 'failedToLoadInsuranceInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retrieving insurance information details...`
+  String get retrievingInsuranceInfoDetails {
+    return Intl.message(
+      'Retrieving insurance information details...',
+      name: 'retrievingInsuranceInfoDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to load insurance information details. Please try again.`
+  String get failedToLoadInsuranceInfoDetails {
+    return Intl.message(
+      'Failed to load insurance information details. Please try again.',
+      name: 'failedToLoadInsuranceInfoDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message('Retry', name: 'retry', desc: '', args: []);
+  }
+
+  /// `Select Insurance Plan`
+  String get selectInsurancePlan {
+    return Intl.message(
+      'Select Insurance Plan',
+      name: 'selectInsurancePlan',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

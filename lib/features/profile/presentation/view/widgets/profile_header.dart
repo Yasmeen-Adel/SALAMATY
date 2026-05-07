@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});
@@ -10,8 +11,9 @@ class ProfileHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
-            'Profile',
+          Text(
+            // 'Profile',
+            S.of(context).profile,
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class DrugStoreSearchBar extends StatelessWidget {
   const DrugStoreSearchBar({super.key});
@@ -9,7 +10,7 @@ class DrugStoreSearchBar extends StatelessWidget {
     
       style: const TextStyle(fontSize: 14),
       decoration: InputDecoration(
-        hintText: 'Search ...',
+        hintText: S.of(context).search,
         hintStyle: const TextStyle(fontSize: 14),
         prefixIcon: const Icon(Icons.search, size: 20),
         filled: true,
