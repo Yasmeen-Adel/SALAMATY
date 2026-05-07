@@ -1,6 +1,7 @@
 
 
 
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:salamaty/features/insurance_services/data/models/facility_model.dart';
@@ -26,25 +27,22 @@ class InsuranceServicesCubit extends Cubit<InsuranceServicesState> {
     emit(InsuranceServicesLoading());
 
     try {
-      // Get user location
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
-        emit(InsuranceServicesError(message: 'Location services are disabled.'));
+        if (isClosed) return;
+        emit(InsuranceServicesLocationDisabled());
         return;
       }
 
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          emit(InsuranceServicesError(message: 'Location permission denied.'));
-          return;
-        }
       }
 
-      if (permission == LocationPermission.deniedForever) {
-        emit(InsuranceServicesError(
-            message: 'Location permission permanently denied.'));
+      if (permission == LocationPermission.denied ||
+          permission == LocationPermission.deniedForever) {
+        if (isClosed) return;
+        emit(InsuranceServicesLocationDenied());
         return;
       }
 
@@ -72,10 +70,21 @@ class InsuranceServicesCubit extends Cubit<InsuranceServicesState> {
     }
   }
 
+  Future<void> openLocationSettings() async {
+    await Geolocator.openLocationSettings();
+  }
+
+  Future<void> openAppSettings() async {
+    await Geolocator.openAppSettings();
+  }
+
   void changeFilter(String filter) {
     if (isClosed) return;
 
     _selectedFilter = filter;
+
+    // ✅ لو مفيش facilities (لسه متحملتش أو في error)، متعملش emit عشان متبدلش الـ state
+    if (_allFacilities.isEmpty) return;
 
     emit(InsuranceServicesLoaded(
       facilities: _applyFilter(_allFacilities),

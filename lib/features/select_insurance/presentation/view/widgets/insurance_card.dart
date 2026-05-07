@@ -1,9 +1,4 @@
 
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
 

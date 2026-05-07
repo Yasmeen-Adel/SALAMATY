@@ -1,3 +1,7 @@
+
+
+
+
 part of 'insurance_services_cubit.dart';
 
 abstract class InsuranceServicesState {}
@@ -20,3 +24,7 @@ class InsuranceServicesError extends InsuranceServicesState {
   final String message;
   InsuranceServicesError({required this.message});
 }
+
+class InsuranceServicesLocationDisabled extends InsuranceServicesState {}
+
+class InsuranceServicesLocationDenied extends InsuranceServicesState {}
