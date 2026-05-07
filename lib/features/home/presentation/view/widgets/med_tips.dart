@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/core/widgets/tip_webview_screen.dart';
 import 'package:salamaty/features/home/presentation/cubit/home_cubit.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class MedTips extends StatefulWidget {
-  const MedTips({Key? key}) : super(key: key);
+  const MedTips({super.key});
 
   @override
   State<MedTips> createState() => _MedTipsState();
@@ -22,9 +23,9 @@ class _MedTipsState extends State<MedTips> {
           final tips = state.tips;
 
           if (tips.isEmpty) {
-            return const SizedBox(
+            return SizedBox(
               height: 165,
-              child: Center(child: Text("No tips available")),
+              child: Center(child: Text(S.of(context).noTips)),
             );
           }
 
@@ -111,8 +112,9 @@ class _MedTipsState extends State<MedTips> {
                                 ),
                                 elevation: 0,
                               ),
-                              child: const Text(
-                                'See Details',
+                              child: Text(
+                                // 'See Details',
+                                S.of(context).seeDetails,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -149,9 +151,9 @@ class _MedTipsState extends State<MedTips> {
         }
 
         if (state is HomeError) {
-          return const SizedBox(
+          return SizedBox(
             height: 165,
-            child: Center(child: Text("Failed to load tips")),
+            child: Center(child: Text(S.of(context).errorTips)),
           );
         }
         return const SizedBox();

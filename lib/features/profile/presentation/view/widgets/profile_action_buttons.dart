@@ -4,6 +4,7 @@ import 'package:salamaty/core/widgets/app_dialog.dart';
 import 'package:salamaty/core/widgets/app_snackbar.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
 import 'package:salamaty/features/profile/data/profile_repo.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ProfileActionButtons extends StatelessWidget {
   const ProfileActionButtons({super.key});
@@ -20,13 +21,11 @@ class ProfileActionButtons extends StatelessWidget {
               onPressed: () {
                 AppDialog.show(
                   context: context,
-                  title: 'Delete Account',
-                  description:
-                      'Are you sure you want to delete your account? This action cannot be undone.',
-                  cancelText: 'Cancel',
-                  confirmText: 'Delete',
+                  title: S.of(context).deleteAccount,
+                  description: S.of(context).deleteAccountDesc,
+                  cancelText: S.of(context).cancel,
+                  confirmText: S.of(context).delete,
                   onConfirm: () async {
-                    
                     // close dialog first ........)
                     Navigator.pop(context);
 
@@ -36,7 +35,7 @@ class ProfileActionButtons extends StatelessWidget {
 
                       AppSnackBar.show(
                         context,
-                        message: 'Your account has been deleted successfully',
+                        message: S.of(context).accountDeleted,
                         type: SnackBarType.info,
                       );
 
@@ -66,8 +65,9 @@ class ProfileActionButtons extends StatelessWidget {
                 ),
                 elevation: 0,
               ),
-              child: const Text(
-                'Delete Account',
+              child: Text(
+                // 'Delete Account',
+                S.of(context).deleteAccount,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -84,12 +84,11 @@ class ProfileActionButtons extends StatelessWidget {
               onPressed: () {
                 AppDialog.show(
                   context: context,
-                  title: 'Log out',
-                  description: 'Are you sure you want to log out?',
-                  cancelText: 'Cancel',
-                  confirmText: 'Log out',
+                  title: S.of(context).logout,
+                  description: S.of(context).logoutDesc,
+                  cancelText: S.of(context).cancel,
+                  confirmText: S.of(context).logout,
                   onConfirm: () async {
-
                     // close dialog first ........)
                     Navigator.pop(context);
 
@@ -98,7 +97,7 @@ class ProfileActionButtons extends StatelessWidget {
 
                     AppSnackBar.show(
                       context,
-                      message: 'You logged out successfully',
+                      message: S.of(context).logoutSuccess,
                       type: SnackBarType.info,
                     );
 
@@ -120,8 +119,9 @@ class ProfileActionButtons extends StatelessWidget {
                 elevation: 0,
               ),
               icon: const Icon(Icons.logout),
-              label: const Text(
-                'Log out',
+              label: Text(
+                // 'Log out',
+                S.of(context).logout,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,

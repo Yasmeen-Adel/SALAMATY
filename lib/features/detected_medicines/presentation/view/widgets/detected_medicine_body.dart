@@ -68,7 +68,7 @@ class DetectedMedicineBody extends StatelessWidget {
             height: 56,
             child: ElevatedButton.icon(
               onPressed: () {
-                Navigator.pushNamed(context, ScanScreen.routeName);
+                Navigator.pushReplacementNamed(context, ScanScreen.routeName);
               },
               icon: const Icon(
                 Icons.document_scanner_outlined,

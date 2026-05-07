@@ -7,6 +7,7 @@ import 'package:salamaty/features/drug_store/presentation/cubit/drug_store_state
 import 'package:salamaty/features/drug_store/presentation/view/widgets/drug_store_header.dart';
 import 'package:salamaty/features/drug_store/presentation/view/widgets/medicine_list.dart';
 import 'package:salamaty/features/facilities/presentation/view/widgets/filter_tabs.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class DrugStoreScreenBody extends StatelessWidget {
   const DrugStoreScreenBody({super.key});
@@ -67,7 +68,7 @@ class _DrugStoreViewState extends State<_DrugStoreView> {
 
         const SizedBox(height: 12),
 
-        const CustomTextFieldLabel(labelText: 'Filter by'),
+         CustomTextFieldLabel(labelText:S.of(context).filterBy),
 
         const SizedBox(height: 6),
 

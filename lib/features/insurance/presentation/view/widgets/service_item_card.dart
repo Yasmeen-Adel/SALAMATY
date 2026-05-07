@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_text_styles.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ServiceItemCard extends StatelessWidget {
   final String name;
@@ -124,7 +125,8 @@ class ServiceItemCard extends StatelessWidget {
                     size: 20,
                   ),
                   label: Text(
-                    'Location',
+                    // 'Location',
+                    S.of(context).location,
                     style: AppTextStyles.medium18.copyWith(
                       color: const Color(0xFFFFFFFF),
                     ),

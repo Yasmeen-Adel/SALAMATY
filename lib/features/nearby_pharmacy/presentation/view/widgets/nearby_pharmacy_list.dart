@@ -4,6 +4,7 @@ import 'package:salamaty/features/nearby_pharmacy/presentation/cubit/nearby_phar
 import 'package:salamaty/features/nearby_pharmacy/presentation/cubit/nearby_pharmacy_state.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:salamaty/features/facilities/presentation/view/widgets/facility_card.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class NearbyPharmacyList extends StatelessWidget {
   const NearbyPharmacyList({super.key});
@@ -35,7 +36,7 @@ class NearbyPharmacyList extends StatelessWidget {
 
         if (state is NearbyPharmacySuccess) {
           if (state.pharmacies.isEmpty) {
-            return const Center(child: Text('No nearby pharmacies found'));
+            return  Center(child: Text(S.of(context).noNearbyPharmacies));
           }
 
           return ListView.builder(

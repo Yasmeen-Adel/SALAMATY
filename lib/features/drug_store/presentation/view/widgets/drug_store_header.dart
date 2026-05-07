@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class DrugStoreHeader extends StatefulWidget {
   final ValueChanged<String> onSearch;
@@ -34,8 +35,9 @@ class _DrugStoreHeaderState extends State<DrugStoreHeader> {
           /// AppBar Row
           Row(
             children: [
-              const Text(
-                'Drug Store',
+               Text(
+                // 'Drug Store',
+                S.of(context).drugStore,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

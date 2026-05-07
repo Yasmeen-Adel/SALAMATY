@@ -16,6 +16,7 @@ import 'package:salamaty/features/insurance_profile/presentation/view/insurance_
 import 'package:salamaty/features/medicine/presentation/view/medicine_details_screen.dart';
 import 'package:salamaty/features/medicine_alternatives/presentation/view/medicine_alternatives_screen.dart';
 import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
+import 'package:salamaty/features/select_insurance/data/models/select_insurance_provider.dart';
 import 'package:salamaty/features/select_insurance/presentation/view/insurance_screen.dart';
 import 'package:salamaty/features/profile/presentation/view/profile_screen.dart';
 import 'package:salamaty/features/scan/presentation/view/scan_screen.dart';
@@ -79,8 +80,14 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     case EditProfileScreen.routeName:
       return MaterialPageRoute(builder: (_) => EditProfileScreen());
     //Insurance Information Screen :)
+    // case InsuranceInformationScreen.routeName:
+    //   return MaterialPageRoute(builder: (_) => InsuranceInformationScreen());
     case InsuranceInformationScreen.routeName:
-      return MaterialPageRoute(builder: (_) => InsuranceInformationScreen());
+      final provider = settings.arguments as InsuranceProvider;
+      return MaterialPageRoute(
+        builder: (_) => InsuranceInformationScreen(),
+        settings: RouteSettings(arguments: provider),
+      );
     //Scan Screen :)
     case ScanScreen.routeName:
       return MaterialPageRoute(builder: (_) => ScanScreen());
@@ -88,8 +95,15 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     case FacilitiesScreen.routeName:
       return MaterialPageRoute(builder: (_) => FacilitiesScreen());
     //insurance services Screen :)
+    // case InsuranceServicesScreen.routeName:
+    //   return MaterialPageRoute(builder: (_) => InsuranceServicesScreen());
     case InsuranceServicesScreen.routeName:
-      return MaterialPageRoute(builder: (_) => InsuranceServicesScreen());
+      final providerId = settings.arguments as int? ?? 0;
+
+      return MaterialPageRoute(
+        builder: (_) => const InsuranceServicesScreen(),
+        settings: RouteSettings(arguments: providerId),
+      );
     //Drug Store Screen :)
     case DrugStoreScreen.routeName:
       return MaterialPageRoute(builder: (_) => DrugStoreScreen());

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/features/facilities/presentation/cubit/facilities_cubit.dart';
 import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
 import 'package:salamaty/features/facilities/presentation/view/widgets/facility_card.dart';
+import 'package:salamaty/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FacilitiesSection extends StatelessWidget {
@@ -34,8 +35,9 @@ class FacilitiesSection extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Facilities',
+                    Text(
+                      // 'Facilities',
+                      S.of(context).facilities,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -49,8 +51,9 @@ class FacilitiesSection extends StatelessWidget {
                           FacilitiesScreen.routeName,
                         );
                       },
-                      child: const Text(
-                        'See All',
+                      child: Text(
+                        // 'See All',
+                        S.of(context).seeAll,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,

@@ -7,6 +7,8 @@ import 'package:salamaty/features/insurance_profile/presentation/view/insurance_
 import 'package:salamaty/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:salamaty/features/profile/presentation/cubit/profile_state.dart';
 import 'package:salamaty/features/profile/presentation/view/widgets/profile_list_tile.dart';
+import 'package:salamaty/features/profile/presentation/view/widgets/contact_us_dialog.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class ProfileMenu extends StatefulWidget {
   const ProfileMenu({super.key});
@@ -16,13 +18,12 @@ class ProfileMenu extends StatefulWidget {
 }
 
 class _ProfileMenuState extends State<ProfileMenu> {
-
-  late Future<String> _locationFuture; 
+  late Future<String> _locationFuture;
 
   @override
   void initState() {
     super.initState();
-    _locationFuture = _loadLocation(); 
+    _locationFuture = _loadLocation();
   }
 
   Future<String> _loadLocation() async {
@@ -34,7 +35,6 @@ class _ProfileMenuState extends State<ProfileMenu> {
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
-
         if (state is! ProfileLoaded) {
           return const SizedBox();
         }
@@ -42,7 +42,6 @@ class _ProfileMenuState extends State<ProfileMenu> {
         return FutureBuilder<String>(
           future: _locationFuture,
           builder: (context, snapshot) {
-
             String addressText;
 
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -61,16 +60,13 @@ class _ProfileMenuState extends State<ProfileMenu> {
                     color: Color(0xFF0033A0),
                   ),
                 ),
-
                 const SizedBox(height: 16),
-
                 ProfileListTile(
                   title: addressText,
                   prefixIcon: Icons.location_on_outlined,
                 ),
-
                 ProfileListTile(
-                  title: 'Insurance Profile',
+                  title: S.of(context).insuranceProfile,
                   prefixIcon: Icons.health_and_safety_outlined,
                   trailingIcon: Icons.arrow_forward_ios,
                   onTap: () async {
@@ -80,33 +76,27 @@ class _ProfileMenuState extends State<ProfileMenu> {
                     );
                   },
                 ),
-
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Divider(),
                 ),
-
                 ProfileListTile(
                   title: state.email,
                   prefixIcon: Icons.email_outlined,
                 ),
-
                 ProfileListTile(
                   title: state.gender,
                   prefixIcon: Icons.female,
                 ),
-
                 ProfileListTile(
                   title: state.birthday,
                   prefixIcon: Icons.cake_outlined,
                 ),
-
                 ProfileListTile(
-                  title: 'Edit Profile',
+                  title: S.of(context).editProfile,
                   prefixIcon: Icons.edit_outlined,
                   trailingIcon: Icons.arrow_forward_ios,
                   onTap: () async {
-
                     await Navigator.pushNamed(
                       context,
                       EditProfileScreen.routeName,
@@ -119,7 +109,12 @@ class _ProfileMenuState extends State<ProfileMenu> {
                     });
                   },
                 ),
-
+                ProfileListTile(
+                  title: S.of(context).contactUs,
+                  prefixIcon: Icons.contact_support_outlined,
+                  trailingIcon: Icons.arrow_forward_ios,
+                  onTap: () => ContactUsDialog.show(context),
+                ),
                 const LanguageSelectorTile(),
               ],
             );

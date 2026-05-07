@@ -44,6 +44,7 @@ import 'package:flutter/material.dart';
 import 'package:salamaty/core/widgets/arrow_back.dart';
 import 'package:salamaty/core/widgets/large_outlined_app_button.dart';
 import 'package:salamaty/features/medicine/data/models/medicine_details_model.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 import 'medicine_image_section.dart';
 import 'medicine_title_price_section.dart';
@@ -106,7 +107,7 @@ class MedicineDetailsBody extends StatelessWidget {
           //   onPressed: () {},
           // ),
           LargeOutlinedAppButton(
-            text: 'Find Pharmacies',
+            text:S.of(context).findPharmacies,
             onPressed: () {
               Navigator.pushNamed(
                 context,
