@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/features/favorite/presentation/view/favorite_screen.dart';
 import 'package:salamaty/features/home/presentation/cubit/home_cubit.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/search_bar_widget.dart';
-import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
+// import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
 
 class HeaderSection extends StatelessWidget {
-  const HeaderSection({Key? key}) : super(key: key);
+  const HeaderSection({super.key});
 
   @override
   Widget build(BuildContext context) {

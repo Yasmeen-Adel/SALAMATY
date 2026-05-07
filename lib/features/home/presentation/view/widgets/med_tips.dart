@@ -4,7 +4,7 @@ import 'package:salamaty/core/widgets/tip_webview_screen.dart';
 import 'package:salamaty/features/home/presentation/cubit/home_cubit.dart';
 
 class MedTips extends StatefulWidget {
-  const MedTips({Key? key}) : super(key: key);
+  const MedTips({super.key});
 
   @override
   State<MedTips> createState() => _MedTipsState();

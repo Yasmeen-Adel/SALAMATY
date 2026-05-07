@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
+import 'package:salamaty/features/insurance_profile/data/models/insurance_profile_model.dart';
 import 'package:salamaty/features/insurance_profile/presentation/view/widgets/benefit_item.dart';
 import 'package:salamaty/core/utils/app_text_styles.dart';
 
 class CoverageBenefitsSection extends StatelessWidget {
-  const CoverageBenefitsSection({super.key});
+  final CoverageInfo coverage;
+  const CoverageBenefitsSection({super.key, required this.coverage});
 
   @override
   Widget build(BuildContext context) {
@@ -21,36 +23,27 @@ class CoverageBenefitsSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           BenefitItem(
-            iconPath: Icon(
-              Icons.medical_services_outlined,
-              color: AppColors.primaryColor,
-              size: 26,
-            ),
+            iconPath: Icon(Icons.medical_services_outlined,
+                color: AppColors.primaryColor, size: 26),
             title: 'Medicines',
-            items: const ['Prophine', 'Catafast', 'panadol'],
-            isCovered: true,
+            items: coverage.medicines.items,
+            isCovered: coverage.medicines.isCovered,
           ),
           const SizedBox(height: 12),
           BenefitItem(
-            iconPath: Icon(
-              Icons.science_outlined,
-              color: AppColors.primaryColor,
-              size: 26,
-            ),
+            iconPath: Icon(Icons.science_outlined,
+                color: AppColors.primaryColor, size: 26),
             title: 'Lab Tests',
-            items: const ['Prophine', 'Catafast', 'panadol'],
-            isCovered: true,
+            items: coverage.labTests.items,
+            isCovered: coverage.labTests.isCovered,
           ),
           const SizedBox(height: 12),
           BenefitItem(
-            iconPath: Icon(
-              Icons.local_hospital_outlined,
-              color: AppColors.primaryColor,
-              size: 26,
-            ),
+            iconPath: Icon(Icons.local_hospital_outlined,
+                color: AppColors.primaryColor, size: 26),
             title: 'Hospitals',
-            items: const ['Prophine', 'Catafast', 'panadol'],
-            isCovered: true,
+            items: coverage.hospitals.items,
+            isCovered: coverage.hospitals.isCovered,
           ),
         ],
       ),

@@ -33,7 +33,7 @@ class _GenderFieldState extends State<GenderField> {
           ),
           const SizedBox(height: 6),
           DropdownButtonFormField<String>(
-            value: selectedGender,
+            initialValue: selectedGender,
             icon: const Icon(
               Icons.keyboard_arrow_down_rounded,
               color: Color(0xFF0D2D9E),

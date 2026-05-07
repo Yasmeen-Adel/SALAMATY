@@ -1,16 +1,26 @@
+
+
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:salamaty/features/insurance_information/presentation/cubit/insurance_information_cubit.dart';
+
+enum ImageCardType { front, back }
 
 class ImageUploadCard extends StatefulWidget {
   final String title;
   final String description;
+  final ImageCardType cardType;
+  final int providerId;
 
   const ImageUploadCard({
     super.key,
     required this.title,
     required this.description,
+    required this.cardType,
+    required this.providerId,
   });
 
   @override
@@ -27,10 +37,32 @@ class _ImageUploadCardState extends State<ImageUploadCard> {
     try {
       final XFile? picked =
           await _picker.pickImage(source: source, imageQuality: 80);
-      if (picked != null) {
-        setState(() {
-          imageFile = File(picked.path);
-        });
+      if (picked == null) return;
+
+      final file = File(picked.path);
+
+      // ✅ تأكد إن الـ widget لسه mounted قبل أي حاجة
+      if (!mounted) return;
+
+      setState(() => imageFile = file);
+
+      final cubit = context.read<InsuranceInformationCubit>();
+
+      // ✅ تأكد إن الـ cubit مش closed قبل ما تبعت
+      if (cubit.isClosed) return;
+
+      if (widget.cardType == ImageCardType.front) {
+        cubit.setFrontImage(file);
+
+        // ✅ تأكد إن الـ cubit لسه شغال قبل الـ scan
+        if (cubit.isClosed) return;
+
+        await cubit.scanFrontCard(
+          providerId: widget.providerId,
+          frontImage: file,
+        );
+      } else {
+        cubit.setBackImage(file);
       }
     } catch (e) {
       debugPrint("Error picking image: $e");
@@ -43,32 +75,30 @@ class _ImageUploadCardState extends State<ImageUploadCard> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      builder: (_) {
-        return Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                leading: const Icon(Icons.camera_alt),
-                title: const Text('Camera'),
-                onTap: () {
-                  Navigator.pop(context);
-                  _pickImage(ImageSource.camera);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.photo),
-                title: const Text('Gallery'),
-                onTap: () {
-                  Navigator.pop(context);
-                  _pickImage(ImageSource.gallery);
-                },
-              ),
-            ],
-          ),
-        );
-      },
+      builder: (_) => Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: const Text('Camera'),
+              onTap: () {
+                Navigator.pop(context);
+                _pickImage(ImageSource.camera);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo),
+              title: const Text('Gallery'),
+              onTap: () {
+                Navigator.pop(context);
+                _pickImage(ImageSource.gallery);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -81,11 +111,7 @@ class _ImageUploadCardState extends State<ImageUploadCard> {
         child: InkWell(
           onTap: _showPicker,
           borderRadius: BorderRadius.circular(18),
-          onHighlightChanged: (value) {
-            setState(() {
-              _isPressed = value;
-            });
-          },
+          onHighlightChanged: (value) => setState(() => _isPressed = value),
           child: DottedBorder(
             borderType: BorderType.RRect,
             radius: const Radius.circular(18),
@@ -117,8 +143,6 @@ class _ImageUploadCardState extends State<ImageUploadCard> {
                           ),
                         ),
                         const Spacer(),
-                        // const SizedBox(height: 16),
-
                         const Center(
                           child: Icon(Icons.upload_file_outlined,
                               size: 60, color: primaryColor),
