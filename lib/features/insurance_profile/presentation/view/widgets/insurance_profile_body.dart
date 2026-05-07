@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
@@ -10,6 +8,7 @@ import 'package:salamaty/features/insurance_profile/presentation/view/widgets/co
 import 'package:salamaty/features/insurance_profile/presentation/view/widgets/insurance_provider_card.dart';
 import 'package:salamaty/features/insurance_profile/presentation/view/widgets/user_info_card.dart';
 import 'package:salamaty/features/select_insurance/presentation/view/insurance_screen.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class InsuranceProfileBody extends StatelessWidget {
   const InsuranceProfileBody({super.key});
@@ -38,7 +37,7 @@ class InsuranceProfileBody extends StatelessWidget {
                 TextButton(
                   onPressed: () =>
                       context.read<InsuranceProfileCubit>().loadProfile(),
-                  child: const Text('Retry'),
+                  child: Text(S.of(context).retry),
                 ),
               ],
             ),
@@ -53,7 +52,7 @@ class InsuranceProfileBody extends StatelessWidget {
               children: [
                 const SizedBox(height: 60),
                 const ArrowBack(),
-                const CustomScreenTitle(title: 'Insurance Profile'),
+                CustomScreenTitle(title: S.of(context).insuranceProfile),
                 const SizedBox(height: 30),
                 UserInfoCard(profile: profile),
                 const SizedBox(height: 16),
@@ -81,7 +80,7 @@ class _NoInsuranceView extends StatelessWidget {
         children: [
           const SizedBox(height: 60),
           const ArrowBack(),
-          const CustomScreenTitle(title: 'Insurance Profile'),
+          CustomScreenTitle(title: S.of(context).insuranceProfile),
           const Spacer(),
           Container(
             width: 90,
@@ -97,8 +96,8 @@ class _NoInsuranceView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          const Text(
-            'No insurance found',
+          Text(
+            S.of(context).noInsuranceSelected,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
@@ -106,8 +105,8 @@ class _NoInsuranceView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          const Text(
-            "You don't have an active insurance plan\nlinked to your account yet.",
+          Text(
+            S.of(context).selectInsuranceSubtitle,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14,
@@ -130,8 +129,9 @@ class _NoInsuranceView extends StatelessWidget {
                 });
               },
               icon: const Icon(Icons.add, color: Colors.white),
-              label: const Text(
-                'Select insurance plan',
+              label: Text(
+                // 'Select insurance plan',
+                S.of(context).selectInsurancePlan,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,

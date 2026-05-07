@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({Key? key}) : super(key: key);
@@ -32,8 +33,9 @@ class SearchBarWidget extends StatelessWidget {
                       );
                     },
                     style: const TextStyle(fontSize: 14),
-                    decoration: const InputDecoration(
-                      hintText: 'Search...',
+                    decoration:  InputDecoration(
+                      // hintText: 'Search...',
+                      hintText: S.of(context).search,
                       border: InputBorder.none,
                       isDense: true,
                       contentPadding: EdgeInsets.zero,

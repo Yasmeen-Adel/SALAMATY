@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/features/specialities/presentation/view/widgets/medical_specialties.dart';
 import 'package:salamaty/features/specialities/presentation/view/widgets/specialty_card.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class SpecialtiesSection extends StatelessWidget {
   const SpecialtiesSection({super.key});
@@ -12,8 +13,9 @@ class SpecialtiesSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Medical Specialties',
+          Text(
+            // 'Medical Specialties',
+            S.of(context).medicalSpecialties,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,

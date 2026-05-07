@@ -13,6 +13,7 @@ import 'package:salamaty/features/insurance_information/presentation/cubit/insur
 import 'package:salamaty/features/insurance_information/presentation/view/widgets/image_upload_card.dart';
 import 'package:salamaty/features/insurance_services/presentation/view/insurance_services_screen.dart';
 import 'package:salamaty/features/select_insurance/data/models/select_insurance_provider.dart';
+import 'package:salamaty/generated/l10n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class InsuranceInformationScreenBody extends StatefulWidget {
@@ -159,26 +160,26 @@ class _InsuranceInformationScreenBodyState
         child: Column(
           children: [
             const ArrowBack(),
-            const CustomScreenTitle(title: 'Insurance Information'),
+             CustomScreenTitle(title: S.of(context).insuranceInformation),
             const SizedBox(height: 24),
-            const CustomTextFieldLabel(labelText: 'Full Name'),
+             CustomTextFieldLabel(labelText: S.of(context).fullName),
             _buildNameField(),
             const SizedBox(height: 16),
-            const CustomTextFieldLabel(
-                labelText: 'Write Your Insurance ID Number'),
+             CustomTextFieldLabel(
+                labelText: S.of(context).insuranceId ),
             _buildIdField(),
             const SizedBox(height: 24),
-            const CustomTextFieldLabel(
-                labelText: 'Upload Your Insurance Photos'),
+             CustomTextFieldLabel(
+                labelText: S.of(context).uploadInsurancePhotos),
             ImageUploadCard(
-              title: 'Insurance Card Front',
-              description: 'Upload the front side of your Insurance Card.',
+              title: S.of(context).insuranceCardFront,
+              description: S.of(context).uploadFrontSide,
               cardType: ImageCardType.front,
               providerId: widget.selectedProvider.id,
             ),
             ImageUploadCard(
-              title: 'Insurance Card Back',
-              description: 'Upload the back side of your Insurance Card.',
+              title: S.of(context).insuranceCardBack,
+              description: S.of(context).uploadBackSide,
               cardType: ImageCardType.back,
               providerId: widget.selectedProvider.id,
             ),
@@ -191,7 +192,7 @@ class _InsuranceInformationScreenBodyState
                 return isLoading
                     ? const CircularProgressIndicator()
                     : LargeAppButton(
-                        text: 'Submit',
+                        text: S.of(context).submit,
                         onPressed: _onSubmit,
                       );
               },
@@ -210,7 +211,7 @@ class _InsuranceInformationScreenBodyState
         controller: _idController,
         keyboardType: TextInputType.text, // ✅ رجعناه عادي
         decoration: InputDecoration(
-          hintText: 'Insurance ID Number',
+          hintText: S.of(context).insuranceIdHint,
           errorText: _idError,
           filled: true,
           fillColor: const Color(0x33697DC3),
@@ -242,7 +243,7 @@ class _InsuranceInformationScreenBodyState
       child: TextFormField(
         controller: _nameController,
         decoration: InputDecoration(
-          hintText: 'Full Name',
+          hintText: S.of(context).fullNameHint,
           errorText: _nameError,
           filled: true,
           fillColor: const Color(0x33697DC3),

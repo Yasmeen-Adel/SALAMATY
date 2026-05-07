@@ -6,6 +6,7 @@ import 'package:salamaty/features/favorite/presentation/cubit/favorite_cubit.dar
 import 'package:salamaty/features/favorite/presentation/cubit/favorite_state.dart';
 import 'package:salamaty/features/medicine_alternatives/presentation/view/medicine_alternatives_screen.dart';
 import 'package:salamaty/core/widgets/app_snackbar.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class MedicineActionsSection extends StatefulWidget {
   final int productId;
@@ -141,8 +142,9 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
                             ),
                           );
                         },
-                        child: const Text(
-                          'See Alternatives',
+                        child:  Text(
+                          // 'See Alternatives',
+                          S.of(context).seeAlternatives,
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w700,

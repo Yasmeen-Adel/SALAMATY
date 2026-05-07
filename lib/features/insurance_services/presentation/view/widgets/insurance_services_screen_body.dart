@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
@@ -8,6 +6,7 @@ import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/core/widgets/custom_text_field_label.dart';
 import 'package:salamaty/features/insurance_services/data/models/facility_model.dart';
 import 'package:salamaty/features/insurance_services/presentation/cubit/insurance_services_cubit.dart';
+import 'package:salamaty/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InsuranceServicesScreenBody extends StatefulWidget {
@@ -32,17 +31,17 @@ class _InsuranceServicesScreenBodyState
       builder: (context, state) {
         return Column(
           children: [
-            const SizedBox(height: 40),
+            const SizedBox(height: 70),
             // ✅ شيلنا الـ back button لأن الـ screen دي بتتعرض كـ tab في الـ nav bar
-            const CustomScreenTitle(title: 'Insurance Services'),
-            const CustomScreenSubtitle(
-              subtitleText: 'A list of covered services near your location.',
+            CustomScreenTitle(title: S.of(context).insuranceServices),
+            CustomScreenSubtitle(
+              subtitleText: S.of(context).insuranceServicesSubtitle,
             ),
-            const SizedBox(height: 12),
-            const CustomTextFieldLabel(labelText: 'Nearby Services'),
+            const SizedBox(height: 30),
+            CustomTextFieldLabel(labelText: S.of(context).nearbyServices),
             const SizedBox(height: 10),
             _buildFilterTabs(state),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             Expanded(child: _buildBody(state)),
           ],
         );
@@ -52,44 +51,53 @@ class _InsuranceServicesScreenBodyState
 
   Widget _buildFilterTabs(InsuranceServicesState state) {
     final filters = ['All', 'Labs', 'Hospitals', 'Pharmacies'];
-    final selected =
-        state is InsuranceServicesLoaded ? state.selectedFilter : 'All';
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        children: filters.map((f) {
-          final isSelected = f == selected;
-          return Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: GestureDetector(
-              onTap: () =>
-                  context.read<InsuranceServicesCubit>().changeFilter(f),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  color:
-                      isSelected ? AppColors.primaryColor : Colors.transparent,
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: isSelected
-                        ? AppColors.primaryColor
-                        : Colors.grey.shade400,
+    final selectedIndex = state is InsuranceServicesLoaded
+        ? filters.indexOf(state.selectedFilter)
+        : 0;
+
+    return SizedBox(
+      height: 34,
+      child: ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        scrollDirection: Axis.horizontal,
+        itemCount: filters.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        itemBuilder: (context, index) {
+          final isSelected = selectedIndex == index;
+
+          return GestureDetector(
+            onTap: () => context
+                .read<InsuranceServicesCubit>()
+                .changeFilter(filters[index]),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 6,
+              ),
+              decoration: BoxDecoration(
+                color: isSelected ? AppColors.primaryColor : Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: AppColors.primaryColor.withOpacity(
+                    isSelected ? 1 : 0.2,
                   ),
+                  width: 1,
                 ),
-                child: Text(
-                  f,
-                  style: TextStyle(
-                    color: isSelected ? Colors.white : Colors.black,
-                    fontWeight: FontWeight.w500,
-                  ),
+              ),
+              child: Text(
+                filters[index],
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  color: isSelected
+                      ? AppColors.whiteColor
+                      : AppColors.primaryColor,
                 ),
               ),
             ),
           );
-        }).toList(),
+        },
       ),
     );
   }
@@ -144,7 +152,6 @@ class _InsuranceServicesScreenBodyState
 }
 
 // ===================== Facility Card =====================
-
 class _FacilityCard extends StatelessWidget {
   final FacilityModel facility;
 
@@ -153,23 +160,27 @@ class _FacilityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: AppColors.primaryColor.withOpacity(0.2),
+          width: 1,
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.07),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // name + type
+          /// Name + Type
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -179,73 +190,80 @@ class _FacilityCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
                 ),
               ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  _formatType(facility.type),
-                  style: const TextStyle(fontSize: 12, color: Colors.grey),
+              Text(
+                _formatType(facility.type),
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
                 ),
               ),
             ],
           ),
 
-          // ✅ fix: بنعرض المسافة دايماً لو موجودة — شيلنا شرط distanceKm > 0
-          if (facility.address != null) ...[
-            const SizedBox(height: 4),
-            Text(
-              facility.distanceKm != null
-                  ? '${facility.distanceKm!.toStringAsFixed(1)} KM away — ${facility.address}'
-                  : facility.address!,
-              style: const TextStyle(fontSize: 13, color: Colors.grey),
-            ),
-          ],
+          const SizedBox(height: 6),
 
-          // open/closed status
-          const SizedBox(height: 4),
+          /// Distance + Address
           Text(
-            facility.openUntil ?? (facility.isOpen ? 'Open' : 'Closed'),
-            style: TextStyle(
+            facility.distanceKm != null
+                ? '${facility.distanceKm!.toStringAsFixed(1)} KM ${facility.address ?? ''}'
+                : (facility.address ?? ''),
+            style: const TextStyle(
               fontSize: 13,
-              color: facility.isOpen ? Colors.green : Colors.red,
-              fontWeight: FontWeight.w500,
+              color: Colors.grey,
             ),
           ),
 
-          const SizedBox(height: 12),
+          const SizedBox(height: 6),
 
-          // Call + Location buttons
+          /// Open / Closed
+          Text(
+            facility.openUntil ?? (facility.isOpen ? 'Open' : 'Closed'),
+            style: TextStyle(
+              fontSize: 14,
+              color: facility.isOpen ? Colors.green : Colors.red,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+
+          const SizedBox(height: 14),
+
+          /// Buttons
           Row(
             children: [
               if (facility.phone != null) ...[
                 Expanded(
                   child: OutlinedButton.icon(
                     onPressed: () => _callPhone(facility.phone!),
-                    icon: const Icon(Icons.phone, size: 16),
-                    label: const Text('Call'),
+                    icon: const Icon(Icons.call, size: 18),
+                    label: Text(facility.phone!),
                     style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: AppColors.primaryColor),
                       foregroundColor: AppColors.primaryColor,
-                      side: const BorderSide(color: AppColors.primaryColor),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 12),
               ],
               Expanded(
                 child: ElevatedButton.icon(
                   onPressed: () => _openLocation(),
-                  icon: const Icon(Icons.location_on, size: 16),
+                  icon: const Icon(Icons.location_on, size: 18),
                   label: const Text('Location'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                     foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                   ),
                 ),
               ),
@@ -282,7 +300,8 @@ class _FacilityCard extends StatelessWidget {
       }
     } else if (facility.latitude != null && facility.longitude != null) {
       final uri = Uri.parse(
-          'https://www.google.com/maps/search/?api=1&query=${facility.latitude},${facility.longitude}');
+        'https://www.google.com/maps/search/?api=1&query=${facility.latitude},${facility.longitude}',
+      );
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
       }

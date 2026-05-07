@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/features/favorite/presentation/view/favorite_screen.dart';
 import 'package:salamaty/features/home/presentation/cubit/home_cubit.dart';
 import 'package:salamaty/features/home/presentation/view/widgets/search_bar_widget.dart';
+import 'package:salamaty/generated/l10n.dart';
 // import 'package:salamaty/features/notifications/presentation/view/notifications_screen.dart';
 
 class HeaderSection extends StatelessWidget {
@@ -119,8 +120,9 @@ class HeaderSection extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'Hello,',
+                                      Text(
+                                        // 'Hello,',
+                                        S.of(context).hello,
                                         style: TextStyle(
                                           color: Colors.white70,
                                           fontSize: 14,
@@ -146,7 +148,10 @@ class HeaderSection extends StatelessWidget {
                     Container(
                       width: 50,
                       height: 50,
-                      margin: const EdgeInsets.only(left: 10),
+                      // margin: const EdgeInsets.only(left: 10),
+                      margin: EdgeInsetsDirectional.only(
+                        start: 10,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(20),

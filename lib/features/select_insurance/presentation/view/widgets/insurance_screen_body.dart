@@ -7,6 +7,7 @@ import 'package:salamaty/core/widgets/large_app_button.dart';
 import 'package:salamaty/features/insurance_information/presentation/view/insurance_information_screen.dart';
 import 'package:salamaty/features/select_insurance/presentation/cubit/select_insurance_cubit.dart';
 import 'package:salamaty/features/select_insurance/presentation/view/widgets/insurance_card.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class InsuranceScreenBody extends StatefulWidget {
   const InsuranceScreenBody({super.key});
@@ -29,15 +30,15 @@ class _InsuranceScreenBodyState extends State<InsuranceScreenBody> {
         return Column(
           children: [
             const SizedBox(height: 90),
-            const CustomScreenTitle(title: 'Select Insurance'),
-            const CustomScreenSubtitle(
-              subtitleText: 'Select your insurance to view covered services.',
+             CustomScreenTitle(title: S.of(context).selectInsurance),
+             CustomScreenSubtitle(
+              subtitleText: S.of(context).selectInsuranceSubtitle,
             ),
             const SizedBox(height: 30),
             Expanded(child: _buildBody(context, state)),
             if (state is InsuranceLoaded)
               LargeAppButton(
-                text: 'Continue',
+                text:S.of(context).continueText,
                 onPressed: () {
                   if (state.selectedProvider == null) {
                     AppSnackBar.show(
