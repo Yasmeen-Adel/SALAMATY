@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,19 +5,15 @@ import 'package:image_picker/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:salamaty/features/insurance_information/presentation/cubit/insurance_information_cubit.dart';
 
-enum ImageCardType { front, back }
-
 class ImageUploadCard extends StatefulWidget {
   final String title;
   final String description;
-  final ImageCardType cardType;
   final int providerId;
 
   const ImageUploadCard({
     super.key,
     required this.title,
     required this.description,
-    required this.cardType,
     required this.providerId,
   });
 
@@ -41,29 +35,22 @@ class _ImageUploadCardState extends State<ImageUploadCard> {
 
       final file = File(picked.path);
 
-      // ✅ تأكد إن الـ widget لسه mounted قبل أي حاجة
       if (!mounted) return;
 
       setState(() => imageFile = file);
 
       final cubit = context.read<InsuranceInformationCubit>();
 
-      // ✅ تأكد إن الـ cubit مش closed قبل ما تبعت
       if (cubit.isClosed) return;
 
-      if (widget.cardType == ImageCardType.front) {
-        cubit.setFrontImage(file);
+      cubit.setFrontImage(file);
 
-        // ✅ تأكد إن الـ cubit لسه شغال قبل الـ scan
-        if (cubit.isClosed) return;
+      if (cubit.isClosed) return;
 
-        await cubit.scanFrontCard(
-          providerId: widget.providerId,
-          frontImage: file,
-        );
-      } else {
-        cubit.setBackImage(file);
-      }
+      await cubit.scanFrontCard(
+        providerId: widget.providerId,
+        frontImage: file,
+      );
     } catch (e) {
       debugPrint("Error picking image: $e");
     }

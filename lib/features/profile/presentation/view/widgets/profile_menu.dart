@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/core/services/auth_local_storage.dart';
 import 'package:salamaty/core/widgets/language_selector.dart';
 import 'package:salamaty/features/edit_profile/presentation/view/edit_profile_screen.dart';
+import 'package:salamaty/features/home/presentation/cubit/home_cubit.dart';
 import 'package:salamaty/features/insurance_profile/presentation/view/insurance_profile_screen.dart';
 import 'package:salamaty/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:salamaty/features/profile/presentation/cubit/profile_state.dart';
@@ -96,17 +97,32 @@ class _ProfileMenuState extends State<ProfileMenu> {
                   title: S.of(context).editProfile,
                   prefixIcon: Icons.edit_outlined,
                   trailingIcon: Icons.arrow_forward_ios,
+                  // onTap: () async {
+                  //   await Navigator.pushNamed(
+                  //     context,
+                  //     EditProfileScreen.routeName,
+                  //   );
+
+                  //   context.read<ProfileCubit>().loadProfile();
+
+                  //   setState(() {
+                  //     _locationFuture = _loadLocation();
+                  //   });
+                  // },
                   onTap: () async {
-                    await Navigator.pushNamed(
+                    final result = await Navigator.pushNamed(
                       context,
                       EditProfileScreen.routeName,
                     );
 
-                    context.read<ProfileCubit>().loadProfile();
+                    if (result == true && context.mounted) {
+                      context.read<ProfileCubit>().loadProfile();
+                      context.read<HomeCubit>().loadHomeData();
 
-                    setState(() {
-                      _locationFuture = _loadLocation();
-                    });
+                      setState(() {
+                        _locationFuture = _loadLocation();
+                      });
+                    }
                   },
                 ),
                 ProfileListTile(

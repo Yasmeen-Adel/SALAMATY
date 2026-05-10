@@ -40,13 +40,27 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
     super.dispose();
   }
 
+  // void _fillData(Map<String, dynamic> data) {
+  //   fullNameController.text = data["fullName"] ?? '';
+  //   addressController.text = data["address"] ?? '';
+
+  //   birthDateController.text = data["birthDate"] ?? '';
+
+  //   selectedGender = data["genderText"] ?? '';
+  // }
   void _fillData(Map<String, dynamic> data) {
     fullNameController.text = data["fullName"] ?? '';
     addressController.text = data["address"] ?? '';
-
     birthDateController.text = data["birthDate"] ?? '';
 
-    selectedGender = data["genderText"] ?? '';
+    final genderText = data["genderText"] ?? '';
+    if (genderText == 'Male') {
+      selectedGender = '0';
+    } else if (genderText == 'Female') {
+      selectedGender = '1';
+    } else {
+      selectedGender = '';
+    }
   }
 
   @override

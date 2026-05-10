@@ -18,8 +18,7 @@ class InsuranceInformationScanMismatch extends InsuranceInformationState {
 
 class InsuranceInformationImagesUpdated extends InsuranceInformationState {
   final File? frontImage;
-  final File? backImage;
-  InsuranceInformationImagesUpdated({this.frontImage, this.backImage});
+  InsuranceInformationImagesUpdated({this.frontImage});
 }
 
 class InsuranceInformationMissingImages extends InsuranceInformationState {}

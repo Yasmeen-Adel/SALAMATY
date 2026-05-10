@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -15,7 +13,6 @@ class InsuranceInformationCubit extends Cubit<InsuranceInformationState> {
   InsuranceInformationCubit({required this.repo})
       : super(InsuranceInformationInitial());
 
-  // بيانات الـ scan
   String? scannedName;
   String? scannedId;
   String? scannedProvider;
@@ -23,9 +20,7 @@ class InsuranceInformationCubit extends Cubit<InsuranceInformationState> {
   String? scannedValidDate;
   String? scannedStatus;
 
-  // الصور
   File? frontImage;
-  File? backImage;
 
   void setFrontImage(File file) {
     frontImage = file;
@@ -35,20 +30,6 @@ class InsuranceInformationCubit extends Cubit<InsuranceInformationState> {
     emit(
       InsuranceInformationImagesUpdated(
         frontImage: frontImage,
-        backImage: backImage,
-      ),
-    );
-  }
-
-  void setBackImage(File file) {
-    backImage = file;
-
-    if (isClosed) return;
-
-    emit(
-      InsuranceInformationImagesUpdated(
-        frontImage: frontImage,
-        backImage: backImage,
       ),
     );
   }
@@ -102,7 +83,6 @@ class InsuranceInformationCubit extends Cubit<InsuranceInformationState> {
         message = responseData['message'].toString();
       }
 
-      // 400 هنا معناها الـ card مش متطابقة أو scan failed
       if (e.response?.statusCode == 400) {
         emit(
           InsuranceInformationScanMismatch(
@@ -140,7 +120,7 @@ class InsuranceInformationCubit extends Cubit<InsuranceInformationState> {
     String? validUntil,
     String? status,
   }) async {
-    if (frontImage == null || backImage == null) {
+    if (frontImage == null) {
       if (isClosed) return;
 
       emit(InsuranceInformationMissingImages());
@@ -162,7 +142,6 @@ class InsuranceInformationCubit extends Cubit<InsuranceInformationState> {
         status: status,
         fullName: fullName,
         frontImage: frontImage!,
-        backImage: backImage!,
       );
 
       if (isClosed) return;
@@ -171,7 +150,6 @@ class InsuranceInformationCubit extends Cubit<InsuranceInformationState> {
     } on DioException catch (e) {
       if (isClosed) return;
 
-      // ✅ طباعة كل التفاصيل
       print('=== SUBMIT ERROR FULL ===');
       print('Status Code: ${e.response?.statusCode}');
       print('Response Data: ${e.response?.data}');

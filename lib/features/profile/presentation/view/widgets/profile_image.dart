@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salamaty/features/home/presentation/cubit/home_cubit.dart';
 import 'package:salamaty/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:salamaty/features/profile/presentation/cubit/profile_state.dart';
 
@@ -16,10 +18,12 @@ class ProfileImage extends StatelessWidget {
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             String? imageUrl;
+            String? localImagePath;
             bool isUploading = false;
 
             if (state is ProfileLoaded) {
               imageUrl = state.imageUrl;
+              localImagePath = state.localImagePath;
               isUploading = state.isImageUploading;
             }
 
@@ -46,30 +50,11 @@ class ProfileImage extends StatelessWidget {
                     ],
                   ),
                   child: ClipOval(
-                      child: imageUrl != null && imageUrl.isNotEmpty
-                          ? Image.network(
-                              imageUrl,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) {
-                                return Container(
-                                    color: Colors.white,
-                                    child: const Icon(
-                                      Icons.person,
-                                      size: 90,
-                                      color: Colors.grey,
-                                    ));
-                              },
-                            )
-                          : Container(
-                              color: Colors.white,
-                              child: const Icon(
-                                Icons.person,
-                                size: 90,
-                                color: Colors.grey,
-                              ))),
+                    child: _buildImage(imageUrl, localImagePath),
+                  ),
                 ),
 
-                /// ================= IMAGE LOADING ONLY =================
+                /// ================= IMAGE LOADING =================
                 if (isUploading)
                   const Positioned.fill(
                     child: Center(
@@ -87,8 +72,13 @@ class ProfileImage extends StatelessWidget {
                   child: GestureDetector(
                     onTap: isUploading
                         ? null
-                        : () {
-                            context.read<ProfileCubit>().pickAndUploadImage();
+                        : () async {
+                            await context
+                                .read<ProfileCubit>()
+                                .pickAndUploadImage();
+                            if (context.mounted) {
+                              context.read<HomeCubit>().loadHomeData();
+                            }
                           },
                     child: Container(
                       width: 35,
@@ -113,6 +103,38 @@ class ProfileImage extends StatelessWidget {
             );
           },
         ),
+      ),
+    );
+  }
+
+  Widget _buildImage(String? imageUrl, String? localImagePath) {
+    // ✅ لو في صورة محلية (لسه بترفع)، اعرضها فوراً
+    if (localImagePath != null) {
+      return Image.file(
+        File(localImagePath),
+        fit: BoxFit.cover,
+      );
+    }
+
+    // ✅ لو الرفع خلص، اعرض الـ URL
+    if (imageUrl != null && imageUrl.isNotEmpty) {
+      return Image.network(
+        imageUrl,
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => _defaultIcon(),
+      );
+    }
+
+    return _defaultIcon();
+  }
+
+  Widget _defaultIcon() {
+    return Container(
+      color: Colors.white,
+      child: const Icon(
+        Icons.person,
+        size: 90,
+        color: Colors.grey,
       ),
     );
   }

@@ -32,7 +32,6 @@ class _InsuranceServicesScreenBodyState
         return Column(
           children: [
             const SizedBox(height: 70),
-            // ✅ شيلنا الـ back button لأن الـ screen دي بتتعرض كـ tab في الـ nav bar
             CustomScreenTitle(title: S.of(context).insuranceServices),
             CustomScreenSubtitle(
               subtitleText: S.of(context).insuranceServicesSubtitle,

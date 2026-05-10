@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,9 +7,9 @@ import 'package:salamaty/core/widgets/arrow_back.dart';
 import 'package:salamaty/core/widgets/custom_screen_title.dart';
 import 'package:salamaty/core/widgets/custom_text_field_label.dart';
 import 'package:salamaty/core/widgets/large_app_button.dart';
+import 'package:salamaty/core/widgets/main_screen.dart';
 import 'package:salamaty/features/insurance_information/presentation/cubit/insurance_information_cubit.dart';
 import 'package:salamaty/features/insurance_information/presentation/view/widgets/image_upload_card.dart';
-import 'package:salamaty/features/insurance_services/presentation/view/insurance_services_screen.dart';
 import 'package:salamaty/features/select_insurance/data/models/select_insurance_provider.dart';
 import 'package:salamaty/generated/l10n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -73,7 +71,7 @@ class _InsuranceInformationScreenBodyState
       _nameError = null;
     }
 
-    setState(() {}); // ✅ يحدث UI مرة واحدة
+    setState(() {});
 
     return isValid;
   }
@@ -83,10 +81,10 @@ class _InsuranceInformationScreenBodyState
 
     final cubit = context.read<InsuranceInformationCubit>();
 
-    if (cubit.frontImage == null || cubit.backImage == null) {
+    if (cubit.frontImage == null) {
       AppSnackBar.show(
         context,
-        message: 'Please upload both Insurance Card images',
+        message: 'Please upload the Insurance Card image',
         type: SnackBarType.error,
       );
       return;
@@ -134,12 +132,19 @@ class _InsuranceInformationScreenBodyState
           final prefs = await SharedPreferences.getInstance();
 
           await prefs.setBool('has_insurance', true);
-          await prefs.setInt('provider_id', widget.selectedProvider.id);
 
-          Navigator.pushReplacementNamed(
+          await prefs.setInt(
+            'provider_id',
+            widget.selectedProvider.id,
+          );
+
+          if (!context.mounted) return;
+
+          Navigator.pushNamedAndRemoveUntil(
             context,
-            InsuranceServicesScreen.routeName,
-            arguments: widget.selectedProvider.id,
+            MainScreen.routeName,
+            (route) => false,
+            arguments: 3,
           );
         } else if (state is InsuranceInformationError) {
           AppSnackBar.show(
@@ -150,7 +155,7 @@ class _InsuranceInformationScreenBodyState
         } else if (state is InsuranceInformationMissingImages) {
           AppSnackBar.show(
             context,
-            message: 'Please upload both Insurance Card images',
+            message: 'Please upload the Insurance Card image',
             type: SnackBarType.error,
           );
         }
@@ -160,27 +165,19 @@ class _InsuranceInformationScreenBodyState
         child: Column(
           children: [
             const ArrowBack(),
-             CustomScreenTitle(title: S.of(context).insuranceInformation),
+            CustomScreenTitle(title: S.of(context).insuranceInformation),
             const SizedBox(height: 24),
-             CustomTextFieldLabel(labelText: S.of(context).fullName),
+            CustomTextFieldLabel(labelText: S.of(context).fullName),
             _buildNameField(),
             const SizedBox(height: 16),
-             CustomTextFieldLabel(
-                labelText: S.of(context).insuranceId ),
+            CustomTextFieldLabel(labelText: S.of(context).insuranceId),
             _buildIdField(),
             const SizedBox(height: 24),
-             CustomTextFieldLabel(
+            CustomTextFieldLabel(
                 labelText: S.of(context).uploadInsurancePhotos),
             ImageUploadCard(
               title: S.of(context).insuranceCardFront,
               description: S.of(context).uploadFrontSide,
-              cardType: ImageCardType.front,
-              providerId: widget.selectedProvider.id,
-            ),
-            ImageUploadCard(
-              title: S.of(context).insuranceCardBack,
-              description: S.of(context).uploadBackSide,
-              cardType: ImageCardType.back,
               providerId: widget.selectedProvider.id,
             ),
             const SizedBox(height: 32),
@@ -209,7 +206,7 @@ class _InsuranceInformationScreenBodyState
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: TextFormField(
         controller: _idController,
-        keyboardType: TextInputType.text, // ✅ رجعناه عادي
+        keyboardType: TextInputType.text,
         decoration: InputDecoration(
           hintText: S.of(context).insuranceIdHint,
           errorText: _idError,
