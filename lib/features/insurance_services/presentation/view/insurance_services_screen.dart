@@ -8,7 +8,6 @@ import 'package:salamaty/features/insurance_services/data/repos/insurance_servic
 import 'package:salamaty/features/insurance_services/presentation/cubit/insurance_services_cubit.dart';
 import 'package:salamaty/features/insurance_services/presentation/view/widgets/insurance_services_screen_body.dart';
 
-// ✅ القديم (للـ navigation بالـ arguments) — بيفضل مع Scaffold لأنه screen مستقلة
 class InsuranceServicesScreen extends StatelessWidget {
   const InsuranceServicesScreen({super.key});
 
@@ -32,7 +31,6 @@ class InsuranceServicesScreen extends StatelessWidget {
   }
 }
 
-// ✅ الجديد (للـ nav bar) — بدون Scaffold لأن MainScreen هو اللي عنده الـ Scaffold والـ nav bar
 class InsuranceServicesScreenWithId extends StatelessWidget {
   final int providerId;
 

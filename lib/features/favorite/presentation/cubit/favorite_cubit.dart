@@ -57,13 +57,11 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       if (isFav && favoriteId != null) {
         await repo.removeFavorite(favoriteId);
 
-        // 🔥 Removed successfully
         await fetchFavorites();
         return;
       } else {
         await repo.addFavorite(productId);
 
-        // 🔥 Added successfully
         await fetchFavorites();
         return;
       }

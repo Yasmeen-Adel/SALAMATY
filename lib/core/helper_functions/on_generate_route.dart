@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salamaty/features/authentication/SignIn/presentation/view/sign_in_screen.dart';
 import 'package:salamaty/features/authentication/SignUp/presentation/view/sign_up_screen.dart';
 import 'package:salamaty/features/authentication/forgot_password/presentation/view/forgot_password_screen.dart';
@@ -10,6 +11,7 @@ import 'package:salamaty/features/drug_store/presentation/view/drug_store_screen
 import 'package:salamaty/features/edit_profile/presentation/view/edit_profile_screen.dart';
 import 'package:salamaty/features/facilities/presentation/view/facilities_screen.dart';
 import 'package:salamaty/features/favorite/presentation/view/favorite_screen.dart';
+import 'package:salamaty/features/home/presentation/cubit/home_cubit.dart';
 import 'package:salamaty/features/insurance_information/presentation/view/insurance_information_screen.dart';
 import 'package:salamaty/features/insurance_services/presentation/view/insurance_services_screen.dart';
 import 'package:salamaty/features/insurance_profile/presentation/view/insurance_profile_screen.dart';
@@ -54,7 +56,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     //Home Screen :)
     case HomeScreen.routeName:
       return MaterialPageRoute(builder: (_) => HomeScreen());
-    //Main Screen :)
+    // Main Screen :)
     case MainScreen.routeName:
       return MaterialPageRoute(builder: (_) => MainScreen());
     //Profile Screen :)

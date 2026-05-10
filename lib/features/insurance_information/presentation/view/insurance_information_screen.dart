@@ -13,7 +13,6 @@ class InsuranceInformationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // نجيب الـ provider اللي اتبعت من insurance screen
     final provider =
         ModalRoute.of(context)!.settings.arguments as InsuranceProvider;
 

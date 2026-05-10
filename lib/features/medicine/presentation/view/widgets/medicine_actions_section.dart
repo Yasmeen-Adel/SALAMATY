@@ -50,7 +50,6 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
                     onTap: () async {
                       _runAnimation();
 
-                      // 🔥 Haptic feedback
                       HapticFeedback.heavyImpact();
 
                       final wasFav = cubit.isFavorite(widget.productId, state);
@@ -61,14 +60,12 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
                         if (!mounted) return;
 
                         if (wasFav) {
-                          // ⚫ Removed
                           AppSnackBar.show(
                             context,
                             message: "Removed from favorites successfully",
                             type: SnackBarType.info,
                           );
                         } else {
-                          // 🟢 Added
                           AppSnackBar.show(
                             context,
                             message: "Added to favorites successfully",
@@ -76,7 +73,6 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
                           );
                         }
                       } catch (e) {
-                        // 🔴 Error
                         AppSnackBar.show(
                           context,
                           message: "Something went wrong",
@@ -142,7 +138,7 @@ class _MedicineActionsSectionState extends State<MedicineActionsSection> {
                             ),
                           );
                         },
-                        child:  Text(
+                        child: Text(
                           // 'See Alternatives',
                           S.of(context).seeAlternatives,
                           style: TextStyle(

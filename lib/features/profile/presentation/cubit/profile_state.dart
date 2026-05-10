@@ -3,6 +3,7 @@ abstract class ProfileState {}
 class ProfileInitial extends ProfileState {}
 
 class ProfileLoading extends ProfileState {}
+
 class ProfileLoaded extends ProfileState {
   final String fullName;
   final String email;
@@ -10,6 +11,7 @@ class ProfileLoaded extends ProfileState {
   final String? imageUrl;
   final String birthday;
   final bool isImageUploading;
+  final String? localImagePath;
 
   ProfileLoaded({
     required this.fullName,
@@ -18,6 +20,7 @@ class ProfileLoaded extends ProfileState {
     required this.birthday,
     this.imageUrl,
     this.isImageUploading = false,
+    this.localImagePath,
   });
 
   ProfileLoaded copyWith({
@@ -27,6 +30,8 @@ class ProfileLoaded extends ProfileState {
     String? birthday,
     String? imageUrl,
     bool? isImageUploading,
+    String? localImagePath,
+    bool clearLocalImage = false,
   }) {
     return ProfileLoaded(
       fullName: fullName ?? this.fullName,
@@ -35,6 +40,8 @@ class ProfileLoaded extends ProfileState {
       birthday: birthday ?? this.birthday,
       imageUrl: imageUrl ?? this.imageUrl,
       isImageUploading: isImageUploading ?? this.isImageUploading,
+      localImagePath:
+          clearLocalImage ? null : (localImagePath ?? this.localImagePath),
     );
   }
 }
