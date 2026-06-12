@@ -40,14 +40,6 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
     super.dispose();
   }
 
-  // void _fillData(Map<String, dynamic> data) {
-  //   fullNameController.text = data["fullName"] ?? '';
-  //   addressController.text = data["address"] ?? '';
-
-  //   birthDateController.text = data["birthDate"] ?? '';
-
-  //   selectedGender = data["genderText"] ?? '';
-  // }
   void _fillData(Map<String, dynamic> data) {
     fullNameController.text = data["fullName"] ?? '';
     addressController.text = data["address"] ?? '';
@@ -55,12 +47,18 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
 
     final genderText = data["genderText"] ?? '';
     if (genderText == 'Male') {
-      selectedGender = '0';
+      selectedGender = 'Male';
     } else if (genderText == 'Female') {
-      selectedGender = '1';
+      selectedGender = 'Female';
     } else {
       selectedGender = '';
     }
+  }
+
+  String? get _genderInitialValue {
+    if (selectedGender == 'Male') return 'Male';
+    if (selectedGender == 'Female') return 'Female';
+    return null;
   }
 
   @override
@@ -117,8 +115,11 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
               ),
               const SizedBox(height: 10),
               GenderField(
+                initialValue: _genderInitialValue,
                 onChanged: (value) {
-                  selectedGender = value ?? '';
+                  setState(() {
+                    selectedGender = value ?? '';
+                  });
                 },
               ),
               const SizedBox(height: 10),
@@ -143,7 +144,6 @@ class _EditProfileScreenBodyState extends State<EditProfileScreenBody> {
                                 S.of(context).pleaseCompleteAllRequiredFields,
                             type: SnackBarType.error,
                           );
-
                           return;
                         }
 

@@ -143,6 +143,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "insuranceProfile": MessageLookupByLibrary.simpleMessage(
       "Insurance Profile",
     ),
+    "insuranceProvider": MessageLookupByLibrary.simpleMessage(
+      "Insurance Provider",
+    ),
     "insuranceServices": MessageLookupByLibrary.simpleMessage(
       "Insurance Services",
     ),

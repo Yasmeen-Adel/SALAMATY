@@ -1,4 +1,3 @@
-// typing_indicator.dart
 import 'package:flutter/material.dart';
 
 class TypingIndicator extends StatefulWidget {
@@ -48,65 +47,68 @@ class _TypingIndicatorState extends State<TypingIndicator>
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Row(
-        children: [
-          Container(
-            width: 32,
-            height: 32,
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF1A73E8), Color(0xFF0D47A1)],
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Icon(Icons.medical_services_rounded,
-                color: Colors.white, size: 16),
-          ),
-          const SizedBox(width: 8),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(18),
-                topRight: Radius.circular(18),
-                bottomRight: Radius.circular(18),
-                bottomLeft: Radius.circular(4),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.06),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 12),
+        child: Row(
+          children: [
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF1A73E8), Color(0xFF0D47A1)],
                 ),
-              ],
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Icon(Icons.medical_services_rounded,
+                  color: Colors.white, size: 16),
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: List.generate(3, (i) {
-                return AnimatedBuilder(
-                  animation: _animations[i],
-                  builder: (context, child) {
-                    return Transform.translate(
-                      offset: Offset(0, _animations[i].value),
-                      child: Container(
-                        width: 7,
-                        height: 7,
-                        margin: const EdgeInsets.symmetric(horizontal: 2),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF1A73E8).withOpacity(0.6),
-                          shape: BoxShape.circle,
+            const SizedBox(width: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(18),
+                  topRight: Radius.circular(18),
+                  bottomRight: Radius.circular(18),
+                  bottomLeft: Radius.circular(4),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.06),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: List.generate(3, (i) {
+                  return AnimatedBuilder(
+                    animation: _animations[i],
+                    builder: (context, child) {
+                      return Transform.translate(
+                        offset: Offset(0, _animations[i].value),
+                        child: Container(
+                          width: 7,
+                          height: 7,
+                          margin: const EdgeInsets.symmetric(horizontal: 2),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1A73E8).withOpacity(0.6),
+                            shape: BoxShape.circle,
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                );
-              }),
+                      );
+                    },
+                  );
+                }),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

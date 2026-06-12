@@ -124,7 +124,19 @@ class AuthLocalStorage {
     return prefs.getString(_profileImageKey);
   }
 
+  // static const _hasInsuranceKey = 'has_insurance';
+
+  // static Future<void> setHasInsurance(bool value) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   await prefs.setBool(_hasInsuranceKey, value);
+  // }
+
+  // static Future<bool> hasInsurance() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   return prefs.getBool(_hasInsuranceKey) ?? false;
+  // }
   static const _hasInsuranceKey = 'has_insurance';
+  static const _providerIdKey = 'provider_id';
 
   static Future<void> setHasInsurance(bool value) async {
     final prefs = await SharedPreferences.getInstance();
@@ -134,5 +146,15 @@ class AuthLocalStorage {
   static Future<bool> hasInsurance() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getBool(_hasInsuranceKey) ?? false;
+  }
+
+  static Future<void> saveProviderId(int id) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_providerIdKey, id);
+  }
+
+  static Future<int> getProviderId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(_providerIdKey) ?? 0;
   }
 }

@@ -174,6 +174,8 @@
   "retrievingInsuranceInfoDetails": "Retrieving insurance information details...",
   "failedToLoadInsuranceInfoDetails": "Failed to load insurance information details. Please try again.",
   "retry": "Retry",
-  "selectInsurancePlan":"Select Insurance Plan"
+  "selectInsurancePlan":"Select Insurance Plan",
+  "insuranceProvider":"Insurance Provider",
+  "No insurance providers found.":"No insurance providers found."
 
 }

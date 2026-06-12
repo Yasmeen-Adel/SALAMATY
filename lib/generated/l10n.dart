@@ -1468,6 +1468,18 @@ class S {
       args: [],
     );
   }
+
+  /// `Insurance Provider`
+  String get insuranceProvider {
+    return Intl.message(
+      'Insurance Provider',
+      name: 'insuranceProvider',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'No insurance providers found.' key
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamaty/features/chatbot/data/chatbot_data.dart';
- 
+
 class ChatBubble extends StatelessWidget {
   final ChatMessage message;
 
@@ -8,76 +8,80 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Row(
-        mainAxisAlignment:
-            message.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          if (!message.isUser) ...[
-            _BotAvatar(),
-            const SizedBox(width: 8),
-          ],
-          Flexible(
-            child: Column(
-              crossAxisAlignment: message.isUser
-                  ? CrossAxisAlignment.end
-                  : CrossAxisAlignment.start,
-              children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width * 0.72,
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 10,
-                  ),
-                  decoration: BoxDecoration(
-                    color: message.isUser
-                        ? const Color(0xFF1A73E8)
-                        : Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: const Radius.circular(18),
-                      topRight: const Radius.circular(18),
-                      bottomLeft: Radius.circular(message.isUser ? 18 : 4),
-                      bottomRight: Radius.circular(message.isUser ? 4 : 18),
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Row(
+          mainAxisAlignment:
+              message.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            if (!message.isUser) ...[
+              _BotAvatar(),
+              const SizedBox(width: 8),
+            ],
+            Flexible(
+              child: Column(
+                crossAxisAlignment: message.isUser
+                    ? CrossAxisAlignment.end
+                    : CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width * 0.72,
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.06),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Text(
-                    message.text,
-                    style: TextStyle(
-                      fontSize: 14,
-                      height: 1.5,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
                       color: message.isUser
-                          ? Colors.white
-                          : const Color(0xFF1A1A2E),
+                          ? const Color(0xFF1A73E8)
+                          : Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: const Radius.circular(18),
+                        topRight: const Radius.circular(18),
+                        bottomLeft: Radius.circular(message.isUser ? 18 : 4),
+                        bottomRight: Radius.circular(message.isUser ? 4 : 18),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.06),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      message.text,
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                        fontSize: 14,
+                        height: 1.5,
+                        color: message.isUser
+                            ? Colors.white
+                            : const Color(0xFF1A1A2E),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  _formatTime(message.time),
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: Color(0xFFAEB5C0),
+                  const SizedBox(height: 4),
+                  Text(
+                    _formatTime(message.time),
+                    style: const TextStyle(
+                      fontSize: 10,
+                      color: Color(0xFFAEB5C0),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          if (message.isUser) ...[
-            const SizedBox(width: 8),
-            _UserAvatar(),
+            if (message.isUser) ...[
+              const SizedBox(width: 8),
+              _UserAvatar(),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

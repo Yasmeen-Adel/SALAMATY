@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:salamaty/core/utils/app_colors.dart';
 import 'package:salamaty/core/utils/app_text_styles.dart';
 import 'package:salamaty/features/insurance_profile/data/models/insurance_profile_model.dart';
+import 'package:salamaty/generated/l10n.dart';
 
 class InsuranceProviderCard extends StatelessWidget {
   final ProviderInfo provider;
@@ -17,7 +18,8 @@ class InsuranceProviderCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Insurance Provider',
+            // 'Insurance Provider',
+            S.of(context).insuranceProvider,
             style: AppTextStyles.semiBold20.copyWith(
               color: const Color(0xFF0D2D9E),
             ),

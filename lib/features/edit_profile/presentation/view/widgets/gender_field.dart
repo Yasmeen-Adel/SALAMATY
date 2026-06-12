@@ -3,11 +3,14 @@ import 'package:salamaty/generated/l10n.dart';
 
 class GenderField extends StatefulWidget {
   final Function(String?) onChanged;
+  final String? initialValue;
 
   const GenderField({
     super.key,
     required this.onChanged,
+    this.initialValue,
   });
+
   @override
   State<GenderField> createState() => _GenderFieldState();
 }
@@ -16,11 +19,26 @@ class _GenderFieldState extends State<GenderField> {
   String? selectedGender;
 
   @override
+  void initState() {
+    super.initState();
+    selectedGender = widget.initialValue;
+  }
+
+  @override
+  void didUpdateWidget(GenderField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.initialValue != widget.initialValue &&
+        widget.initialValue != null) {
+      setState(() {
+        selectedGender = widget.initialValue;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,7 +52,7 @@ class _GenderFieldState extends State<GenderField> {
           ),
           const SizedBox(height: 6),
           DropdownButtonFormField<String>(
-            initialValue: selectedGender,
+            value: selectedGender,
             icon: const Icon(
               Icons.keyboard_arrow_down_rounded,
               color: Color(0xFF0D2D9E),
@@ -87,11 +105,7 @@ class _GenderFieldState extends State<GenderField> {
                 value: 'Male',
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.male,
-                      color: Color(0xFF0D2D9E),
-                      size: 20,
-                    ),
+                    Icon(Icons.male, color: Color(0xFF0D2D9E), size: 20),
                     SizedBox(width: 12),
                     Text(
                       'Male',
@@ -108,11 +122,7 @@ class _GenderFieldState extends State<GenderField> {
                 value: 'Female',
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.female,
-                      color: Color(0xFFE91E63),
-                      size: 20,
-                    ),
+                    Icon(Icons.female, color: Color(0xFFE91E63), size: 20),
                     SizedBox(width: 12),
                     Text(
                       'Female',

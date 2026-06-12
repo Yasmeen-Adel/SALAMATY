@@ -145,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "insuranceProfile": MessageLookupByLibrary.simpleMessage(
       "الملف الشخصي للتأمين",
     ),
+    "insuranceProvider": MessageLookupByLibrary.simpleMessage("شركة التأمين"),
     "insuranceServices": MessageLookupByLibrary.simpleMessage("خدمات التأمين"),
     "insuranceServicesSubtitle": MessageLookupByLibrary.simpleMessage(
       "قائمة بالخدمات المغطاة قريبة من موقعك.",

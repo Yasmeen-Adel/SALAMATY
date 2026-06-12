@@ -12,7 +12,6 @@ import 'package:salamaty/features/insurance_information/presentation/cubit/insur
 import 'package:salamaty/features/insurance_information/presentation/view/widgets/image_upload_card.dart';
 import 'package:salamaty/features/select_insurance/data/models/select_insurance_provider.dart';
 import 'package:salamaty/generated/l10n.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class InsuranceInformationScreenBody extends StatefulWidget {
   final InsuranceProvider selectedProvider;
@@ -129,12 +128,17 @@ class _InsuranceInformationScreenBodyState
             type: SnackBarType.success,
           );
         } else if (state is InsuranceInformationSubmitSuccess) {
-          final prefs = await SharedPreferences.getInstance();
+          // final prefs = await SharedPreferences.getInstance();
 
-          await prefs.setBool('has_insurance', true);
+          // await prefs.setBool('has_insurance', true);
 
-          await prefs.setInt(
-            'provider_id',
+          // await prefs.setInt(
+          //   'provider_id',
+          //   widget.selectedProvider.id,
+          // );
+          await AuthLocalStorage.setHasInsurance(true);
+
+          await AuthLocalStorage.saveProviderId(
             widget.selectedProvider.id,
           );
 

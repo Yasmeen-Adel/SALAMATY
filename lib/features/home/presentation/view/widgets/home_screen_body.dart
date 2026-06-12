@@ -49,17 +49,18 @@ class HomeScreenBody extends StatelessWidget {
         ),
 
         // Floating Chatbot Button
-        // Positioned(
-        //   bottom: 16,
-        //   right: 16,
-        //   child: _ChatbotFAB(),
-        // ),
         Positioned(
           bottom: 16,
-          right: isArabic ? null : 16,
-          left: isArabic ? 16 : null,
+          right: 16,
           child: _ChatbotFAB(),
         ),
+        
+        // Positioned(
+        //   bottom: 16,
+        //   right: isArabic ? null : 16,
+        //   left: isArabic ? 16 : null,
+        //   child: _ChatbotFAB(),
+        // ),
       ],
     );
   }
